@@ -2,6 +2,7 @@
 #include <string>
 #include "ordinateList/doublelist.h"
 #include "minimalismbitvector.h"
+#include "vobject.h"
 #include <cstdio>
 #include <cstdlib>
 
@@ -20,6 +21,30 @@ public:
     static vHeap* getInstance();
     vRef *vMalloc(size_t pSize, string pType);
     void vFree(vRef* pRef);
+    void set(vRef* pRef, vObject * pObject);
+    vObject get(vRef * pRef);
+    /**
+     * @brief get solicita una seccion de memoria la retorna si y solo si
+     * esta direccion de memoria esta contemplada en la lista de bitvectors
+     * @param pAddress
+     * @return
+     */
+    vRef get(int pAddress);
+
+    /**
+     * @brief protect Protege una zona de memoria.
+     * @param pVRef la referencia que pide la proteccion de la variable
+     * @return true si la zona de memoria se pudo proteger, false si la zona de memoria
+     * ya estaba protegida
+     */
+    bool protect(vRef * pVRef);
+    /**
+     * @brief removeReference Elimina la refencia hace que el conteo de referencias
+     * hacia lo que apunta el vRef sea disminuido en 1
+     * @param pVRef la referencia que quiere disminuir la referencia
+     */
+    void removeReference(vRef * pVRef);
+
     virtual ~vHeap()
     {
         delete _Instance;

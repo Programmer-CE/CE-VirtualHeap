@@ -1,12 +1,19 @@
+#include "vobject.h"
+
 #ifndef VREF_H
 #define VREF_H
 
 class vRef
 {
     friend class vHeap;
+public:
     int * _Id;
     vRef(int * pId);
-public:
+    vRef &operator =(vRef pVRef);
+    vRef &operator =(vObject *pVObject);
+    vRef &operator =(int pAddress);
+    bool operator ==(const vRef & pVRef);
+    virtual ~vRef();
 
 };
 

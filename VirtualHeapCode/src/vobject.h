@@ -5,6 +5,7 @@ class vObject
 {
 public:
     vObject();
+    virtual const char *getType();
 };
 
 #endif // VOBJECT_H
