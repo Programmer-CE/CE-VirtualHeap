@@ -12,14 +12,17 @@ using namespace std;
  */
 class MinimalismBitVector
 {
-    int *_Offset; /**< TODO */
-    int _Weight; /**< TODO */
+    int _Id; /**< TODO */
+    unsigned int _Weight; /**< TODO */
     string _Type; /**< TODO */
     int _ReferenceCounter; /**< TODO */
     bool _InUseFlag, _OnMemoryFlag; /**< TODO */
+    unsigned int _Offset;
+    static int Serial;
 
 public:
     MinimalismBitVector();
+    MinimalismBitVector(const MinimalismBitVector &othervariable);
 
     /**
      * @brief Constructor de los objetos de la clase, inicializa las variables principales
@@ -34,7 +37,7 @@ public:
      * @param pWeight es el tamanio del objeto al cual representa el objeto instanciado
      * @param pType es el tipo del objeto al cual esta clase representa.
      */
-    MinimalismBitVector(int pOffset, int pWeight, string pType);
+    MinimalismBitVector(unsigned int pOffset, unsigned int pWeight, string pType);
     /**
      * @brief suma en uno al contador de referencia
      *
@@ -51,13 +54,13 @@ public:
      *
      * @return true, si el objeto esta en memoria, false si el objeto esta en disco
      */
-    bool isChargedOnMemory();
+    bool isChargedOnMemory() const;
     /**
      * @brief Verifica si el objeto esta siendo usado por algun otro recurso.
      *
      * @return true si el objeto esta en uso, false si el objeto no esta en uso
      */
-    bool isOnUse();
+    bool isOnUse()const;
     /**
      * @brief setea la bandera que indica si el objeto se esta usando, true si se quiere
      * que el objeto este en uso, false si se quiere que el objeto ya no este en uso.
@@ -75,15 +78,16 @@ public:
     void setOnMemoryLocation(bool pMemoryLocationFlag);
 
 
-    int getWeight() const;
-    void setWeight(int pWeight);
+    unsigned int getWeight() const;
+    void setWeight(unsigned int pWeight);
     string getType() const;
     void setType(const string &pType);
-    int *getOffset() const;
-    void setOffset(int pOffset);
+    int getId() const;
+    unsigned int Offset() const;
+    void setOffset(int Offset);
+
     int ReferenceCounter() const;
     void setReferenceCounter(int ReferenceCounter);
-
     bool operator <(const MinimalismBitVector& otherBitVector);
     bool operator >(const MinimalismBitVector& otherBitVector);
     bool operator !=(const MinimalismBitVector& otherBitVector);
@@ -92,7 +96,6 @@ public:
      *
      */
     virtual ~MinimalismBitVector();
-
 };
 
 #endif // MINIMALISMBITVECTOR_H

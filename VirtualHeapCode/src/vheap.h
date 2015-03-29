@@ -14,15 +14,25 @@ using namespace std;
 class vHeap
 {
     static vHeap *_Instance;
+    static unsigned int _Weight;
+    unsigned int _OverWeight;
+    unsigned int _CurrentMemoryUsed;
     void *_Chunk;
-    DoubleList<MinimalismBitVector> _BitVector;
-    vHeap();
+    DoubleList<MinimalismBitVector> *_BitVector;
+    int searchBitVector(int pId);
+    vHeap()
+    {
+        _BitVector = new DoubleList<MinimalismBitVector>();
+        _Chunk = malloc(_Weight);
+        _CurrentMemoryUsed = 0;
+        _OverWeight = 0;
+    }
 public:
     static vHeap* getInstance();
-    vRef *vMalloc(size_t pSize, string pType);
+    vRef vMalloc(unsigned int pSize, string pType);
     void vFree(vRef* pRef);
-    void set(vRef* pRef, vObject * pObject);
-    vObject get(vRef * pRef);
+    void set(vRef* pRef, vObject *pObject);
+    vObject* get(vRef * pRef);
     /**
      * @brief get solicita una seccion de memoria la retorna si y solo si
      * esta direccion de memoria esta contemplada en la lista de bitvectors
@@ -48,7 +58,7 @@ public:
     virtual ~vHeap()
     {
         delete _Instance;
-        //delete _BitVector;
+        delete _BitVector;
         free(_Chunk);
     }
 };
