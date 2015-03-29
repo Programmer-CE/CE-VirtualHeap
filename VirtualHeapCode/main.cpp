@@ -10,17 +10,17 @@ void test(){
     MinimalismBitVector m(0,sizeof(t),typeid(t).name());
 
     cout << "m en bitvectors es: " << endl;
-    cout << "offset: " <<*m.getOffset() << endl;
+    cout << "offset: " <<m.Offset() << endl;
     cout << "peso: "<< m.getWeight() << endl;
     cout << "tipo: " << m.getType() << endl;
 
-    cout << "direccion del offset: " << (int*)m.getOffset() << endl;
+    cout << "direccion del offset: " << (int)m.Offset() << endl;
 
-    int * g = (m.getOffset());
+    int g = (m.Offset());
 
     cout << "direccion de g: " << g << endl;
 
-    if (g == m.getOffset()) cout << "IM A FUKING GENIUS!" << endl;
+    if (g == m.Offset()) cout << "IM A FUKING GENIUS!" << endl;
     //cout << "direccion de *g: " << *g << endl;
 }
 
