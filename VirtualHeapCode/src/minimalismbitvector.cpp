@@ -1,20 +1,34 @@
 #include "minimalismbitvector.h"
 #include <iostream>
 
+int MinimalismBitVector::Serial = 0;
+
+
 //####################################################
 // Constructor y Destructor
 //####################################################
 
 MinimalismBitVector::MinimalismBitVector()
 {
-    _Offset = new int(-1);
+    _Id = -1;
     _Weight = 0;
 }
 
-MinimalismBitVector::MinimalismBitVector(int pOffset, int pWeight, string pType)
+MinimalismBitVector::MinimalismBitVector(const MinimalismBitVector &othervariable)
 {
-    _Offset = new int(pOffset);
-    std::cout << "la direccion de &offset es: " << &_Offset << endl;
+    _Id = othervariable.getId();
+    _Weight = othervariable.getWeight();
+    _Type = othervariable.getType();
+    _ReferenceCounter = othervariable.ReferenceCounter();
+    _InUseFlag = othervariable.isOnUse();
+    _OnMemoryFlag = othervariable.isChargedOnMemory();
+    _Offset = othervariable.Offset();
+}
+
+MinimalismBitVector::MinimalismBitVector(unsigned int pOffset, unsigned int pWeight, string pType)
+{
+    _Offset = pOffset;
+    _Id = Serial++;
     _Weight = pWeight;
     _Type = pType;
 }
@@ -39,7 +53,7 @@ MinimalismBitVector::~MinimalismBitVector()
 // Getters
 //####################################################
 
-int MinimalismBitVector::getWeight() const
+unsigned int MinimalismBitVector::getWeight() const
 {
     return _Weight;
 }
@@ -49,19 +63,16 @@ string MinimalismBitVector::getType() const
     return _Type;
 }
 
-int *MinimalismBitVector::getOffset() const
+int MinimalismBitVector::getId() const
 {
-    return _Offset;
+    return _Id;
 }
 
 
-
-int MinimalismBitVector::ReferenceCounter() const
+void MinimalismBitVector::setOffset(int Offset)
 {
-    return _ReferenceCounter;
+    _Offset = Offset;
 }
-
-
 
 //####################################################
 // Final de getters
@@ -77,20 +88,13 @@ int MinimalismBitVector::ReferenceCounter() const
 // Setters
 //####################################################
 
-void MinimalismBitVector::setWeight(int pWeight)
+void MinimalismBitVector::setWeight(unsigned int pWeight)
 {
     _Weight = pWeight;
 }
 void MinimalismBitVector::setType(const string &pType)
 {
     _Type = pType;
-}
-
-
-void MinimalismBitVector::setOffset(int pOffset)
-{
-    delete _Offset;
-    _Offset = new int(pOffset);
 }
 
 
@@ -125,6 +129,12 @@ void MinimalismBitVector::setOnMemoryLocation(bool pMemoryLocationFlag)
     _OnMemoryFlag = pMemoryLocationFlag;
 }
 
+unsigned int MinimalismBitVector::Offset() const
+{
+    return _Offset;
+}
+
+
 //####################################################
 // Final de Setters
 //####################################################
@@ -149,14 +159,19 @@ void MinimalismBitVector::removeReference()
     _ReferenceCounter--;
 }
 
-bool MinimalismBitVector::isChargedOnMemory()
+bool MinimalismBitVector::isChargedOnMemory() const
 {
     return _OnMemoryFlag;
 }
 
-bool MinimalismBitVector::isOnUse()
+bool MinimalismBitVector::isOnUse() const
 {
     return _InUseFlag;
+}
+
+int MinimalismBitVector::ReferenceCounter() const
+{
+    return _ReferenceCounter;
 }
 
 
