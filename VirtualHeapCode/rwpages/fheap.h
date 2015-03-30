@@ -1,14 +1,8 @@
 #ifndef FHEAP
 #define FHEAP
 #include <string>
+#include "src/vobject.h"
 
-
-class registry{
-public:
-    registry(int d,int a);
-    int id;
-    int id2;
-};
 
 class fHeap{
 private:
@@ -19,10 +13,10 @@ private:
     int _totalDataMemory=0;
 public:
     fHeap(int overWeight);
-    void addToPage(registry nregistry);
-    registry searchInPage(int id,int weight);
+    void addToPage(vObject newvObject,int Weight);
+    vObject searchInPage(int searchId,int weight);
     void deletePage();
-    ~fHeap(){}
+    ~fHeap();
 
 
 };

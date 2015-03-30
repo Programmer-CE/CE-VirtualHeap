@@ -2,49 +2,45 @@
 #include <fstream>
 #include <iostream>
 #include <stdio.h>
-
-registry::registry(int d,int a){
-    id=d;
-    id2=a;
-}
-
+#include "src/vobject.h"
 
 fHeap::fHeap(int overWeight){
     _isPage=false;
     _memoryPage=overWeight;
 }
 
-void fHeap::addToPage(registry nregistry){
+void fHeap::addToPage(registry nregistry,int weight){
     if (!_isPage){
       this->deletePage();
       _isPage=true;
     }
 
-    if (_totalDataMemory+sizeof(nregistry)<=_memoryPage){
-        std::ofstream fileOut("/home/fran/Escritorio/proof.bin",std::ios::out | std::ios::binary | std::ios::app);
+    if (_totalDataMemory+weight<=_memoryPage){
+        std::ofstream fileOut("/home/fran/Escritorio/proof.bin",
+                              std::ios::out | std::ios::binary | std::ios::app);
 
-        fileOut.write(reinterpret_cast<char *>(&nregistry),sizeof(registry));
+        fileOut.write(reinterpret_cast<char *>(&nregistry),sizeof(weight));
 
         fileOut.close();
         _totalData++;
-        _totalDataMemory+=sizeof(nregistry);
+        _totalDataMemory+=weight;
     }
 }
 
 
 registry fHeap::searchInPage(int id, int weight){
 
-    registry regTmp(-1,-1);
-    registry returnableRegistry(-1,-1);
+    vObject regTmp(-1,-1);
+    VObject returnableRegistry(-1,-1);
     std::ofstream fileTmp("/home/fran/Escritorio/tmp.bin",std::ios::out | std::ios::binary |std::ios::app);
 
     std::ifstream fileIn("/home/fran/Escritorio/proof.bin",std::ios::in | std::ios::binary);
     int x=0;
     for(int i=0;i<_totalData;i++){
-        char chain[sizeof(registry)];
+        char chain[weight];
 
-        fileIn.read(reinterpret_cast<char *>(&chain),sizeof(registry));
-        for(int j=0;j<sizeof(registry);j++){
+        fileIn.read(reinterpret_cast<char *>(&chain),sizeof(vObject));
+        for(int j=0;j<weight;j++){
             *((char*)((void*)(&regTmp))+ j)=chain[j];
         }
 
@@ -57,7 +53,7 @@ registry fHeap::searchInPage(int id, int weight){
 
         }
         else{
-            fileTmp.write(reinterpret_cast<char *>(&regTmp),sizeof(registry));
+            fileTmp.write(reinterpret_cast<char *>(&regTmp),sizeof(vObject));
             std::cout<<regTmp.id<<"   id agregado al doc nuevo"<<std::endl;
         }
     }
@@ -73,7 +69,7 @@ registry fHeap::searchInPage(int id, int weight){
 }
 
 void fHeap::deletePage(){
-    _isPage=false;
     remove("/home/fran/Escritorio/proof.bin");
 }
 
+fHeap::~fHeap(){}
