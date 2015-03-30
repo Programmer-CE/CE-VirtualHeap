@@ -65,6 +65,8 @@ vRef vHeap::vMalloc(unsigned int pSize, string pType)
                 }
             }
             toInsert = MinimalismBitVector(tmp1.Offset() + tmp1.getWeight(),pSize,pType);
+
+
         }
         else{
             toInsert = MinimalismBitVector(0,pSize,pType);
@@ -123,7 +125,6 @@ vObject* vHeap::get(vRef *pRef)
     }
     else{
         MinimalismBitVector & memorylocation= _BitVector->getReference(index);
-        memorylocation.addReference();
         toReturn = (vObject*)((ExplorationVHeap*)_Chunk + memorylocation.Offset());
     }
     return toReturn;
@@ -154,13 +155,30 @@ void vHeap::get(vRef* pRef, const void *pAddress)
     pRef->_Id = ref.getId();
 }
 
-vRef vHeap::get(int pAddress)
+
+vRef vHeap::get(int pId)
 {
-    int index = _BitVector->search(MinimalismBitVector(pAddress,1,string("")));
+    int index = _BitVector->search(MinimalismBitVector(pId,1,string("")));
     if (index == -1){
         throw NullPointerException();
     }
     MinimalismBitVector &memorylocation = _BitVector->getReference(index);
+    memorylocation.addReference();
+    return vRef(memorylocation.getId());
+}
+
+vRef vHeap::addRef(const vRef *pRef)
+{
+    int index = searchBitVector(pRef->_Id);
+    if (index == -1){
+        throw NullPointerException();
+    }
+    MinimalismBitVector &memorylocation = _BitVector->getReference(index);
+    memorylocation.addReference();
+    //SE AGREGA otra referencia pues se destruye la referencia
+    //del return cuando se libera la pila, esto hace
+    //que se quite una referencia, por lo que hay que compensarlo
+    //agregando una mas
     memorylocation.addReference();
     return vRef(memorylocation.getId());
 }
@@ -206,4 +224,57 @@ void *vHeap::getDir(vRef *pVRef)
         toReturn = (void*)((ExplorationVHeap*)_Chunk + memorylocation.Offset());
     }
     return toReturn;
+}
+
+void vHeap::collectGarbage()
+{
+    MinimalismBitVector memorylocation;
+    for (int x = (_BitVector->getLenght()-1); x > -1;x--){
+        memorylocation = _BitVector->get(x);
+        if (memorylocation.ReferenceCounter() == 0){
+            memset((int*)((ExplorationVHeap*)_Chunk + memorylocation.Offset()),0,memorylocation.getWeight());
+            _BitVector->remove(x);
+            std::cout << "borrado" << std::endl;
+
+        }
+    }
+}
+
+void vHeap::print()
+{
+    MinimalismBitVector m;
+    std::cout << "tamanio: " << _BitVector->getLenght()
+              <<  std::endl <<  "==========================" << std::endl;
+    for (int x = 0; x < _BitVector->getLenght(); x++){
+        m = _BitVector->get(x);
+        std::cout << "id: "<< m.getId() << " type: " << m.getType() << " refcount: "<< m.ReferenceCounter() << std::endl;
+    }
+    std::cout << "==========================" << std::endl;
+}
+
+std::string vHeap::getType(vRef *pRef)
+{
+
+    MinimalismBitVector  memorylocation;
+    int index = searchBitVector(pRef->_Id);
+    if (index == -1){
+        throw NullPointerException();
+    }
+    else{
+        memorylocation= _BitVector->getReference(index);
+    }
+    return memorylocation.getType();
+}
+
+unsigned int vHeap::getWight(vRef *pRef)
+{
+    MinimalismBitVector memorylocation;
+    int index = searchBitVector(pRef->_Id);
+    if (index == -1){
+        throw NullPointerException();
+    }
+    else{
+        memorylocation= _BitVector->getReference(index);
+    }
+    return memorylocation.getWeight();
 }

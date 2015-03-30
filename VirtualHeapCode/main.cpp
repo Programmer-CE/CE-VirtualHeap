@@ -19,7 +19,7 @@ void test(){
 
     cout << "direccion del offset: " << (int)m.Offset() << endl;
 
-    int g = (m.Offset());
+    unsigned int g = (m.Offset());
 
     cout << "direccion de g: " << g << endl;
 
@@ -28,26 +28,35 @@ void test(){
 }
 
 
-
-int main(int argc, char *argv[])
-{
-    //vInt * a = new (typeid(vInt).name()) vInt(5);
+void perderRef(){
     vInt data = vInt(24);
     vRef myref = vHeap::getInstance()->vMalloc(sizeof(data),data.getType());
     myref = &data;
+}
+
+
+int main()
+{
+    perderRef();
+    cout << "=== Fin PederRef ===" << endl;
+    //vInt * a = new (typeid(vInt).name()) vInt(5);
+    vInt data = vInt(24);
+    vRef myref = vRef::assing(sizeof(data),&data);
     vRef myref2 = vRef::assing(sizeof(data),&data);
     myref2 = &data;
-
     //vRef myref = vRef::assing(&data);
     vInt data2 = *(vInt*)(*myref);
-    cout << data2._Int << endl;
-    //cout << data3._Int << endl;
-    //data = vInt(88);
-    //myref = ((vObject*)&data);
-
+    //cout << data2._Int << endl;
     vRef copia = myref;
+    vRef copia2 = myref2;
+    data = vInt(88);
+    myref = ((vObject*)&data);
 
-    vHeap::getInstance()->vFree(&myref);
+
+    cout << ((vInt*)(*copia))->_Int << endl;
+
+    vHeap::getInstance()->print();
+    //vHeap::getInstance()->vFree(&myref);
     //test();
     return 0;
 }
