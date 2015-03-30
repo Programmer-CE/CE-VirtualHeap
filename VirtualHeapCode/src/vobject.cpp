@@ -3,23 +3,13 @@
 #include "vref.h"
 #include "vclassdetector.h"
 #include <typeinfo>
+#include <iostream>
 vObject::vObject()
 {
 }
 
-const char *vObject::getType()
+const char *vObject::getType()const
 {
     return typeid(*this).name();
-}
-
-void *vObject::operator new(size_t pSize, string pType) throw()
-{
-    vRef t= (vHeap::getInstance())->vMalloc(pSize, pType);
-}
-
-
-void vObject::operator delete(void *ptoDelete)
-{
-
 }
 

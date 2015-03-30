@@ -12,10 +12,7 @@ class vObject
     vRef *pRef;
 public:
     vObject();
-    virtual const char *getType();
-    void *operator new (size_t pSize, std::string pType) throw();
-    void operator delete ( void *ptoDelete);
-
+    virtual const char *getType()const;
 };
 
 #endif // VOBJECT_H

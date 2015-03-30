@@ -1,8 +1,11 @@
 #include "src/minimalismbitvector.h"
+#include "src/vint.h"
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
 #include <typeinfo>
+#include "src/vref.h"
+#include "src/vheap.h"
 using namespace std;
 
 void test(){
@@ -28,6 +31,23 @@ void test(){
 
 int main(int argc, char *argv[])
 {
-    test();
+    //vInt * a = new (typeid(vInt).name()) vInt(5);
+    vInt data = vInt(24);
+    vRef myref = vHeap::getInstance()->vMalloc(sizeof(data),data.getType());
+    myref = &data;
+    vRef myref2 = vRef::assing(sizeof(data),&data);
+    myref2 = &data;
+
+    //vRef myref = vRef::assing(&data);
+    vInt data2 = *(vInt*)(*myref);
+    cout << data2._Int << endl;
+    //cout << data3._Int << endl;
+    //data = vInt(88);
+    //myref = ((vObject*)&data);
+
+    vRef copia = myref;
+
+    vHeap::getInstance()->vFree(&myref);
+    //test();
     return 0;
 }

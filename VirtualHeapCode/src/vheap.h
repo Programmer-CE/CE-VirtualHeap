@@ -31,8 +31,9 @@ public:
     static vHeap* getInstance();
     vRef vMalloc(unsigned int pSize, string pType);
     void vFree(vRef* pRef);
-    void set(vRef* pRef, vObject *pObject);
+    void set(vRef* pRef, const vObject *pObject);
     vObject* get(vRef * pRef);
+    void get(vRef* pRef,const void * pAddress);
     /**
      * @brief get solicita una seccion de memoria la retorna si y solo si
      * esta direccion de memoria esta contemplada en la lista de bitvectors
@@ -54,6 +55,8 @@ public:
      * @param pVRef la referencia que quiere disminuir la referencia
      */
     void removeReference(vRef * pVRef);
+
+    void *getDir(vRef * pVRef);
 
     virtual ~vHeap()
     {

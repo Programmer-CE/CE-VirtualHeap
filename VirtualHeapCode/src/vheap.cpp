@@ -93,7 +93,7 @@ void vHeap::vFree(vRef *pRef)
     }
 }
 
-void vHeap::set(vRef *pRef, vObject *pObject)
+void vHeap::set(vRef *pRef, const vObject *pObject)
 {
     int index = searchBitVector(pRef->_Id);
     if (index == -1){
@@ -105,8 +105,8 @@ void vHeap::set(vRef *pRef, vObject *pObject)
             copy((ExplorationVHeap*)pObject,
                  ((ExplorationVHeap*)pObject + memorylocation.getWeight()),
                  ((ExplorationVHeap*)_Chunk + memorylocation.Offset()));
-            memorylocation.addReference();
-            _BitVector->remove(index);
+            //memorylocation.addReference();
+            //_BitVector->remove(index);
         }
         else{
             throw NoMatchClassesException();
@@ -127,6 +127,31 @@ vObject* vHeap::get(vRef *pRef)
         toReturn = (vObject*)((ExplorationVHeap*)_Chunk + memorylocation.Offset());
     }
     return toReturn;
+}
+
+void vHeap::get(vRef* pRef, const void *pAddress)
+{
+    int left,center,right;
+    left = 0;
+    right = _BitVector->getLenght()-1;
+    while(left <= right){
+        center = int((left+right)/2);
+        if ((ExplorationVHeap*)pAddress < ((ExplorationVHeap*)_Chunk + _BitVector->get(center).Offset())){
+            right = center-1;
+        }
+        else if ((ExplorationVHeap*)pAddress > ((ExplorationVHeap*)_Chunk + _BitVector->get(center).Offset())){
+            left = center+1;
+        }
+        else{
+            break;
+        }
+    }
+    if (left > right){
+        throw NullPointerException();
+    }
+    MinimalismBitVector & ref = _BitVector->getReference(center);
+    ref.addReference();
+    pRef->_Id = ref.getId();
 }
 
 vRef vHeap::get(int pAddress)
@@ -159,11 +184,26 @@ bool vHeap::protect(vRef *pVRef)
 void vHeap::removeReference(vRef *pVRef){
     int index = searchBitVector(pVRef->_Id);
     if (index == -1){
-        throw NullPointerException();
+        return;
     }
     else{
         MinimalismBitVector &memorylocation = _BitVector->getReference(index);
         memorylocation.removeReference();
     }
 
+}
+
+void *vHeap::getDir(vRef *pVRef)
+{
+    void * toReturn;
+    int index = searchBitVector(pVRef->_Id);
+    if (index == -1){
+        throw NullPointerException();
+    }
+    else{
+        MinimalismBitVector & memorylocation= _BitVector->getReference(index);
+        memorylocation.addReference();
+        toReturn = (void*)((ExplorationVHeap*)_Chunk + memorylocation.Offset());
+    }
+    return toReturn;
 }
