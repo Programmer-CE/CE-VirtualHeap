@@ -1,5 +1,5 @@
 #include <string>
-
+#include <iostream>
 using namespace std;
 
 
@@ -78,19 +78,86 @@ public:
     void setOnMemoryLocation(bool pMemoryLocationFlag);
 
 
+    /**
+     * @brief obtiene el peso del objeto que representa
+     * @return el peso del objeto al cual representa
+     */
     unsigned int getWeight() const;
+    /**
+     * @brief setea el peso del objeto al cual repesenta
+     * @param pWeight el peso nuevo a setear
+     */
     void setWeight(unsigned int pWeight);
+    /**
+     * @brief Obtiene un string que represe tipo de dato al cual representa
+     * @return un string que contiene el tipo de dato al cual este representa
+     */
     string getType() const;
+    /**
+     * @brief setea el tipo de dato al cual este representa
+     * @param pType el tipo de dato al cual este va a representar
+     */
     void setType(const string &pType);
+    /**
+     * @brief obtiene el el id del objeto
+     * @return el id del objeto
+     */
     int getId() const;
-    unsigned int Offset() const;
-    void setOffset(int Offset);
 
-    int ReferenceCounter() const;
-    void setReferenceCounter(int ReferenceCounter);
+    /**
+     * @brief retorna el movimiento relativo en memoria desde el inicio
+     * del vHeap
+     * @return el "offset" del dato al cual este representa
+     */
+    unsigned int getOffset() const;
+    /**
+     * @brief setea el offset al cual representa este objeto
+     * @param Offset el nuevo offset
+     */
+    void setOffset(unsigned int pOffset);
+
+
+    /**
+     * @brief Obtiene la cantidad de referencias al cual este objeto, representa
+     * @return la cantidad de referencias al objeto que representa
+     */
+    int getReferenceCounter() const;
+    /**
+     * @brief Setea la cantidad de referencias al objeto
+     * @param pReferenceCounter la cantidad de referencias
+     */
+    void setReferenceCounter(int pReferenceCounter);
+    /**
+     * @brief operator <, se compara con otro objeto a partir de su offset
+     * @param otherBitVector el otro objeto a comparar
+     * @return true, si el offset del objeto que llama el metodo es menor
+     * que el parametro enviado
+     */
     bool operator <(const MinimalismBitVector& otherBitVector);
+    /**
+     * @brief operator <, se compara con otro objeto a partir de su offset
+     * @param otherBitVector el otro objeto a comparar
+     * @return true, si el offset del objeto que llama el metodo es menor
+     * que el del parametro enviado
+     */
     bool operator >(const MinimalismBitVector& otherBitVector);
+    /**
+     * @brief operator >, se compara con otro objeto a partir de su offset
+     * @param otherBitVector el otro objeto a comparar
+     * @return true, si el offset del objeto que llama el metodo es mayor
+     * que el del parametro enviado
+     */
     bool operator !=(const MinimalismBitVector& otherBitVector);
+    /**
+     * @brief operator !=, se compara con otro objeto a partir de su offset
+     * @param otherBitVector el otro objeto a comparar
+     * @return true, si el offset del objeto que llama el metodo es diferente
+     * que el del parametro enviado
+     */
+    friend ostream &operator <<(ostream& os, const MinimalismBitVector & e){
+        os << e.getId() << ":" << e.getReferenceCounter();
+    }
+
     /**
      * @brief destructor o liberador de memoria
      *

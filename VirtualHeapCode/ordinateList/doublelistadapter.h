@@ -29,7 +29,7 @@ public:
 };
 
 template <class E> bool DoubleListAdapter<E>::add(E pData){
-    if (_head == Null)return addFirstData(pData);
+    if (this->_lenght == 0)return addFirstData(pData);
     else if (pData < _head->getData())return addi(pData);
     else if (pData > _tail->getData())return addf(pData);
     else{
@@ -67,7 +67,9 @@ template <class E> E DoubleListAdapter<E>::get(int pIndex){
     if (pIndex < 0 || pIndex >= this->_lenght)throw this;
     else{
         DoubleNode<E> *currentNode = _head;
-        for (int x = 0;x < pIndex;x++)currentNode = currentNode->getNext();
+        for (int x = 0;x < pIndex;x++){
+            currentNode = currentNode->getNext();
+        }
         return currentNode->getData();
     }
 }
@@ -115,7 +117,10 @@ template <class E> void DoubleListAdapter<E>::print(){
         std::cout << current->getData() <<",";
         current = current->getNext();
     }
-    std::cout << current->getData() <<"]" << std::endl;
+    if (current){
+        std::cout << current->getData();
+    }
+    std::cout <<"]" << std::endl;
 }
 
 #endif // DOUBLELISTADAPTER_H

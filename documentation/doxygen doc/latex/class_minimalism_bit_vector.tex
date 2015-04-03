@@ -1,0 +1,365 @@
+\hypertarget{class_minimalism_bit_vector}{\section{Minimalism\-Bit\-Vector Class Reference}
+\label{class_minimalism_bit_vector}\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_minimalism_bit_vector_a86a42058658485f11691aa7d73f89197}{{\bfseries Minimalism\-Bit\-Vector} (const \hyperlink{class_minimalism_bit_vector}{Minimalism\-Bit\-Vector} \&othervariable)}\label{class_minimalism_bit_vector_a86a42058658485f11691aa7d73f89197}
+
+\item 
+\hyperlink{class_minimalism_bit_vector_a62437d85d4a5bdf7bd519bfe1dd25847}{Minimalism\-Bit\-Vector} (unsigned int p\-Offset, unsigned int p\-Weight, string p\-Type)
+\begin{DoxyCompactList}\small\item\em Constructor de los objetos de la clase, inicializa las variables principales tales variables son aquellas que describen las principales caracteristicas de los objetos en memoria, tales caracteristicas son\-: el offset o direccion relativa, esta se mide en bytes y el corriemiento de bytes se da de 1 en 1, el peso del objeto y finalmente el tipo del objeto. \end{DoxyCompactList}\item 
+\hypertarget{class_minimalism_bit_vector_a77e8a538b975ae40aa2205e4bedb6d09}{void \hyperlink{class_minimalism_bit_vector_a77e8a538b975ae40aa2205e4bedb6d09}{add\-Reference} ()}\label{class_minimalism_bit_vector_a77e8a538b975ae40aa2205e4bedb6d09}
+
+\begin{DoxyCompactList}\small\item\em suma en uno al contador de referencia \end{DoxyCompactList}\item 
+\hypertarget{class_minimalism_bit_vector_ace33d25bceb2a3c4c2e2820650c37e10}{void \hyperlink{class_minimalism_bit_vector_ace33d25bceb2a3c4c2e2820650c37e10}{remove\-Reference} ()}\label{class_minimalism_bit_vector_ace33d25bceb2a3c4c2e2820650c37e10}
+
+\begin{DoxyCompactList}\small\item\em resta en uno el contador de referencias \end{DoxyCompactList}\item 
+bool \hyperlink{class_minimalism_bit_vector_aa8bba4e5bcfae52caf3c99beb7aae0cf}{is\-Charged\-On\-Memory} () const 
+\begin{DoxyCompactList}\small\item\em Verifica si el objeto que se representa a travez de las instancias de \hyperlink{class_minimalism_bit_vector}{Minimalism\-Bit\-Vector} estan cargadas en memoria. \end{DoxyCompactList}\item 
+bool \hyperlink{class_minimalism_bit_vector_a7ebf4e232220001d18be6275d9868587}{is\-On\-Use} () const 
+\begin{DoxyCompactList}\small\item\em Verifica si el objeto esta siendo usado por algun otro recurso. \end{DoxyCompactList}\item 
+void \hyperlink{class_minimalism_bit_vector_a63b95b7f8446bfc105d42837be83b42b}{set\-On\-Use} (bool p\-On\-Use)
+\begin{DoxyCompactList}\small\item\em setea la bandera que indica si el objeto se esta usando, true si se quiere que el objeto este en uso, false si se quiere que el objeto ya no este en uso. \end{DoxyCompactList}\item 
+void \hyperlink{class_minimalism_bit_vector_a747ed61c44f091dd3326644216a923dd}{set\-On\-Memory\-Location} (bool p\-Memory\-Location\-Flag)
+\begin{DoxyCompactList}\small\item\em Setea si el dato esta en memoria, si se quiere que el dato este en memoria se pasa el valor true por parametro en caso contrario se pasa un false. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_minimalism_bit_vector_af33224c672b353285b59463c2e958061}{get\-Weight} () const 
+\begin{DoxyCompactList}\small\item\em obtiene el peso del objeto que representa \end{DoxyCompactList}\item 
+void \hyperlink{class_minimalism_bit_vector_ac4480ef294435f54049da5cad957e1a9}{set\-Weight} (unsigned int p\-Weight)
+\begin{DoxyCompactList}\small\item\em setea el peso del objeto al cual repesenta \end{DoxyCompactList}\item 
+string \hyperlink{class_minimalism_bit_vector_ae2ade8544c4c57e92e5f5dd16add849b}{get\-Type} () const 
+\begin{DoxyCompactList}\small\item\em Obtiene un string que represe tipo de dato al cual representa. \end{DoxyCompactList}\item 
+void \hyperlink{class_minimalism_bit_vector_a15aad2b30f6e8c2e76bba5e617de351c}{set\-Type} (const string \&p\-Type)
+\begin{DoxyCompactList}\small\item\em setea el tipo de dato al cual este representa \end{DoxyCompactList}\item 
+int \hyperlink{class_minimalism_bit_vector_a166c2b2c6e84945e329310584ca89128}{get\-Id} () const 
+\begin{DoxyCompactList}\small\item\em obtiene el el id del objeto \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_minimalism_bit_vector_ae17a440748037ed78b67bf9a2f4aad1d}{get\-Offset} () const 
+\begin{DoxyCompactList}\small\item\em retorna el movimiento relativo en memoria desde el inicio del \hyperlink{classv_heap}{v\-Heap} \end{DoxyCompactList}\item 
+void \hyperlink{class_minimalism_bit_vector_ad9d6993d2a24b1f238f1896dd8ff04be}{set\-Offset} (unsigned int p\-Offset)
+\begin{DoxyCompactList}\small\item\em setea el offset al cual representa este objeto \end{DoxyCompactList}\item 
+int \hyperlink{class_minimalism_bit_vector_ab0c91d2ff39599b96ba7f0c52ed796d2}{get\-Reference\-Counter} () const 
+\begin{DoxyCompactList}\small\item\em Obtiene la cantidad de referencias al cual este objeto, representa. \end{DoxyCompactList}\item 
+void \hyperlink{class_minimalism_bit_vector_af65272b7663cfc96d2a8fd16668b8570}{set\-Reference\-Counter} (int p\-Reference\-Counter)
+\begin{DoxyCompactList}\small\item\em Setea la cantidad de referencias al objeto. \end{DoxyCompactList}\item 
+bool \hyperlink{class_minimalism_bit_vector_ab6073c581675be3a1a8837aea19babb0}{operator$<$} (const \hyperlink{class_minimalism_bit_vector}{Minimalism\-Bit\-Vector} \&other\-Bit\-Vector)
+\begin{DoxyCompactList}\small\item\em operator $<$, se compara con otro objeto a partir de su offset \end{DoxyCompactList}\item 
+bool \hyperlink{class_minimalism_bit_vector_ae81b007ae02dc1263bda1bc0d217c125}{operator$>$} (const \hyperlink{class_minimalism_bit_vector}{Minimalism\-Bit\-Vector} \&other\-Bit\-Vector)
+\begin{DoxyCompactList}\small\item\em operator $<$, se compara con otro objeto a partir de su offset \end{DoxyCompactList}\item 
+bool \hyperlink{class_minimalism_bit_vector_afa354ed29c29fcea2bfc453aa2edb9e7}{operator!=} (const \hyperlink{class_minimalism_bit_vector}{Minimalism\-Bit\-Vector} \&other\-Bit\-Vector)
+\begin{DoxyCompactList}\small\item\em operator $>$, se compara con otro objeto a partir de su offset \end{DoxyCompactList}\item 
+\hypertarget{class_minimalism_bit_vector_a3c8458d181a7dedc5fe95d4e4cc1667a}{virtual \hyperlink{class_minimalism_bit_vector_a3c8458d181a7dedc5fe95d4e4cc1667a}{$\sim$\-Minimalism\-Bit\-Vector} ()}\label{class_minimalism_bit_vector_a3c8458d181a7dedc5fe95d4e4cc1667a}
+
+\begin{DoxyCompactList}\small\item\em destructor o liberador de memoria \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{class_minimalism_bit_vector_ab3123b16267666cc75c71b1cfb9a8a52}{operator$<$$<$} (ostream \&os, const \hyperlink{class_minimalism_bit_vector}{Minimalism\-Bit\-Vector} \&e)
+\begin{DoxyCompactList}\small\item\em operator !=, se compara con otro objeto a partir de su offset \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_minimalism_bit_vector_a62437d85d4a5bdf7bd519bfe1dd25847}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}}
+\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{Minimalism\-Bit\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}Minimalism\-Bit\-Vector\-::\-Minimalism\-Bit\-Vector (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{p\-Offset, }
+\item[{unsigned int}]{p\-Weight, }
+\item[{string}]{p\-Type}
+\end{DoxyParamCaption}
+)}}\label{class_minimalism_bit_vector_a62437d85d4a5bdf7bd519bfe1dd25847}
+
+
+Constructor de los objetos de la clase, inicializa las variables principales tales variables son aquellas que describen las principales caracteristicas de los objetos en memoria, tales caracteristicas son\-: el offset o direccion relativa, esta se mide en bytes y el corriemiento de bytes se da de 1 en 1, el peso del objeto y finalmente el tipo del objeto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Offset} & es la ubicacion del objeto que ademas es el identificador unico de cada una de las variables en memoria virtual, debido a que los objetos no pueden compartir la misma direccion de memoria. \\
+\hline
+{\em p\-Weight} & es el tamanio del objeto al cual representa el objeto instanciado \\
+\hline
+{\em p\-Type} & es el tipo del objeto al cual esta clase representa. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_minimalism_bit_vector_a166c2b2c6e84945e329310584ca89128}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!get\-Id@{get\-Id}}
+\index{get\-Id@{get\-Id}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{get\-Id}]{\setlength{\rightskip}{0pt plus 5cm}int Minimalism\-Bit\-Vector\-::get\-Id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_minimalism_bit_vector_a166c2b2c6e84945e329310584ca89128}
+
+
+obtiene el el id del objeto 
+
+\begin{DoxyReturn}{Returns}
+el id del objeto 
+\end{DoxyReturn}
+\hypertarget{class_minimalism_bit_vector_ae17a440748037ed78b67bf9a2f4aad1d}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!get\-Offset@{get\-Offset}}
+\index{get\-Offset@{get\-Offset}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{get\-Offset}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Minimalism\-Bit\-Vector\-::get\-Offset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_minimalism_bit_vector_ae17a440748037ed78b67bf9a2f4aad1d}
+
+
+retorna el movimiento relativo en memoria desde el inicio del \hyperlink{classv_heap}{v\-Heap} 
+
+\begin{DoxyReturn}{Returns}
+el \char`\"{}offset\char`\"{} del dato al cual este representa 
+\end{DoxyReturn}
+\hypertarget{class_minimalism_bit_vector_ab0c91d2ff39599b96ba7f0c52ed796d2}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!get\-Reference\-Counter@{get\-Reference\-Counter}}
+\index{get\-Reference\-Counter@{get\-Reference\-Counter}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{get\-Reference\-Counter}]{\setlength{\rightskip}{0pt plus 5cm}int Minimalism\-Bit\-Vector\-::get\-Reference\-Counter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_minimalism_bit_vector_ab0c91d2ff39599b96ba7f0c52ed796d2}
+
+
+Obtiene la cantidad de referencias al cual este objeto, representa. 
+
+\begin{DoxyReturn}{Returns}
+la cantidad de referencias al objeto que representa 
+\end{DoxyReturn}
+\hypertarget{class_minimalism_bit_vector_ae2ade8544c4c57e92e5f5dd16add849b}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!get\-Type@{get\-Type}}
+\index{get\-Type@{get\-Type}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}string Minimalism\-Bit\-Vector\-::get\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_minimalism_bit_vector_ae2ade8544c4c57e92e5f5dd16add849b}
+
+
+Obtiene un string que represe tipo de dato al cual representa. 
+
+\begin{DoxyReturn}{Returns}
+un string que contiene el tipo de dato al cual este representa 
+\end{DoxyReturn}
+\hypertarget{class_minimalism_bit_vector_af33224c672b353285b59463c2e958061}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!get\-Weight@{get\-Weight}}
+\index{get\-Weight@{get\-Weight}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{get\-Weight}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Minimalism\-Bit\-Vector\-::get\-Weight (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_minimalism_bit_vector_af33224c672b353285b59463c2e958061}
+
+
+obtiene el peso del objeto que representa 
+
+\begin{DoxyReturn}{Returns}
+el peso del objeto al cual representa 
+\end{DoxyReturn}
+\hypertarget{class_minimalism_bit_vector_aa8bba4e5bcfae52caf3c99beb7aae0cf}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!is\-Charged\-On\-Memory@{is\-Charged\-On\-Memory}}
+\index{is\-Charged\-On\-Memory@{is\-Charged\-On\-Memory}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{is\-Charged\-On\-Memory}]{\setlength{\rightskip}{0pt plus 5cm}bool Minimalism\-Bit\-Vector\-::is\-Charged\-On\-Memory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_minimalism_bit_vector_aa8bba4e5bcfae52caf3c99beb7aae0cf}
+
+
+Verifica si el objeto que se representa a travez de las instancias de \hyperlink{class_minimalism_bit_vector}{Minimalism\-Bit\-Vector} estan cargadas en memoria. 
+
+\begin{DoxyReturn}{Returns}
+true, si el objeto esta en memoria, false si el objeto esta en disco 
+\end{DoxyReturn}
+\hypertarget{class_minimalism_bit_vector_a7ebf4e232220001d18be6275d9868587}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!is\-On\-Use@{is\-On\-Use}}
+\index{is\-On\-Use@{is\-On\-Use}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{is\-On\-Use}]{\setlength{\rightskip}{0pt plus 5cm}bool Minimalism\-Bit\-Vector\-::is\-On\-Use (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_minimalism_bit_vector_a7ebf4e232220001d18be6275d9868587}
+
+
+Verifica si el objeto esta siendo usado por algun otro recurso. 
+
+\begin{DoxyReturn}{Returns}
+true si el objeto esta en uso, false si el objeto no esta en uso 
+\end{DoxyReturn}
+\hypertarget{class_minimalism_bit_vector_afa354ed29c29fcea2bfc453aa2edb9e7}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!operator!=@{operator!=}}
+\index{operator!=@{operator!=}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{operator!=}]{\setlength{\rightskip}{0pt plus 5cm}bool Minimalism\-Bit\-Vector\-::operator!= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Minimalism\-Bit\-Vector} \&}]{other\-Bit\-Vector}
+\end{DoxyParamCaption}
+)}}\label{class_minimalism_bit_vector_afa354ed29c29fcea2bfc453aa2edb9e7}
+
+
+operator $>$, se compara con otro objeto a partir de su offset 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other\-Bit\-Vector} & el otro objeto a comparar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, si el offset del objeto que llama el metodo es mayor que el del parametro enviado 
+\end{DoxyReturn}
+\hypertarget{class_minimalism_bit_vector_ab6073c581675be3a1a8837aea19babb0}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}bool Minimalism\-Bit\-Vector\-::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Minimalism\-Bit\-Vector} \&}]{other\-Bit\-Vector}
+\end{DoxyParamCaption}
+)}}\label{class_minimalism_bit_vector_ab6073c581675be3a1a8837aea19babb0}
+
+
+operator $<$, se compara con otro objeto a partir de su offset 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other\-Bit\-Vector} & el otro objeto a comparar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, si el offset del objeto que llama el metodo es menor que el parametro enviado 
+\end{DoxyReturn}
+\hypertarget{class_minimalism_bit_vector_ae81b007ae02dc1263bda1bc0d217c125}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{operator$>$}]{\setlength{\rightskip}{0pt plus 5cm}bool Minimalism\-Bit\-Vector\-::operator$>$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Minimalism\-Bit\-Vector} \&}]{other\-Bit\-Vector}
+\end{DoxyParamCaption}
+)}}\label{class_minimalism_bit_vector_ae81b007ae02dc1263bda1bc0d217c125}
+
+
+operator $<$, se compara con otro objeto a partir de su offset 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other\-Bit\-Vector} & el otro objeto a comparar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, si el offset del objeto que llama el metodo es menor que el del parametro enviado 
+\end{DoxyReturn}
+\hypertarget{class_minimalism_bit_vector_ad9d6993d2a24b1f238f1896dd8ff04be}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!set\-Offset@{set\-Offset}}
+\index{set\-Offset@{set\-Offset}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{set\-Offset}]{\setlength{\rightskip}{0pt plus 5cm}void Minimalism\-Bit\-Vector\-::set\-Offset (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{p\-Offset}
+\end{DoxyParamCaption}
+)}}\label{class_minimalism_bit_vector_ad9d6993d2a24b1f238f1896dd8ff04be}
+
+
+setea el offset al cual representa este objeto 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Offset} & el nuevo offset \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_minimalism_bit_vector_a747ed61c44f091dd3326644216a923dd}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!set\-On\-Memory\-Location@{set\-On\-Memory\-Location}}
+\index{set\-On\-Memory\-Location@{set\-On\-Memory\-Location}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{set\-On\-Memory\-Location}]{\setlength{\rightskip}{0pt plus 5cm}void Minimalism\-Bit\-Vector\-::set\-On\-Memory\-Location (
+\begin{DoxyParamCaption}
+\item[{bool}]{p\-Memory\-Location\-Flag}
+\end{DoxyParamCaption}
+)}}\label{class_minimalism_bit_vector_a747ed61c44f091dd3326644216a923dd}
+
+
+Setea si el dato esta en memoria, si se quiere que el dato este en memoria se pasa el valor true por parametro en caso contrario se pasa un false. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Memory\-Location\-Flag} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_minimalism_bit_vector_a63b95b7f8446bfc105d42837be83b42b}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!set\-On\-Use@{set\-On\-Use}}
+\index{set\-On\-Use@{set\-On\-Use}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{set\-On\-Use}]{\setlength{\rightskip}{0pt plus 5cm}void Minimalism\-Bit\-Vector\-::set\-On\-Use (
+\begin{DoxyParamCaption}
+\item[{bool}]{p\-On\-Use}
+\end{DoxyParamCaption}
+)}}\label{class_minimalism_bit_vector_a63b95b7f8446bfc105d42837be83b42b}
+
+
+setea la bandera que indica si el objeto se esta usando, true si se quiere que el objeto este en uso, false si se quiere que el objeto ya no este en uso. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-On\-Use} & es la bandera entrante que seteara al valor interno sobre el uso de algun objeto en memoria virtual. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_minimalism_bit_vector_af65272b7663cfc96d2a8fd16668b8570}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!set\-Reference\-Counter@{set\-Reference\-Counter}}
+\index{set\-Reference\-Counter@{set\-Reference\-Counter}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{set\-Reference\-Counter}]{\setlength{\rightskip}{0pt plus 5cm}void Minimalism\-Bit\-Vector\-::set\-Reference\-Counter (
+\begin{DoxyParamCaption}
+\item[{int}]{p\-Reference\-Counter}
+\end{DoxyParamCaption}
+)}}\label{class_minimalism_bit_vector_af65272b7663cfc96d2a8fd16668b8570}
+
+
+Setea la cantidad de referencias al objeto. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Reference\-Counter} & la cantidad de referencias \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_minimalism_bit_vector_a15aad2b30f6e8c2e76bba5e617de351c}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!set\-Type@{set\-Type}}
+\index{set\-Type@{set\-Type}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{set\-Type}]{\setlength{\rightskip}{0pt plus 5cm}void Minimalism\-Bit\-Vector\-::set\-Type (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{p\-Type}
+\end{DoxyParamCaption}
+)}}\label{class_minimalism_bit_vector_a15aad2b30f6e8c2e76bba5e617de351c}
+
+
+setea el tipo de dato al cual este representa 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Type} & el tipo de dato al cual este va a representar \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_minimalism_bit_vector_ac4480ef294435f54049da5cad957e1a9}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!set\-Weight@{set\-Weight}}
+\index{set\-Weight@{set\-Weight}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{set\-Weight}]{\setlength{\rightskip}{0pt plus 5cm}void Minimalism\-Bit\-Vector\-::set\-Weight (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{p\-Weight}
+\end{DoxyParamCaption}
+)}}\label{class_minimalism_bit_vector_ac4480ef294435f54049da5cad957e1a9}
+
+
+setea el peso del objeto al cual repesenta 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Weight} & el peso nuevo a setear \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_minimalism_bit_vector_ab3123b16267666cc75c71b1cfb9a8a52}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{os, }
+\item[{const {\bf Minimalism\-Bit\-Vector} \&}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{class_minimalism_bit_vector_ab3123b16267666cc75c71b1cfb9a8a52}
+
+
+operator !=, se compara con otro objeto a partir de su offset 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other\-Bit\-Vector} & el otro objeto a comparar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, si el offset del objeto que llama el metodo es diferente que el del parametro enviado 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/minimalismbitvector.\-h\item 
+src/minimalismbitvector.\-cpp\end{DoxyCompactItemize}

@@ -5,35 +5,15 @@
 #include "unistd.h"
 
 
-GarbageCollectorThread::GarbageCollectorThread()
+GarbageCollectorThread::GarbageCollectorThread(unsigned int pTimeToWait)
 {
-    exec = true;
-}
-
-void GarbageCollectorThread::halt()
-{
-    exec = false;
+    _TimeToWait = pTimeToWait;
 }
 
 void GarbageCollectorThread::internalRun()
 {
     while(vHeap::getInstance()->isRunning()){
-        pthread_mutex_lock(&vHeap::getInstance()->mut);
-        vHeap::getInstance();
         vHeap::getInstance()->collectGarbage();
-        vHeap::getInstance()->print();
-        pthread_mutex_unlock(&(vHeap::getInstance()->mut));
-        //usleep(42*1000);
-        //std::cout << "garbage collector" << std::endl;
+        usleep(_TimeToWait*1000);
     }
-    halt();
-}
-
-GarbageCollectorThread::~GarbageCollectorThread()
-{
-    while(vHeap::getInstance()->isRunning()){
-        vHeap::getInstance()->stop();
-        std::cout << "deleting" << std::endl;
-    }
-    std::cout << "is stopped" << std::endl;
 }

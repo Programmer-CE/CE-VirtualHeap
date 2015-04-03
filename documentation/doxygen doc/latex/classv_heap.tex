@@ -1,0 +1,278 @@
+\hypertarget{classv_heap}{\section{v\-Heap Class Reference}
+\label{classv_heap}\index{v\-Heap@{v\-Heap}}
+}
+
+
+La clase \hyperlink{classv_heap}{v\-Heap}, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales.  
+
+
+
+
+{\ttfamily \#include $<$vheap.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classv_ref}{v\-Ref} \hyperlink{classv_heap_ae4aae8ea89bc24fffed43c509fdfdc8c}{v\-Malloc} (unsigned int p\-Size, string p\-Type)
+\begin{DoxyCompactList}\small\item\em Reserva memoria en el \hyperlink{classv_heap}{v\-Heap}, ademas crea un objeto que pertenece a la clase \hyperlink{class_minimalism_bit_vector}{que representa al objeto en memoria, contando con un id, contador de referencias, offset en memoria etc. }\end{DoxyCompactList}\item 
+void \hyperlink{classv_heap_abb964cfa76ddee4cd1cc22dae845eed4}{v\-Free} (\hyperlink{classv_ref}{v\-Ref} $\ast$p\-Ref)
+\begin{DoxyCompactList}\small\item\em Libera la memoria que un \hyperlink{classv_ref}{v\-Ref} apunta, si la referencia no existe no hace nada. \end{DoxyCompactList}\item 
+void \hyperlink{classv_heap_aba09b3334fc1a732308f278c9e292484}{set} (\hyperlink{classv_ref}{v\-Ref} $\ast$p\-Ref, const \hyperlink{classv_object}{v\-Object} $\ast$p\-Object)
+\begin{DoxyCompactList}\small\item\em setea el contenido de un \hyperlink{classv_ref}{v\-Ref} \end{DoxyCompactList}\item 
+\hyperlink{classv_object}{v\-Object} $\ast$ \hyperlink{classv_heap_ad37c93fe08d1b15f4785a58e865f14f1}{get} (\hyperlink{classv_ref}{v\-Ref} $\ast$p\-Ref)
+\begin{DoxyCompactList}\small\item\em Obtiene el objeto contenido en el \hyperlink{classv_ref}{v\-Ref}, si el \hyperlink{classv_ref}{v\-Ref} es invalido, o sea que ya se ha borrado o es una referencia nula se lanza un error de \hyperlink{class_null_pointer_exception}{Null\-Pointer\-Exception}. \end{DoxyCompactList}\item 
+void \hyperlink{classv_heap_a4691f4ba088fe19eb2bcaedf90205eb5}{add\-Ref} (const \hyperlink{classv_ref}{v\-Ref} $\ast$p\-Ref)
+\begin{DoxyCompactList}\small\item\em agrega una referencia a la referencia pasada por el parametro, si la referencia pasada por el parametro es nula entonces no se hace nada \end{DoxyCompactList}\item 
+bool \hyperlink{classv_heap_a56ee2409f56a8117fd3b04434803b3ba}{protect} (\hyperlink{classv_ref}{v\-Ref} $\ast$p\-V\-Ref)
+\begin{DoxyCompactList}\small\item\em protect Protege una zona de memoria. \end{DoxyCompactList}\item 
+void \hyperlink{classv_heap_a156d31e57a36f093898e4b302e5f270a}{remove\-Reference} (\hyperlink{classv_ref}{v\-Ref} $\ast$p\-V\-Ref)
+\begin{DoxyCompactList}\small\item\em remove\-Reference Elimina la refencia hace que el conteo de referencias hacia lo que apunta el \hyperlink{classv_ref}{v\-Ref} sea disminuido en 1 \end{DoxyCompactList}\item 
+\hypertarget{classv_heap_af893c48a50166f6e144829e070afa0f0}{void \hyperlink{classv_heap_af893c48a50166f6e144829e070afa0f0}{collect\-Garbage} ()}\label{classv_heap_af893c48a50166f6e144829e070afa0f0}
+
+\begin{DoxyCompactList}\small\item\em es el metodo que lleva a cabo la accion que se le asigna al \hyperlink{class_garbage_collector_thread}{Garbage\-Collector\-Thread}\end{DoxyCompactList}\item 
+\hypertarget{classv_heap_ac64f5a67b13397c87cfe594dab278020}{void \hyperlink{classv_heap_ac64f5a67b13397c87cfe594dab278020}{compact} ()}\label{classv_heap_ac64f5a67b13397c87cfe594dab278020}
+
+\begin{DoxyCompactList}\small\item\em Es el metodo que se encarga de realizar las tareas asignadas al compactador de memoria \hyperlink{}{memory\-Compactor.}\end{DoxyCompactList}\item 
+bool \hyperlink{classv_heap_a4e451a077578bc4e286de41a0b3ebe33}{is\-Running} ()
+\begin{DoxyCompactList}\small\item\em verifica si el \hyperlink{classv_heap}{v\-Heap} sigue corriendo \end{DoxyCompactList}\item 
+\hypertarget{classv_heap_aea047ac5e0f6cc9c8ac39a8984c8cedc}{void \hyperlink{classv_heap_aea047ac5e0f6cc9c8ac39a8984c8cedc}{print} ()}\label{classv_heap_aea047ac5e0f6cc9c8ac39a8984c8cedc}
+
+\begin{DoxyCompactList}\small\item\em Imprime lo que se encuetra en el \hyperlink{classv_heap}{v\-Heap}. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classv_heap_af6967e0e004d4ae78c88363878ae96a3}{get\-Type} (\hyperlink{classv_ref}{v\-Ref} $\ast$p\-Ref)
+\begin{DoxyCompactList}\small\item\em Obtiene un string con el tipo de dato de la referencia. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{classv_heap_ae9f9f3ed79f45beb7b47e88a590fac61}{get\-Wight} (\hyperlink{classv_ref}{v\-Ref} $\ast$p\-Ref)
+\begin{DoxyCompactList}\small\item\em Obtiene un unsigned int que representa el peso de la referencia. \end{DoxyCompactList}\item 
+\hypertarget{classv_heap_a8bbcf6e79d6d28f16a1de164619e04ef}{virtual \hyperlink{classv_heap_a8bbcf6e79d6d28f16a1de164619e04ef}{$\sim$v\-Heap} ()}\label{classv_heap_a8bbcf6e79d6d28f16a1de164619e04ef}
+
+\begin{DoxyCompactList}\small\item\em $\sim$v\-Heap, detiene los threads, setea en false la bandera del \hyperlink{classv_heap}{v\-Heap} la cual dice si el \hyperlink{classv_heap}{v\-Heap} esta corriendo, Libera la memoria que ocupa. Bloquea todo el proceso con mutex \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classv_heap}{v\-Heap} $\ast$ \hyperlink{classv_heap_a1b50fb6f333ab744a080647f689f3de9}{get\-Instance} ()
+\begin{DoxyCompactList}\small\item\em Obtiene la unica instancia, si no exite la crea. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classv_heap_a2ab6fdef3b9adac6392f2c7a0bf43c1c}{static pthread\-\_\-mutex\-\_\-t \hyperlink{classv_heap_a2ab6fdef3b9adac6392f2c7a0bf43c1c}{mut} = P\-T\-H\-R\-E\-A\-D\-\_\-\-M\-U\-T\-E\-X\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}\label{classv_heap_a2ab6fdef3b9adac6392f2c7a0bf43c1c}
+
+\begin{DoxyCompactList}\small\item\em mut, Es el mutex de la clase, todos los metodos de la clase estan protegidos por el mutex \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+La clase \hyperlink{classv_heap}{v\-Heap}, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classv_heap_a4691f4ba088fe19eb2bcaedf90205eb5}{\index{v\-Heap@{v\-Heap}!add\-Ref@{add\-Ref}}
+\index{add\-Ref@{add\-Ref}!vHeap@{v\-Heap}}
+\subsubsection[{add\-Ref}]{\setlength{\rightskip}{0pt plus 5cm}void v\-Heap\-::add\-Ref (
+\begin{DoxyParamCaption}
+\item[{const {\bf v\-Ref} $\ast$}]{p\-Ref}
+\end{DoxyParamCaption}
+)}}\label{classv_heap_a4691f4ba088fe19eb2bcaedf90205eb5}
+
+
+agrega una referencia a la referencia pasada por el parametro, si la referencia pasada por el parametro es nula entonces no se hace nada 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Ref} & el \hyperlink{classv_ref}{v\-Ref} al cual se desea agregar una referencia mas \\
+\hline
+\end{DoxyParams}
+\hypertarget{classv_heap_ad37c93fe08d1b15f4785a58e865f14f1}{\index{v\-Heap@{v\-Heap}!get@{get}}
+\index{get@{get}!vHeap@{v\-Heap}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}{\bf v\-Object} $\ast$ v\-Heap\-::get (
+\begin{DoxyParamCaption}
+\item[{{\bf v\-Ref} $\ast$}]{p\-Ref}
+\end{DoxyParamCaption}
+)}}\label{classv_heap_ad37c93fe08d1b15f4785a58e865f14f1}
+
+
+Obtiene el objeto contenido en el \hyperlink{classv_ref}{v\-Ref}, si el \hyperlink{classv_ref}{v\-Ref} es invalido, o sea que ya se ha borrado o es una referencia nula se lanza un error de \hyperlink{class_null_pointer_exception}{Null\-Pointer\-Exception}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Ref} & el puntero de la \hyperlink{classv_ref}{v\-Ref} de la cual se quiere conseguir el \hyperlink{classv_object}{v\-Object} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_null_pointer_exception}{Null\-Pointer\-Exception}} & si el \hyperlink{classv_ref}{v\-Ref} apunta a algun dato no existente en el \hyperlink{classv_heap}{v\-Heap} \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+el Objeto al cual p\-Ref \char`\"{}apunta\char`\"{} 
+\end{DoxyReturn}
+\hypertarget{classv_heap_a1b50fb6f333ab744a080647f689f3de9}{\index{v\-Heap@{v\-Heap}!get\-Instance@{get\-Instance}}
+\index{get\-Instance@{get\-Instance}!vHeap@{v\-Heap}}
+\subsubsection[{get\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf v\-Heap} $\ast$ v\-Heap\-::get\-Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classv_heap_a1b50fb6f333ab744a080647f689f3de9}
+
+
+Obtiene la unica instancia, si no exite la crea. 
+
+\begin{DoxyReturn}{Returns}
+el puntero a la unica instancia 
+\end{DoxyReturn}
+\hypertarget{classv_heap_af6967e0e004d4ae78c88363878ae96a3}{\index{v\-Heap@{v\-Heap}!get\-Type@{get\-Type}}
+\index{get\-Type@{get\-Type}!vHeap@{v\-Heap}}
+\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string v\-Heap\-::get\-Type (
+\begin{DoxyParamCaption}
+\item[{{\bf v\-Ref} $\ast$}]{p\-Ref}
+\end{DoxyParamCaption}
+)}}\label{classv_heap_af6967e0e004d4ae78c88363878ae96a3}
+
+
+Obtiene un string con el tipo de dato de la referencia. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Ref} & es la referencia de la cual se quiere solicitar el tipo de dato \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+el tipo de dato que la referencia apunta 
+\end{DoxyReturn}
+\hypertarget{classv_heap_ae9f9f3ed79f45beb7b47e88a590fac61}{\index{v\-Heap@{v\-Heap}!get\-Wight@{get\-Wight}}
+\index{get\-Wight@{get\-Wight}!vHeap@{v\-Heap}}
+\subsubsection[{get\-Wight}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int v\-Heap\-::get\-Wight (
+\begin{DoxyParamCaption}
+\item[{{\bf v\-Ref} $\ast$}]{p\-Ref}
+\end{DoxyParamCaption}
+)}}\label{classv_heap_ae9f9f3ed79f45beb7b47e88a590fac61}
+
+
+Obtiene un unsigned int que representa el peso de la referencia. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Ref} & es la referencia de la cual se quiere solicitar el peso del objeto \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+el peso del objeto que la referencia apunta 
+\end{DoxyReturn}
+\hypertarget{classv_heap_a4e451a077578bc4e286de41a0b3ebe33}{\index{v\-Heap@{v\-Heap}!is\-Running@{is\-Running}}
+\index{is\-Running@{is\-Running}!vHeap@{v\-Heap}}
+\subsubsection[{is\-Running}]{\setlength{\rightskip}{0pt plus 5cm}bool v\-Heap\-::is\-Running (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classv_heap_a4e451a077578bc4e286de41a0b3ebe33}
+
+
+verifica si el \hyperlink{classv_heap}{v\-Heap} sigue corriendo 
+
+\begin{DoxyReturn}{Returns}
+true, si el \hyperlink{classv_heap}{v\-Heap} se mantiene activo 
+\end{DoxyReturn}
+\hypertarget{classv_heap_a56ee2409f56a8117fd3b04434803b3ba}{\index{v\-Heap@{v\-Heap}!protect@{protect}}
+\index{protect@{protect}!vHeap@{v\-Heap}}
+\subsubsection[{protect}]{\setlength{\rightskip}{0pt plus 5cm}bool v\-Heap\-::protect (
+\begin{DoxyParamCaption}
+\item[{{\bf v\-Ref} $\ast$}]{p\-V\-Ref}
+\end{DoxyParamCaption}
+)}}\label{classv_heap_a56ee2409f56a8117fd3b04434803b3ba}
+
+
+protect Protege una zona de memoria. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-V\-Ref} & la referencia que pide la proteccion de la variable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si la zona de memoria se pudo proteger, false si la zona de memoria ya estaba protegida 
+\end{DoxyReturn}
+\hypertarget{classv_heap_a156d31e57a36f093898e4b302e5f270a}{\index{v\-Heap@{v\-Heap}!remove\-Reference@{remove\-Reference}}
+\index{remove\-Reference@{remove\-Reference}!vHeap@{v\-Heap}}
+\subsubsection[{remove\-Reference}]{\setlength{\rightskip}{0pt plus 5cm}void v\-Heap\-::remove\-Reference (
+\begin{DoxyParamCaption}
+\item[{{\bf v\-Ref} $\ast$}]{p\-V\-Ref}
+\end{DoxyParamCaption}
+)}}\label{classv_heap_a156d31e57a36f093898e4b302e5f270a}
+
+
+remove\-Reference Elimina la refencia hace que el conteo de referencias hacia lo que apunta el \hyperlink{classv_ref}{v\-Ref} sea disminuido en 1 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-V\-Ref} & la referencia que quiere disminuir la referencia \\
+\hline
+\end{DoxyParams}
+\hypertarget{classv_heap_aba09b3334fc1a732308f278c9e292484}{\index{v\-Heap@{v\-Heap}!set@{set}}
+\index{set@{set}!vHeap@{v\-Heap}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}void v\-Heap\-::set (
+\begin{DoxyParamCaption}
+\item[{{\bf v\-Ref} $\ast$}]{p\-Ref, }
+\item[{const {\bf v\-Object} $\ast$}]{p\-Object}
+\end{DoxyParamCaption}
+)}}\label{classv_heap_aba09b3334fc1a732308f278c9e292484}
+
+
+setea el contenido de un \hyperlink{classv_ref}{v\-Ref} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Ref} & la referencia a la cual se quiere setear un dato \\
+\hline
+{\em p\-Object} & es el objeto que se sobrescribira en la zona de memoria que representa el \hyperlink{classv_ref}{v\-Ref} \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_null_pointer_exception}{Null\-Pointer\-Exception}} & si la referencia es nula o si esta no existe \\
+\hline
+{\em \hyperlink{class_no_match_classes_exception}{No\-Match\-Classes\-Exception}} & si la clase que el vref representa es diferente de la clase a la cual el \hyperlink{classv_object}{v\-Object} pertenece \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classv_heap_abb964cfa76ddee4cd1cc22dae845eed4}{\index{v\-Heap@{v\-Heap}!v\-Free@{v\-Free}}
+\index{v\-Free@{v\-Free}!vHeap@{v\-Heap}}
+\subsubsection[{v\-Free}]{\setlength{\rightskip}{0pt plus 5cm}void v\-Heap\-::v\-Free (
+\begin{DoxyParamCaption}
+\item[{{\bf v\-Ref} $\ast$}]{p\-Ref}
+\end{DoxyParamCaption}
+)}}\label{classv_heap_abb964cfa76ddee4cd1cc22dae845eed4}
+
+
+Libera la memoria que un \hyperlink{classv_ref}{v\-Ref} apunta, si la referencia no existe no hace nada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Ref} & es el puntero de un \hyperlink{classv_ref}{v\-Ref} a liberar de la memoria que contiene el \hyperlink{classv_heap}{v\-Heap} \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classv_ref}{v\-Ref} 
+\end{DoxySeeAlso}
+\hypertarget{classv_heap_ae4aae8ea89bc24fffed43c509fdfdc8c}{\index{v\-Heap@{v\-Heap}!v\-Malloc@{v\-Malloc}}
+\index{v\-Malloc@{v\-Malloc}!vHeap@{v\-Heap}}
+\subsubsection[{v\-Malloc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf v\-Ref} v\-Heap\-::v\-Malloc (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{p\-Size, }
+\item[{string}]{p\-Type}
+\end{DoxyParamCaption}
+)}}\label{classv_heap_ae4aae8ea89bc24fffed43c509fdfdc8c}
+
+
+Reserva memoria en el \hyperlink{classv_heap}{v\-Heap}, ademas crea un objeto que pertenece a la clase \hyperlink{class_minimalism_bit_vector}{que representa al objeto en memoria, contando con un id, contador de referencias, offset en memoria etc. }
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Size} & es el tamanio de memoria a reservar \\
+\hline
+{\em p\-Type} & es el tipo de objeto a reservar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+un \hyperlink{classv_ref}{v\-Ref} que representa un puntero a la memoria reservada por este puntero 
+\end{DoxyReturn}
+if (!iterator-\/$>$has\-Next() \&\& (iterator-\/$>$get\-Current().Offset() -\/ (tmp1.\-Offset()+tmp1.get\-Weight()) $<$= p\-Size))\{ tmp1 = iterator-\/$>$get\-Current(); \}
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/vheap.\-h\item 
+src/vheap.\-cpp\end{DoxyCompactItemize}

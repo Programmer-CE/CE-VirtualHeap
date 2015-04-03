@@ -1,0 +1,81 @@
+\hypertarget{classv_ref}{\section{v\-Ref Class Reference}
+\label{classv_ref}\index{v\-Ref@{v\-Ref}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classv_ref_a42661b55fdd6d60c1b7d34fec5dc6ebb}{{\bfseries v\-Ref} (const void $\ast$p\-Memory\-Section)}\label{classv_ref_a42661b55fdd6d60c1b7d34fec5dc6ebb}
+
+\item 
+\hyperlink{classv_ref_a665fe2849fbbabcb1930128b78c144ff}{v\-Ref} (const \hyperlink{classv_ref}{v\-Ref} \&p\-Ref)
+\item 
+\hypertarget{classv_ref_a6824b37064baf1055c0634d25af33302}{{\bfseries v\-Ref} (const \hyperlink{classv_ref}{v\-Ref} $\ast$p\-Ref)}\label{classv_ref_a6824b37064baf1055c0634d25af33302}
+
+\item 
+\hypertarget{classv_ref_a6fdd2c2154bfe2a436684b0a4d8dc44c}{\hyperlink{classv_ref}{v\-Ref} \& {\bfseries operator=} (const \hyperlink{classv_object}{v\-Object} $\ast$p\-V\-Object)}\label{classv_ref_a6fdd2c2154bfe2a436684b0a4d8dc44c}
+
+\item 
+\hypertarget{classv_ref_a09a2b66a31121f2ea39db1d2275df018}{\hyperlink{classv_ref}{v\-Ref} \& {\bfseries operator=} (int p\-Address)}\label{classv_ref_a09a2b66a31121f2ea39db1d2275df018}
+
+\item 
+\hypertarget{classv_ref_a7a5795eb3d07af12a724006868ed28ba}{\hyperlink{classv_ref}{v\-Ref} \& {\bfseries operator=} (\hyperlink{classv_ref}{v\-Ref} p\-Ref)}\label{classv_ref_a7a5795eb3d07af12a724006868ed28ba}
+
+\item 
+\hyperlink{classv_object}{v\-Object} $\ast$ \hyperlink{classv_ref_a8c6c503ee26c2e26bbf336166992f79c}{operator$\ast$} ()
+\item 
+\hypertarget{classv_ref_a67f7a5cc022f60bfe5a6d1069d97a455}{bool {\bfseries operator==} (const \hyperlink{classv_ref}{v\-Ref} \&p\-V\-Ref)}\label{classv_ref_a67f7a5cc022f60bfe5a6d1069d97a455}
+
+\item 
+\hypertarget{classv_ref_a82bfa187c785c2044dde59aa8d993c6a}{unsigned int {\bfseries get\-Weight} ()}\label{classv_ref_a82bfa187c785c2044dde59aa8d993c6a}
+
+\item 
+\hypertarget{classv_ref_a29f102a40b30f7662de769fd07f42f0c}{std\-::string {\bfseries get\-Type} ()}\label{classv_ref_a29f102a40b30f7662de769fd07f42f0c}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classv_ref_aa3ac4bab0c6cea635768dbfe40dc1284}{static \hyperlink{classv_ref}{v\-Ref} {\bfseries assing} (size\-\_\-t p\-Size, const \hyperlink{classv_object}{v\-Object} $\ast$p\-V\-Object)}\label{classv_ref_aa3ac4bab0c6cea635768dbfe40dc1284}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classv_ref_aaf5d33821d373d8b68daa73b00969c2c}{bool {\bfseries \-\_\-from\-V\-Heap}}\label{classv_ref_aaf5d33821d373d8b68daa73b00969c2c}
+
+\item 
+\hypertarget{classv_ref_a3f8a845f0e4623d38404e67ff51d8c5c}{bool {\bfseries \-\_\-destroy\-Ref}}\label{classv_ref_a3f8a845f0e4623d38404e67ff51d8c5c}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classv_ref_ad615cc5888405061e930d41dba53d277}{class {\bfseries v\-Heap}}\label{classv_ref_ad615cc5888405061e930d41dba53d277}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classv_ref_a665fe2849fbbabcb1930128b78c144ff}{\index{v\-Ref@{v\-Ref}!v\-Ref@{v\-Ref}}
+\index{v\-Ref@{v\-Ref}!vRef@{v\-Ref}}
+\subsubsection[{v\-Ref}]{\setlength{\rightskip}{0pt plus 5cm}v\-Ref\-::v\-Ref (
+\begin{DoxyParamCaption}
+\item[{const {\bf v\-Ref} \&}]{p\-Ref}
+\end{DoxyParamCaption}
+)}}\label{classv_ref_a665fe2849fbbabcb1930128b78c144ff}
+std\-::cout $<$$<$ \char`\"{}copy is called\char`\"{} $<$$<$ std\-::endl; std\-::cout $<$$<$ \char`\"{}copy amp\char`\"{} $<$$<$ std\-::endl; if (p\-Ref.\-\_\-destroy\-Ref)\hyperlink{classv_heap_a1b50fb6f333ab744a080647f689f3de9}{v\-Heap\-::get\-Instance()}-\/$>$add\-Ref(\&p\-Ref); if(this-\/$>$\-\_\-\-Id == p\-Ref.\-\_\-\-Id)this-\/$>$\-\_\-destroy\-Ref = p\-Ref.\-\_\-destroy\-Ref; else\{ \hyperlink{classv_ref}{v\-Ref} a(this-\/$>$\-\_\-\-Id,false); if (a.\-\_\-\-Id != -\/1)\{ \} std\-::cout $<$$<$ \char`\"{}alguien entra aqui\char`\"{} $<$$<$ std\-::endl; \}
+
+\subsection{Member Function Documentation}
+\hypertarget{classv_ref_a8c6c503ee26c2e26bbf336166992f79c}{\index{v\-Ref@{v\-Ref}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!vRef@{v\-Ref}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf v\-Object} $\ast$ v\-Ref\-::operator$\ast$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classv_ref_a8c6c503ee26c2e26bbf336166992f79c}
+\hyperlink{classv_ref}{v\-Ref} \&v\-Ref\-::operator =(int p\-Address) \{ \hyperlink{classv_heap_a1b50fb6f333ab744a080647f689f3de9}{v\-Heap\-::get\-Instance()}-\/$>$remove\-Reference(this); this = \hyperlink{classv_heap_a1b50fb6f333ab744a080647f689f3de9}{v\-Heap\-::get\-Instance()}-\/$>$get(p\-Address); return $\ast$this; \} 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+src/vref.\-h\item 
+src/vref.\-cpp\end{DoxyCompactItemize}

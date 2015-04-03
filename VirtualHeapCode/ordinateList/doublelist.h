@@ -47,9 +47,14 @@ template <class E> bool DoubleList<E>::addFirstData(E pData){
 
 template <class E> bool DoubleList<E>::removei(){
     DoubleNode<E> *toDelete = this->_head;
-    this->_head = toDelete->getNext();
-    if (toDelete->getNext())this->_head->setPrevious(Null);
-    else this->_head = this->_tail = Null;
+    if (toDelete->getNext()){
+        this->_head->setPrevious(Null);
+        this->_head = toDelete->getNext();
+    }
+    else{
+        this->_head = this->_tail = Null;
+        this->_lenght = 1;
+    }
     delete toDelete;
     this->_lenght--;
     return true;

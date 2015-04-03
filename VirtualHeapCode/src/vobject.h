@@ -7,11 +7,25 @@
 
 class vRef;
 
+/**
+ * @brief Es la clase que representa al objeto contenido en el vHeap
+ * @see vHeap
+ *
+ */
 class vObject
 {
-    vRef *pRef;
+    vRef *pRef; /**< TODO */
 public:
+    /**
+     * @brief es el constructor por defecto
+     *
+     */
     vObject();
+    /**
+     * @brief Retorna una cadena con el tipo de dato
+     *
+     * @return el tipo de dato
+     */
     virtual const char *getType()const;
 };
 

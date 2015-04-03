@@ -1,7 +1,6 @@
 #include "vobject.h"
 #include "vheap.h"
 #include "vref.h"
-#include "vclassdetector.h"
 #include <typeinfo>
 #include <iostream>
 vObject::vObject()

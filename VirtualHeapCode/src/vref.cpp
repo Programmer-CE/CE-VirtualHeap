@@ -10,69 +10,90 @@ bool vRef::MutexFlag = true;
 
 vRef::vRef(const void *pMemorySection)
 {
-    turnOnMutex();
-    vHeap::getInstance()->get(this,pMemorySection);
-    powerOffMutex();
+    //vHeap::getInstance()->get(this,pMemorySection);
 }
 
-vRef::vRef(int pId)
+vRef::vRef(int pId,bool pDestroyRef)
 {
     _Id = pId;
-}
-
-vRef::vRef(const vObject *pObject)
-{
-    turnOnMutex();
-    vHeap::getInstance();
-    vHeap::getInstance()->set(this,pObject);
-    powerOffMutex();
+    _destroyRef = pDestroyRef;
 }
 
 vRef::vRef(const vRef &pRef)
 {
-    turnOnMutex();
-    vHeap::getInstance();
     vHeap::getInstance()->removeReference(this);
-    this->_Id = vHeap::getInstance()->addRef(&pRef)._Id;
-    //pRef._Id;//
-    powerOffMutex();
+    vHeap::getInstance()->addRef(&pRef);
+    this->_Id = pRef._Id;
+    _destroyRef = pRef._destroyRef;
+    /**
+    std::cout << "copy is called" << std::endl;
+    std::cout << "copy amp" << std::endl;
+    if (pRef._destroyRef)vHeap::getInstance()->addRef(&pRef);
+    if(this->_Id == pRef._Id)this->_destroyRef = pRef._destroyRef;
+    else{
+        vRef a(this->_Id,false);
+        if (a._Id != -1){
+        }
+            std::cout << "alguien entra aqui" << std::endl;
+    }
+    */
 }
-
 void vRef::turnOnMutex()
 {
     if (MutexFlag){
-        pthread_mutex_lock(&vHeap::getInstance()->mut);
+        //pthread_mutex_lock(&vHeap::mut);
+        //pthread_cond_signal(&vHeap::cond);
         MutexFlag = false;
     }
+}
+
+vRef::vRef(const vRef *pRef)
+{
+    std::cout << "copy *" << std::endl;
+    this->_Id = pRef->_Id;
+    this->_destroyRef = true;
+
+    delete pRef;
 }
 
 void vRef::powerOffMutex()
 {
     if (MutexFlag){
-        pthread_mutex_unlock(&vHeap::getInstance()->mut);
+        //pthread_mutex_unlock(&vHeap::mut);
         MutexFlag=true;
     }
 }
-
 vRef &vRef::operator =(const vObject *pVObject)
 {
-    turnOnMutex();
-    vHeap * tmp = vHeap::getInstance();
-    tmp;
-    tmp->set(this,pVObject);
-    powerOffMutex();
+
+    try{
+    vHeap::getInstance()->set(this,pVObject);
+    }
+    catch(NullPointerException e){
+        std::cout << "ref error" << _Id << std::endl;
+        exit (0);
+    }
+
     return *this;
 }
 
+
+vRef &vRef::operator =(vRef pRef)
+{
+    vHeap::getInstance()->removeReference(this);
+    vHeap::getInstance()->addRef(&pRef);
+    this->_Id = pRef._Id;
+    _destroyRef = pRef._destroyRef;
+    //if (this->_Id == -1 && pRef._destroyRef)vHeap::getInstance()->addRef(&pRef);
+    this->_Id = pRef._Id;
+    return *this;
+}
+
+
 vRef vRef::assing(size_t pSize,const vObject *pVObject)
 {
-    vRef t;
-    turnOnMutex();
-    vHeap::getInstance();
-    t= (vHeap::getInstance())->vMalloc(pSize,pVObject->getType());
-    vHeap::getInstance()->addRef(&t);
+    vRef t(vHeap::getInstance()->vMalloc(pSize,pVObject->getType())._Id,true);
     vHeap::getInstance()->set(&t,pVObject);
-    powerOffMutex();
     return t;
 }
 
@@ -87,10 +108,15 @@ vRef &vRef::operator =(int pAddress)
 
 vObject *vRef::operator *()
 {
-    turnOnMutex();
     vObject * toReturn;
+    try{
+    vHeap::getInstance()->protect(this);
     toReturn = vHeap::getInstance()->get(this);
-    powerOffMutex();
+    }
+    catch(NullPointerException e){
+        std::cout << "ref error" << _Id << std::endl;
+        exit (0);
+    }
     return toReturn;
 }
 
@@ -99,40 +125,24 @@ bool vRef::operator ==(const vRef &pVRef)
     return _Id == pVRef._Id;
 }
 
-
-void *vRef::getDir()
-{
-    turnOnMutex();
-    void * toReturn;
-    vHeap::getInstance();
-    toReturn = vHeap::getInstance()->getDir(this);
-    powerOffMutex();
-    return toReturn;
-}
-
 unsigned int vRef::getWeight()
 {
     unsigned int weight;
-    turnOnMutex();
     weight = vHeap::getInstance()->getWight(this);
-    powerOffMutex();
     return weight;
 }
 
 std::string vRef::getType()
 {
     std::string type;
-    turnOnMutex();
     type = vHeap::getInstance()->getType(this);
-    powerOffMutex();
     return type;
 }
 
 vRef::~vRef()
 {
-    turnOnMutex();
-    std::cout << "remove reference called, id " << _Id << std::endl;
-    vHeap * tmp = vHeap::getInstance();
-    tmp->removeReference(this);
-    powerOffMutex();
+    if(_destroyRef){
+        std::cout << "destroy ref " << _Id<< std::endl;
+        vHeap::getInstance()->removeReference(this);
+    }
 }
