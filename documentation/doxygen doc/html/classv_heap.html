@@ -125,13 +125,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ae4aae8ea89bc24fffed43c509fdfdc8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserva memoria en el <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a>, ademas crea un objeto que pertenece a la clase <a class="el" href="class_minimalism_bit_vector.html">que representa al objeto en memoria, contando con un id, contador de referencias, offset en memoria etc. </a> <a href="#ae4aae8ea89bc24fffed43c509fdfdc8c">More...</a><br/></td></tr>
 <tr class="separator:ae4aae8ea89bc24fffed43c509fdfdc8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb964cfa76ddee4cd1cc22dae845eed4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_heap.html#abb964cfa76ddee4cd1cc22dae845eed4">vFree</a> (<a class="el" href="classv_ref.html">vRef</a> *pRef)</td></tr>
-<tr class="memdesc:abb964cfa76ddee4cd1cc22dae845eed4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libera la memoria que un <a class="el" href="classv_ref.html">vRef</a> apunta, si la referencia no existe no hace nada.  <a href="#abb964cfa76ddee4cd1cc22dae845eed4">More...</a><br/></td></tr>
+<tr class="memdesc:abb964cfa76ddee4cd1cc22dae845eed4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libera la memoria que un <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> apunta, si la referencia no existe no hace nada.  <a href="#abb964cfa76ddee4cd1cc22dae845eed4">More...</a><br/></td></tr>
 <tr class="separator:abb964cfa76ddee4cd1cc22dae845eed4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba09b3334fc1a732308f278c9e292484"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_heap.html#aba09b3334fc1a732308f278c9e292484">set</a> (<a class="el" href="classv_ref.html">vRef</a> *pRef, const <a class="el" href="classv_object.html">vObject</a> *pObject)</td></tr>
-<tr class="memdesc:aba09b3334fc1a732308f278c9e292484"><td class="mdescLeft">&#160;</td><td class="mdescRight">setea el contenido de un <a class="el" href="classv_ref.html">vRef</a>  <a href="#aba09b3334fc1a732308f278c9e292484">More...</a><br/></td></tr>
+<tr class="memdesc:aba09b3334fc1a732308f278c9e292484"><td class="mdescLeft">&#160;</td><td class="mdescRight">setea el contenido de un <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a>  <a href="#aba09b3334fc1a732308f278c9e292484">More...</a><br/></td></tr>
 <tr class="separator:aba09b3334fc1a732308f278c9e292484"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad37c93fe08d1b15f4785a58e865f14f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classv_object.html">vObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_heap.html#ad37c93fe08d1b15f4785a58e865f14f1">get</a> (<a class="el" href="classv_ref.html">vRef</a> *pRef)</td></tr>
-<tr class="memdesc:ad37c93fe08d1b15f4785a58e865f14f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el objeto contenido en el <a class="el" href="classv_ref.html">vRef</a>, si el <a class="el" href="classv_ref.html">vRef</a> es invalido, o sea que ya se ha borrado o es una referencia nula se lanza un error de <a class="el" href="class_null_pointer_exception.html" title="La clase NullPointerException, representa al error que se envia cuando se accesa a una porcion de mem...">NullPointerException</a>.  <a href="#ad37c93fe08d1b15f4785a58e865f14f1">More...</a><br/></td></tr>
+<tr class="memdesc:ad37c93fe08d1b15f4785a58e865f14f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el objeto contenido en el <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a>, si el <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> es invalido, o sea que ya se ha borrado o es una referencia nula se lanza un error de <a class="el" href="class_null_pointer_exception.html" title="La clase NullPointerException, representa al error que se envia cuando se accesa a una porcion de mem...">NullPointerException</a>.  <a href="#ad37c93fe08d1b15f4785a58e865f14f1">More...</a><br/></td></tr>
 <tr class="separator:ad37c93fe08d1b15f4785a58e865f14f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4691f4ba088fe19eb2bcaedf90205eb5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_heap.html#a4691f4ba088fe19eb2bcaedf90205eb5">addRef</a> (const <a class="el" href="classv_ref.html">vRef</a> *pRef)</td></tr>
 <tr class="memdesc:a4691f4ba088fe19eb2bcaedf90205eb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">agrega una referencia a la referencia pasada por el parametro, si la referencia pasada por el parametro es nula entonces no se hace nada  <a href="#a4691f4ba088fe19eb2bcaedf90205eb5">More...</a><br/></td></tr>
@@ -140,7 +140,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a56ee2409f56a8117fd3b04434803b3ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">protect Protege una zona de memoria.  <a href="#a56ee2409f56a8117fd3b04434803b3ba">More...</a><br/></td></tr>
 <tr class="separator:a56ee2409f56a8117fd3b04434803b3ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a156d31e57a36f093898e4b302e5f270a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_heap.html#a156d31e57a36f093898e4b302e5f270a">removeReference</a> (<a class="el" href="classv_ref.html">vRef</a> *pVRef)</td></tr>
-<tr class="memdesc:a156d31e57a36f093898e4b302e5f270a"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeReference Elimina la refencia hace que el conteo de referencias hacia lo que apunta el <a class="el" href="classv_ref.html">vRef</a> sea disminuido en 1  <a href="#a156d31e57a36f093898e4b302e5f270a">More...</a><br/></td></tr>
+<tr class="memdesc:a156d31e57a36f093898e4b302e5f270a"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeReference Elimina la refencia hace que el conteo de referencias hacia lo que apunta el <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> sea disminuido en 1  <a href="#a156d31e57a36f093898e4b302e5f270a">More...</a><br/></td></tr>
 <tr class="separator:a156d31e57a36f093898e4b302e5f270a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af893c48a50166f6e144829e070afa0f0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af893c48a50166f6e144829e070afa0f0"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_heap.html#af893c48a50166f6e144829e070afa0f0">collectGarbage</a> ()</td></tr>
@@ -201,7 +201,7 @@ static pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a cla
 <p>agrega una referencia a la referencia pasada por el parametro, si la referencia pasada por el parametro es nula entonces no se hace nada </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pRef</td><td>el <a class="el" href="classv_ref.html">vRef</a> al cual se desea agregar una referencia mas </td></tr>
+    <tr><td class="paramname">pRef</td><td>el <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> al cual se desea agregar una referencia mas </td></tr>
   </table>
   </dd>
 </dl>
@@ -222,16 +222,16 @@ static pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a cla
       </table>
 </div><div class="memdoc">
 
-<p>Obtiene el objeto contenido en el <a class="el" href="classv_ref.html">vRef</a>, si el <a class="el" href="classv_ref.html">vRef</a> es invalido, o sea que ya se ha borrado o es una referencia nula se lanza un error de <a class="el" href="class_null_pointer_exception.html" title="La clase NullPointerException, representa al error que se envia cuando se accesa a una porcion de mem...">NullPointerException</a>. </p>
+<p>Obtiene el objeto contenido en el <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a>, si el <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> es invalido, o sea que ya se ha borrado o es una referencia nula se lanza un error de <a class="el" href="class_null_pointer_exception.html" title="La clase NullPointerException, representa al error que se envia cuando se accesa a una porcion de mem...">NullPointerException</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pRef</td><td>el puntero de la <a class="el" href="classv_ref.html">vRef</a> de la cual se quiere conseguir el <a class="el" href="classv_object.html" title="Es la clase que representa al objeto contenido en el vHeap. ">vObject</a> </td></tr>
+    <tr><td class="paramname">pRef</td><td>el puntero de la <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> de la cual se quiere conseguir el <a class="el" href="classv_object.html" title="Es la clase que representa al objeto contenido en el vHeap. ">vObject</a> </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="class_null_pointer_exception.html" title="La clase NullPointerException, representa al error que se envia cuando se accesa a una porcion de mem...">NullPointerException</a></td><td>si el <a class="el" href="classv_ref.html">vRef</a> apunta a algun dato no existente en el <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a> </td></tr>
+    <tr><td class="paramname"><a class="el" href="class_null_pointer_exception.html" title="La clase NullPointerException, representa al error que se envia cuando se accesa a una porcion de mem...">NullPointerException</a></td><td>si el <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> apunta a algun dato no existente en el <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -380,7 +380,7 @@ static pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a cla
       </table>
 </div><div class="memdoc">
 
-<p>removeReference Elimina la refencia hace que el conteo de referencias hacia lo que apunta el <a class="el" href="classv_ref.html">vRef</a> sea disminuido en 1 </p>
+<p>removeReference Elimina la refencia hace que el conteo de referencias hacia lo que apunta el <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> sea disminuido en 1 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pVRef</td><td>la referencia que quiere disminuir la referencia </td></tr>
@@ -414,11 +414,11 @@ static pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a cla
       </table>
 </div><div class="memdoc">
 
-<p>setea el contenido de un <a class="el" href="classv_ref.html">vRef</a> </p>
+<p>setea el contenido de un <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pRef</td><td>la referencia a la cual se quiere setear un dato </td></tr>
-    <tr><td class="paramname">pObject</td><td>es el objeto que se sobrescribira en la zona de memoria que representa el <a class="el" href="classv_ref.html">vRef</a> </td></tr>
+    <tr><td class="paramname">pObject</td><td>es el objeto que se sobrescribira en la zona de memoria que representa el <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -446,14 +446,14 @@ static pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a cla
       </table>
 </div><div class="memdoc">
 
-<p>Libera la memoria que un <a class="el" href="classv_ref.html">vRef</a> apunta, si la referencia no existe no hace nada. </p>
+<p>Libera la memoria que un <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> apunta, si la referencia no existe no hace nada. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pRef</td><td>es el puntero de un <a class="el" href="classv_ref.html">vRef</a> a liberar de la memoria que contiene el <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a> </td></tr>
+    <tr><td class="paramname">pRef</td><td>es el puntero de un <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> a liberar de la memoria que contiene el <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classv_ref.html">vRef</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> </dd></dl>
 
 </div>
 </div>
@@ -489,7 +489,7 @@ static pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a cla
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>un <a class="el" href="classv_ref.html">vRef</a> que representa un puntero a la memoria reservada por este puntero </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>un <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> que representa un puntero a la memoria reservada por este puntero </dd></dl>
 <p>if (!iterator-&gt;hasNext() &amp;&amp; (iterator-&gt;getCurrent().Offset() - (tmp1.Offset()+tmp1.getWeight()) &lt;= pSize)){ tmp1 = iterator-&gt;getCurrent(); }</p>
 
 </div>
@@ -504,7 +504,7 @@ static pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a cla
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classv_heap.html">vHeap</a></li>
-    <li class="footer">Generated on Thu Apr 2 2015 17:59:41 for Lightweight Dynamic Memory Manager by
+    <li class="footer">Generated on Thu Apr 2 2015 18:38:16 for Lightweight Dynamic Memory Manager by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

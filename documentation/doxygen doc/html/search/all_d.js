@@ -1,4 +1,11 @@
 var searchData=
 [
-  ['what',['what',['../class_full_memory_heap_exception.html#a66ee760289cae528c31ffdedfc2ccc0a',1,'FullMemoryHeapException::what()'],['../class_no_match_classes_exception.html#a1dc1f5956c7e6c2a9211432471a60e6d',1,'NoMatchClassesException::what()'],['../class_null_pointer_exception.html#a0dcc55bb0f3a50e888d8d4a904508313',1,'NullPointerException::what()'],['../class_v_heap_exception.html#a58154e8dc02f9c28dfefad7897f8b2cf',1,'VHeapException::what()']]]
+  ['vchar',['vChar',['../classv_char.html',1,'']]],
+  ['vfree',['vFree',['../classv_heap.html#abb964cfa76ddee4cd1cc22dae845eed4',1,'vHeap']]],
+  ['vheap',['vHeap',['../classv_heap.html',1,'']]],
+  ['vheapexception',['VHeapException',['../class_v_heap_exception.html',1,'']]],
+  ['vint',['vInt',['../classv_int.html',1,'vInt'],['../classv_int.html#a6b689f162fca003015d4f9545b6b846a',1,'vInt::vInt()']]],
+  ['vmalloc',['vMalloc',['../classv_heap.html#ae4aae8ea89bc24fffed43c509fdfdc8c',1,'vHeap']]],
+  ['vobject',['vObject',['../classv_object.html',1,'vObject'],['../classv_object.html#af5d1cd42c54c5e33da3dfe5ce747acad',1,'vObject::vObject()']]],
+  ['vref',['vRef',['../classv_ref.html',1,'vRef'],['../classv_ref.html#ac2b5f44f695eef09cc28e3dd07fc1026',1,'vRef::vRef()'],['../classv_ref.html#a665fe2849fbbabcb1930128b78c144ff',1,'vRef::vRef(const vRef &amp;pRef)']]]
 ];

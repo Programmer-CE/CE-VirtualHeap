@@ -1,51 +1,51 @@
 \hypertarget{classv_ref}{\section{v\-Ref Class Reference}
 \label{classv_ref}\index{v\-Ref@{v\-Ref}}
 }
+
+
+La clase \hyperlink{classv_ref}{v\-Ref}.  
+
+
+
+
+{\ttfamily \#include $<$vref.\-h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classv_ref_a42661b55fdd6d60c1b7d34fec5dc6ebb}{{\bfseries v\-Ref} (const void $\ast$p\-Memory\-Section)}\label{classv_ref_a42661b55fdd6d60c1b7d34fec5dc6ebb}
+\hypertarget{classv_ref_ac2b5f44f695eef09cc28e3dd07fc1026}{\hyperlink{classv_ref_ac2b5f44f695eef09cc28e3dd07fc1026}{v\-Ref} ()}\label{classv_ref_ac2b5f44f695eef09cc28e3dd07fc1026}
 
-\item 
+\begin{DoxyCompactList}\small\item\em Inicializa el \hyperlink{classv_ref}{v\-Ref} como un puntero nulo. \end{DoxyCompactList}\item 
 \hyperlink{classv_ref_a665fe2849fbbabcb1930128b78c144ff}{v\-Ref} (const \hyperlink{classv_ref}{v\-Ref} \&p\-Ref)
-\item 
-\hypertarget{classv_ref_a6824b37064baf1055c0634d25af33302}{{\bfseries v\-Ref} (const \hyperlink{classv_ref}{v\-Ref} $\ast$p\-Ref)}\label{classv_ref_a6824b37064baf1055c0634d25af33302}
-
-\item 
-\hypertarget{classv_ref_a6fdd2c2154bfe2a436684b0a4d8dc44c}{\hyperlink{classv_ref}{v\-Ref} \& {\bfseries operator=} (const \hyperlink{classv_object}{v\-Object} $\ast$p\-V\-Object)}\label{classv_ref_a6fdd2c2154bfe2a436684b0a4d8dc44c}
-
-\item 
-\hypertarget{classv_ref_a09a2b66a31121f2ea39db1d2275df018}{\hyperlink{classv_ref}{v\-Ref} \& {\bfseries operator=} (int p\-Address)}\label{classv_ref_a09a2b66a31121f2ea39db1d2275df018}
-
-\item 
-\hypertarget{classv_ref_a7a5795eb3d07af12a724006868ed28ba}{\hyperlink{classv_ref}{v\-Ref} \& {\bfseries operator=} (\hyperlink{classv_ref}{v\-Ref} p\-Ref)}\label{classv_ref_a7a5795eb3d07af12a724006868ed28ba}
-
-\item 
+\begin{DoxyCompactList}\small\item\em Es el constructor de copia, se encarga de agregar una referencia si el \hyperlink{classv_ref}{v\-Ref} es un puntero nulo. \end{DoxyCompactList}\item 
+\hyperlink{classv_ref}{v\-Ref} \& \hyperlink{classv_ref_a6fdd2c2154bfe2a436684b0a4d8dc44c}{operator=} (const \hyperlink{classv_object}{v\-Object} $\ast$p\-V\-Object)
+\begin{DoxyCompactList}\small\item\em Asignacion. Asigna una copia del dato a la referencia, si la referencia es nula entoncen se lanza un error. \end{DoxyCompactList}\item 
+\hyperlink{classv_ref}{v\-Ref} \& \hyperlink{classv_ref_a09a2b66a31121f2ea39db1d2275df018}{operator=} (int p\-Address)
+\begin{DoxyCompactList}\small\item\em se asigna a una direccion de memoria, si la direccion no pertenece al \hyperlink{classv_heap}{v\-Heap}, es un puntero nulo \end{DoxyCompactList}\item 
+\hyperlink{classv_ref}{v\-Ref} \& \hyperlink{classv_ref_a7a5795eb3d07af12a724006868ed28ba}{operator=} (\hyperlink{classv_ref}{v\-Ref} p\-Ref)
+\begin{DoxyCompactList}\small\item\em Operador de asignacion a un \hyperlink{classv_ref}{v\-Ref} se copian los datos se disminuye en 1 la referencia actual y se aumenta en 1 la referencia a copiar. \end{DoxyCompactList}\item 
 \hyperlink{classv_object}{v\-Object} $\ast$ \hyperlink{classv_ref_a8c6c503ee26c2e26bbf336166992f79c}{operator$\ast$} ()
-\item 
-\hypertarget{classv_ref_a67f7a5cc022f60bfe5a6d1069d97a455}{bool {\bfseries operator==} (const \hyperlink{classv_ref}{v\-Ref} \&p\-V\-Ref)}\label{classv_ref_a67f7a5cc022f60bfe5a6d1069d97a455}
+\begin{DoxyCompactList}\small\item\em Operador de de-\/referencia, obtiene el dato que este apunta alojado en memoria del \hyperlink{classv_heap}{v\-Heap}. Si el puntero es invalido arroja un \hyperlink{class_null_pointer_exception}{Null\-Pointer\-Exception} como error. \end{DoxyCompactList}\item 
+bool \hyperlink{classv_ref_a67f7a5cc022f60bfe5a6d1069d97a455}{operator==} (const \hyperlink{classv_ref}{v\-Ref} \&p\-V\-Ref)
+\begin{DoxyCompactList}\small\item\em Verifica si dos referencias (\hyperlink{classv_ref}{v\-Ref}) son iguales. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{classv_ref_a82bfa187c785c2044dde59aa8d993c6a}{get\-Weight} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el peso del objeto que apunta, arroja un error si este es un puntero invalido. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classv_ref_a29f102a40b30f7662de769fd07f42f0c}{get\-Type} ()
+\begin{DoxyCompactList}\small\item\em Obtiene el tipo de dato al cual la referencia (\hyperlink{classv_ref}{v\-Ref}) apunta, arroja un error si este es un puntero invalido. \end{DoxyCompactList}\item 
+\hypertarget{classv_ref_a0c2e8271f53598dc7ba931db2b7a182d}{virtual \hyperlink{classv_ref_a0c2e8271f53598dc7ba931db2b7a182d}{$\sim$v\-Ref} ()}\label{classv_ref_a0c2e8271f53598dc7ba931db2b7a182d}
 
-\item 
-\hypertarget{classv_ref_a82bfa187c785c2044dde59aa8d993c6a}{unsigned int {\bfseries get\-Weight} ()}\label{classv_ref_a82bfa187c785c2044dde59aa8d993c6a}
-
-\item 
-\hypertarget{classv_ref_a29f102a40b30f7662de769fd07f42f0c}{std\-::string {\bfseries get\-Type} ()}\label{classv_ref_a29f102a40b30f7662de769fd07f42f0c}
-
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Destruye el \hyperlink{classv_ref}{v\-Ref} y elimina una referencia si la bandera de destruccion lo permite. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classv_ref_aa3ac4bab0c6cea635768dbfe40dc1284}{static \hyperlink{classv_ref}{v\-Ref} {\bfseries assing} (size\-\_\-t p\-Size, const \hyperlink{classv_object}{v\-Object} $\ast$p\-V\-Object)}\label{classv_ref_aa3ac4bab0c6cea635768dbfe40dc1284}
-
-\end{DoxyCompactItemize}
+static \hyperlink{classv_ref}{v\-Ref} \hyperlink{classv_ref_aa3ac4bab0c6cea635768dbfe40dc1284}{assing} (size\-\_\-t p\-Size, const \hyperlink{classv_object}{v\-Object} $\ast$p\-V\-Object)
+\begin{DoxyCompactList}\small\item\em Es un metodo estatico que se encarga de reservar memoria y asignar un dato a esa memoria. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classv_ref_aaf5d33821d373d8b68daa73b00969c2c}{bool {\bfseries \-\_\-from\-V\-Heap}}\label{classv_ref_aaf5d33821d373d8b68daa73b00969c2c}
-
+bool \hyperlink{classv_ref_aaf5d33821d373d8b68daa73b00969c2c}{\-\_\-from\-V\-Heap}
 \item 
-\hypertarget{classv_ref_a3f8a845f0e4623d38404e67ff51d8c5c}{bool {\bfseries \-\_\-destroy\-Ref}}\label{classv_ref_a3f8a845f0e4623d38404e67ff51d8c5c}
-
+bool \hyperlink{classv_ref_a3f8a845f0e4623d38404e67ff51d8c5c}{\-\_\-destroy\-Ref}
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -55,6 +55,9 @@
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+La clase \hyperlink{classv_ref}{v\-Ref}. 
+
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classv_ref_a665fe2849fbbabcb1930128b78c144ff}{\index{v\-Ref@{v\-Ref}!v\-Ref@{v\-Ref}}
 \index{v\-Ref@{v\-Ref}!vRef@{v\-Ref}}
@@ -63,9 +66,78 @@
 \item[{const {\bf v\-Ref} \&}]{p\-Ref}
 \end{DoxyParamCaption}
 )}}\label{classv_ref_a665fe2849fbbabcb1930128b78c144ff}
-std\-::cout $<$$<$ \char`\"{}copy is called\char`\"{} $<$$<$ std\-::endl; std\-::cout $<$$<$ \char`\"{}copy amp\char`\"{} $<$$<$ std\-::endl; if (p\-Ref.\-\_\-destroy\-Ref)\hyperlink{classv_heap_a1b50fb6f333ab744a080647f689f3de9}{v\-Heap\-::get\-Instance()}-\/$>$add\-Ref(\&p\-Ref); if(this-\/$>$\-\_\-\-Id == p\-Ref.\-\_\-\-Id)this-\/$>$\-\_\-destroy\-Ref = p\-Ref.\-\_\-destroy\-Ref; else\{ \hyperlink{classv_ref}{v\-Ref} a(this-\/$>$\-\_\-\-Id,false); if (a.\-\_\-\-Id != -\/1)\{ \} std\-::cout $<$$<$ \char`\"{}alguien entra aqui\char`\"{} $<$$<$ std\-::endl; \}
+
+
+Es el constructor de copia, se encarga de agregar una referencia si el \hyperlink{classv_ref}{v\-Ref} es un puntero nulo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Ref} & es el dato a copiar \\
+\hline
+\end{DoxyParams}
+
 
 \subsection{Member Function Documentation}
+\hypertarget{classv_ref_aa3ac4bab0c6cea635768dbfe40dc1284}{\index{v\-Ref@{v\-Ref}!assing@{assing}}
+\index{assing@{assing}!vRef@{v\-Ref}}
+\subsubsection[{assing}]{\setlength{\rightskip}{0pt plus 5cm}{\bf v\-Ref} v\-Ref\-::assing (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{p\-Size, }
+\item[{const {\bf v\-Object} $\ast$}]{p\-V\-Object}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classv_ref_aa3ac4bab0c6cea635768dbfe40dc1284}
+
+
+Es un metodo estatico que se encarga de reservar memoria y asignar un dato a esa memoria. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Size} & es el peso que se quiere reservar \\
+\hline
+{\em p\-V\-Object} & es el dato que se quiere copia en el \hyperlink{classv_heap}{v\-Heap} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classv_ref}{v\-Ref} es la referencia al dato 
+\end{DoxyReturn}
+\hypertarget{classv_ref_a29f102a40b30f7662de769fd07f42f0c}{\index{v\-Ref@{v\-Ref}!get\-Type@{get\-Type}}
+\index{get\-Type@{get\-Type}!vRef@{v\-Ref}}
+\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string v\-Ref\-::get\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classv_ref_a29f102a40b30f7662de769fd07f42f0c}
+
+
+Obtiene el tipo de dato al cual la referencia (\hyperlink{classv_ref}{v\-Ref}) apunta, arroja un error si este es un puntero invalido. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_null_pointer_exception}{Null\-Pointer\-Exception}} & si el puntero es invalido\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+el tipo de dato del objeto al cual este apunta 
+\end{DoxyReturn}
+\hypertarget{classv_ref_a82bfa187c785c2044dde59aa8d993c6a}{\index{v\-Ref@{v\-Ref}!get\-Weight@{get\-Weight}}
+\index{get\-Weight@{get\-Weight}!vRef@{v\-Ref}}
+\subsubsection[{get\-Weight}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int v\-Ref\-::get\-Weight (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classv_ref_a82bfa187c785c2044dde59aa8d993c6a}
+
+
+Obtiene el peso del objeto que apunta, arroja un error si este es un puntero invalido. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_null_pointer_exception}{Null\-Pointer\-Exception}} & si el puntero es invalido\\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+el peso del objeto que apunta 
+\end{DoxyReturn}
 \hypertarget{classv_ref_a8c6c503ee26c2e26bbf336166992f79c}{\index{v\-Ref@{v\-Ref}!operator$\ast$@{operator$\ast$}}
 \index{operator$\ast$@{operator$\ast$}!vRef@{v\-Ref}}
 \subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf v\-Object} $\ast$ v\-Ref\-::operator$\ast$ (
@@ -73,7 +145,109 @@ std\-::cout $<$$<$ \char`\"{}copy is called\char`\"{} $<$$<$ std\-::endl; std\-:
 {}
 \end{DoxyParamCaption}
 )}}\label{classv_ref_a8c6c503ee26c2e26bbf336166992f79c}
-\hyperlink{classv_ref}{v\-Ref} \&v\-Ref\-::operator =(int p\-Address) \{ \hyperlink{classv_heap_a1b50fb6f333ab744a080647f689f3de9}{v\-Heap\-::get\-Instance()}-\/$>$remove\-Reference(this); this = \hyperlink{classv_heap_a1b50fb6f333ab744a080647f689f3de9}{v\-Heap\-::get\-Instance()}-\/$>$get(p\-Address); return $\ast$this; \} 
+
+
+Operador de de-\/referencia, obtiene el dato que este apunta alojado en memoria del \hyperlink{classv_heap}{v\-Heap}. Si el puntero es invalido arroja un \hyperlink{class_null_pointer_exception}{Null\-Pointer\-Exception} como error. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_null_pointer_exception}{Null\-Pointer\-Exception}} & si el puntero es invalido \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+retorna el dato alojado en el \hyperlink{classv_heap}{v\-Heap} que este apunta 
+\end{DoxyReturn}
+\hypertarget{classv_ref_a6fdd2c2154bfe2a436684b0a4d8dc44c}{\index{v\-Ref@{v\-Ref}!operator=@{operator=}}
+\index{operator=@{operator=}!vRef@{v\-Ref}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf v\-Ref} \& v\-Ref\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf v\-Object} $\ast$}]{p\-V\-Object}
+\end{DoxyParamCaption}
+)}}\label{classv_ref_a6fdd2c2154bfe2a436684b0a4d8dc44c}
+
+
+Asignacion. Asigna una copia del dato a la referencia, si la referencia es nula entoncen se lanza un error. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-V\-Object} & Es el dato a copiar en el \hyperlink{classv_heap}{v\-Heap} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+una referencia a un \hyperlink{classv_ref}{v\-Ref} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_null_pointer_exception}{Null\-Pointer\-Exception}} & si la referencia es nula \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classv_ref_a09a2b66a31121f2ea39db1d2275df018}{\index{v\-Ref@{v\-Ref}!operator=@{operator=}}
+\index{operator=@{operator=}!vRef@{v\-Ref}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf v\-Ref}\& v\-Ref\-::operator= (
+\begin{DoxyParamCaption}
+\item[{int}]{p\-Address}
+\end{DoxyParamCaption}
+)}}\label{classv_ref_a09a2b66a31121f2ea39db1d2275df018}
+
+
+se asigna a una direccion de memoria, si la direccion no pertenece al \hyperlink{classv_heap}{v\-Heap}, es un puntero nulo 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Address} & es la direccion a referenciar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+una referencia al \hyperlink{classv_ref}{v\-Ref} asignado 
+\end{DoxyReturn}
+\hypertarget{classv_ref_a7a5795eb3d07af12a724006868ed28ba}{\index{v\-Ref@{v\-Ref}!operator=@{operator=}}
+\index{operator=@{operator=}!vRef@{v\-Ref}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf v\-Ref} \& v\-Ref\-::operator= (
+\begin{DoxyParamCaption}
+\item[{{\bf v\-Ref}}]{p\-Ref}
+\end{DoxyParamCaption}
+)}}\label{classv_ref_a7a5795eb3d07af12a724006868ed28ba}
+
+
+Operador de asignacion a un \hyperlink{classv_ref}{v\-Ref} se copian los datos se disminuye en 1 la referencia actual y se aumenta en 1 la referencia a copiar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Ref} & Es la referencia a referenciar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Una referencia a un \hyperlink{classv_ref}{v\-Ref} 
+\end{DoxyReturn}
+\hypertarget{classv_ref_a67f7a5cc022f60bfe5a6d1069d97a455}{\index{v\-Ref@{v\-Ref}!operator==@{operator==}}
+\index{operator==@{operator==}!vRef@{v\-Ref}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool v\-Ref\-::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf v\-Ref} \&}]{p\-V\-Ref}
+\end{DoxyParamCaption}
+)}}\label{classv_ref_a67f7a5cc022f60bfe5a6d1069d97a455}
+
+
+Verifica si dos referencias (\hyperlink{classv_ref}{v\-Ref}) son iguales. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-V\-Ref} & es el \hyperlink{classv_ref}{v\-Ref} con el cual se desea comparar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si son iguales 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classv_ref_a3f8a845f0e4623d38404e67ff51d8c5c}{\index{v\-Ref@{v\-Ref}!\-\_\-destroy\-Ref@{\-\_\-destroy\-Ref}}
+\index{\-\_\-destroy\-Ref@{\-\_\-destroy\-Ref}!vRef@{v\-Ref}}
+\subsubsection[{\-\_\-destroy\-Ref}]{\setlength{\rightskip}{0pt plus 5cm}bool v\-Ref\-::\-\_\-destroy\-Ref}}\label{classv_ref_a3f8a845f0e4623d38404e67ff51d8c5c}
+T\-O\-D\-O \hypertarget{classv_ref_aaf5d33821d373d8b68daa73b00969c2c}{\index{v\-Ref@{v\-Ref}!\-\_\-from\-V\-Heap@{\-\_\-from\-V\-Heap}}
+\index{\-\_\-from\-V\-Heap@{\-\_\-from\-V\-Heap}!vRef@{v\-Ref}}
+\subsubsection[{\-\_\-from\-V\-Heap}]{\setlength{\rightskip}{0pt plus 5cm}bool v\-Ref\-::\-\_\-from\-V\-Heap}}\label{classv_ref_aaf5d33821d373d8b68daa73b00969c2c}
+T\-O\-D\-O 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 

@@ -114,51 +114,58 @@ $(document).ready(function(){initNavTree('classv_ref.html','');});
 <div class="title">vRef Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>La clase <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a>.  
+ <a href="classv_ref.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="vref_8h_source.html">vref.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a42661b55fdd6d60c1b7d34fec5dc6ebb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42661b55fdd6d60c1b7d34fec5dc6ebb"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>vRef</b> (const void *pMemorySection)</td></tr>
-<tr class="separator:a42661b55fdd6d60c1b7d34fec5dc6ebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2b5f44f695eef09cc28e3dd07fc1026"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac2b5f44f695eef09cc28e3dd07fc1026"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_ref.html#ac2b5f44f695eef09cc28e3dd07fc1026">vRef</a> ()</td></tr>
+<tr class="memdesc:ac2b5f44f695eef09cc28e3dd07fc1026"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa el <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> como un puntero nulo. <br/></td></tr>
+<tr class="separator:ac2b5f44f695eef09cc28e3dd07fc1026"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a665fe2849fbbabcb1930128b78c144ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_ref.html#a665fe2849fbbabcb1930128b78c144ff">vRef</a> (const <a class="el" href="classv_ref.html">vRef</a> &amp;pRef)</td></tr>
+<tr class="memdesc:a665fe2849fbbabcb1930128b78c144ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Es el constructor de copia, se encarga de agregar una referencia si el <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> es un puntero nulo.  <a href="#a665fe2849fbbabcb1930128b78c144ff">More...</a><br/></td></tr>
 <tr class="separator:a665fe2849fbbabcb1930128b78c144ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6824b37064baf1055c0634d25af33302"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6824b37064baf1055c0634d25af33302"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>vRef</b> (const <a class="el" href="classv_ref.html">vRef</a> *pRef)</td></tr>
-<tr class="separator:a6824b37064baf1055c0634d25af33302"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fdd2c2154bfe2a436684b0a4d8dc44c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6fdd2c2154bfe2a436684b0a4d8dc44c"></a>
-<a class="el" href="classv_ref.html">vRef</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classv_object.html">vObject</a> *pVObject)</td></tr>
+<tr class="memitem:a6fdd2c2154bfe2a436684b0a4d8dc44c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classv_ref.html">vRef</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_ref.html#a6fdd2c2154bfe2a436684b0a4d8dc44c">operator=</a> (const <a class="el" href="classv_object.html">vObject</a> *pVObject)</td></tr>
+<tr class="memdesc:a6fdd2c2154bfe2a436684b0a4d8dc44c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asignacion. Asigna una copia del dato a la referencia, si la referencia es nula entoncen se lanza un error.  <a href="#a6fdd2c2154bfe2a436684b0a4d8dc44c">More...</a><br/></td></tr>
 <tr class="separator:a6fdd2c2154bfe2a436684b0a4d8dc44c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09a2b66a31121f2ea39db1d2275df018"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a09a2b66a31121f2ea39db1d2275df018"></a>
-<a class="el" href="classv_ref.html">vRef</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (int pAddress)</td></tr>
+<tr class="memitem:a09a2b66a31121f2ea39db1d2275df018"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classv_ref.html">vRef</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_ref.html#a09a2b66a31121f2ea39db1d2275df018">operator=</a> (int pAddress)</td></tr>
+<tr class="memdesc:a09a2b66a31121f2ea39db1d2275df018"><td class="mdescLeft">&#160;</td><td class="mdescRight">se asigna a una direccion de memoria, si la direccion no pertenece al <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a>, es un puntero nulo  <a href="#a09a2b66a31121f2ea39db1d2275df018">More...</a><br/></td></tr>
 <tr class="separator:a09a2b66a31121f2ea39db1d2275df018"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a5795eb3d07af12a724006868ed28ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7a5795eb3d07af12a724006868ed28ba"></a>
-<a class="el" href="classv_ref.html">vRef</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classv_ref.html">vRef</a> pRef)</td></tr>
+<tr class="memitem:a7a5795eb3d07af12a724006868ed28ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classv_ref.html">vRef</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_ref.html#a7a5795eb3d07af12a724006868ed28ba">operator=</a> (<a class="el" href="classv_ref.html">vRef</a> pRef)</td></tr>
+<tr class="memdesc:a7a5795eb3d07af12a724006868ed28ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operador de asignacion a un <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> se copian los datos se disminuye en 1 la referencia actual y se aumenta en 1 la referencia a copiar.  <a href="#a7a5795eb3d07af12a724006868ed28ba">More...</a><br/></td></tr>
 <tr class="separator:a7a5795eb3d07af12a724006868ed28ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c6c503ee26c2e26bbf336166992f79c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classv_object.html">vObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_ref.html#a8c6c503ee26c2e26bbf336166992f79c">operator*</a> ()</td></tr>
+<tr class="memdesc:a8c6c503ee26c2e26bbf336166992f79c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operador de de-referencia, obtiene el dato que este apunta alojado en memoria del <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a>. Si el puntero es invalido arroja un <a class="el" href="class_null_pointer_exception.html" title="La clase NullPointerException, representa al error que se envia cuando se accesa a una porcion de mem...">NullPointerException</a> como error.  <a href="#a8c6c503ee26c2e26bbf336166992f79c">More...</a><br/></td></tr>
 <tr class="separator:a8c6c503ee26c2e26bbf336166992f79c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67f7a5cc022f60bfe5a6d1069d97a455"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67f7a5cc022f60bfe5a6d1069d97a455"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classv_ref.html">vRef</a> &amp;pVRef)</td></tr>
+<tr class="memitem:a67f7a5cc022f60bfe5a6d1069d97a455"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_ref.html#a67f7a5cc022f60bfe5a6d1069d97a455">operator==</a> (const <a class="el" href="classv_ref.html">vRef</a> &amp;pVRef)</td></tr>
+<tr class="memdesc:a67f7a5cc022f60bfe5a6d1069d97a455"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica si dos referencias (<a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a>) son iguales.  <a href="#a67f7a5cc022f60bfe5a6d1069d97a455">More...</a><br/></td></tr>
 <tr class="separator:a67f7a5cc022f60bfe5a6d1069d97a455"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82bfa187c785c2044dde59aa8d993c6a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a82bfa187c785c2044dde59aa8d993c6a"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getWeight</b> ()</td></tr>
+<tr class="memitem:a82bfa187c785c2044dde59aa8d993c6a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_ref.html#a82bfa187c785c2044dde59aa8d993c6a">getWeight</a> ()</td></tr>
+<tr class="memdesc:a82bfa187c785c2044dde59aa8d993c6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el peso del objeto que apunta, arroja un error si este es un puntero invalido.  <a href="#a82bfa187c785c2044dde59aa8d993c6a">More...</a><br/></td></tr>
 <tr class="separator:a82bfa187c785c2044dde59aa8d993c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29f102a40b30f7662de769fd07f42f0c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29f102a40b30f7662de769fd07f42f0c"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getType</b> ()</td></tr>
+<tr class="memitem:a29f102a40b30f7662de769fd07f42f0c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_ref.html#a29f102a40b30f7662de769fd07f42f0c">getType</a> ()</td></tr>
+<tr class="memdesc:a29f102a40b30f7662de769fd07f42f0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el tipo de dato al cual la referencia (<a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a>) apunta, arroja un error si este es un puntero invalido.  <a href="#a29f102a40b30f7662de769fd07f42f0c">More...</a><br/></td></tr>
 <tr class="separator:a29f102a40b30f7662de769fd07f42f0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c2e8271f53598dc7ba931db2b7a182d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0c2e8271f53598dc7ba931db2b7a182d"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_ref.html#a0c2e8271f53598dc7ba931db2b7a182d">~vRef</a> ()</td></tr>
+<tr class="memdesc:a0c2e8271f53598dc7ba931db2b7a182d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destruye el <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> y elimina una referencia si la bandera de destruccion lo permite. <br/></td></tr>
+<tr class="separator:a0c2e8271f53598dc7ba931db2b7a182d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:aa3ac4bab0c6cea635768dbfe40dc1284"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa3ac4bab0c6cea635768dbfe40dc1284"></a>
-static <a class="el" href="classv_ref.html">vRef</a>&#160;</td><td class="memItemRight" valign="bottom"><b>assing</b> (size_t pSize, const <a class="el" href="classv_object.html">vObject</a> *pVObject)</td></tr>
+<tr class="memitem:aa3ac4bab0c6cea635768dbfe40dc1284"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classv_ref.html">vRef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_ref.html#aa3ac4bab0c6cea635768dbfe40dc1284">assing</a> (size_t pSize, const <a class="el" href="classv_object.html">vObject</a> *pVObject)</td></tr>
+<tr class="memdesc:aa3ac4bab0c6cea635768dbfe40dc1284"><td class="mdescLeft">&#160;</td><td class="mdescRight">Es un metodo estatico que se encarga de reservar memoria y asignar un dato a esa memoria.  <a href="#aa3ac4bab0c6cea635768dbfe40dc1284">More...</a><br/></td></tr>
 <tr class="separator:aa3ac4bab0c6cea635768dbfe40dc1284"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aaf5d33821d373d8b68daa73b00969c2c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf5d33821d373d8b68daa73b00969c2c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>_fromVHeap</b></td></tr>
+<tr class="memitem:aaf5d33821d373d8b68daa73b00969c2c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_ref.html#aaf5d33821d373d8b68daa73b00969c2c">_fromVHeap</a></td></tr>
 <tr class="separator:aaf5d33821d373d8b68daa73b00969c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f8a845f0e4623d38404e67ff51d8c5c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f8a845f0e4623d38404e67ff51d8c5c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>_destroyRef</b></td></tr>
+<tr class="memitem:a3f8a845f0e4623d38404e67ff51d8c5c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_ref.html#a3f8a845f0e4623d38404e67ff51d8c5c">_destroyRef</a></td></tr>
 <tr class="separator:a3f8a845f0e4623d38404e67ff51d8c5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
@@ -167,7 +174,9 @@ Friends</h2></td></tr>
 class&#160;</td><td class="memItemRight" valign="bottom"><b>vHeap</b></td></tr>
 <tr class="separator:ad615cc5888405061e930d41dba53d277"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>La clase <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a>. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a665fe2849fbbabcb1930128b78c144ff"></a>
 <div class="memitem">
 <div class="memproto">
@@ -181,11 +190,110 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>vHeap</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>std::cout &lt;&lt; "copy is called" &lt;&lt; std::endl; std::cout &lt;&lt; "copy amp" &lt;&lt; std::endl; if (pRef._destroyRef)<a class="el" href="classv_heap.html#a1b50fb6f333ab744a080647f689f3de9" title="Obtiene la unica instancia, si no exite la crea. ">vHeap::getInstance()</a>-&gt;addRef(&amp;pRef); if(this-&gt;_Id == pRef._Id)this-&gt;_destroyRef = pRef._destroyRef; else{ <a class="el" href="classv_ref.html">vRef</a> a(this-&gt;_Id,false); if (a._Id != -1){ } std::cout &lt;&lt; "alguien entra aqui" &lt;&lt; std::endl; }</p>
+
+<p>Es el constructor de copia, se encarga de agregar una referencia si el <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> es un puntero nulo. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pRef</td><td>es el dato a copiar </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aa3ac4bab0c6cea635768dbfe40dc1284"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classv_ref.html">vRef</a> vRef::assing </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>pSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classv_object.html">vObject</a> *&#160;</td>
+          <td class="paramname"><em>pVObject</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Es un metodo estatico que se encarga de reservar memoria y asignar un dato a esa memoria. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pSize</td><td>es el peso que se quiere reservar </td></tr>
+    <tr><td class="paramname">pVObject</td><td>es el dato que se quiere copia en el <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> es la referencia al dato </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a29f102a40b30f7662de769fd07f42f0c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string vRef::getType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene el tipo de dato al cual la referencia (<a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a>) apunta, arroja un error si este es un puntero invalido. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_null_pointer_exception.html" title="La clase NullPointerException, representa al error que se envia cuando se accesa a una porcion de mem...">NullPointerException</a></td><td>si el puntero es invalido</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>el tipo de dato del objeto al cual este apunta </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a82bfa187c785c2044dde59aa8d993c6a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int vRef::getWeight </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtiene el peso del objeto que apunta, arroja un error si este es un puntero invalido. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_null_pointer_exception.html" title="La clase NullPointerException, representa al error que se envia cuando se accesa a una porcion de mem...">NullPointerException</a></td><td>si el puntero es invalido</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>el peso del objeto que apunta </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a8c6c503ee26c2e26bbf336166992f79c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -198,7 +306,148 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>vHeap</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p><a class="el" href="classv_ref.html">vRef</a> &amp;vRef::operator =(int pAddress) { <a class="el" href="classv_heap.html#a1b50fb6f333ab744a080647f689f3de9" title="Obtiene la unica instancia, si no exite la crea. ">vHeap::getInstance()</a>-&gt;removeReference(this); this = <a class="el" href="classv_heap.html#a1b50fb6f333ab744a080647f689f3de9" title="Obtiene la unica instancia, si no exite la crea. ">vHeap::getInstance()</a>-&gt;get(pAddress); return *this; } </p>
+
+<p>Operador de de-referencia, obtiene el dato que este apunta alojado en memoria del <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a>. Si el puntero es invalido arroja un <a class="el" href="class_null_pointer_exception.html" title="La clase NullPointerException, representa al error que se envia cuando se accesa a una porcion de mem...">NullPointerException</a> como error. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_null_pointer_exception.html" title="La clase NullPointerException, representa al error que se envia cuando se accesa a una porcion de mem...">NullPointerException</a></td><td>si el puntero es invalido </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>retorna el dato alojado en el <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a> que este apunta </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a6fdd2c2154bfe2a436684b0a4d8dc44c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classv_ref.html">vRef</a> &amp; vRef::operator= </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classv_object.html">vObject</a> *&#160;</td>
+          <td class="paramname"><em>pVObject</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Asignacion. Asigna una copia del dato a la referencia, si la referencia es nula entoncen se lanza un error. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pVObject</td><td>Es el dato a copiar en el <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>una referencia a un <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_null_pointer_exception.html" title="La clase NullPointerException, representa al error que se envia cuando se accesa a una porcion de mem...">NullPointerException</a></td><td>si la referencia es nula </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a09a2b66a31121f2ea39db1d2275df018"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classv_ref.html">vRef</a>&amp; vRef::operator= </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pAddress</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>se asigna a una direccion de memoria, si la direccion no pertenece al <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a>, es un puntero nulo </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pAddress</td><td>es la direccion a referenciar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>una referencia al <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> asignado </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7a5795eb3d07af12a724006868ed28ba"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classv_ref.html">vRef</a> &amp; vRef::operator= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classv_ref.html">vRef</a>&#160;</td>
+          <td class="paramname"><em>pRef</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operador de asignacion a un <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> se copian los datos se disminuye en 1 la referencia actual y se aumenta en 1 la referencia a copiar. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pRef</td><td>Es la referencia a referenciar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Una referencia a un <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a67f7a5cc022f60bfe5a6d1069d97a455"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool vRef::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classv_ref.html">vRef</a> &amp;&#160;</td>
+          <td class="paramname"><em>pVRef</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verifica si dos referencias (<a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a>) son iguales. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pVRef</td><td>es el <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> con el cual se desea comparar </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true si son iguales </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a3f8a845f0e4623d38404e67ff51d8c5c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool vRef::_destroyRef</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>TODO </p>
+
+</div>
+</div>
+<a class="anchor" id="aaf5d33821d373d8b68daa73b00969c2c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool vRef::_fromVHeap</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>TODO </p>
 
 </div>
 </div>
@@ -212,7 +461,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>vHeap</b></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classv_ref.html">vRef</a></li>
-    <li class="footer">Generated on Thu Apr 2 2015 17:59:42 for Lightweight Dynamic Memory Manager by
+    <li class="footer">Generated on Thu Apr 2 2015 18:38:17 for Lightweight Dynamic Memory Manager by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

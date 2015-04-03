@@ -5,7 +5,6 @@
 #include <iostream>
 #include <pthread.h>
 
-bool vRef::MutexFlag = true;
 //pthread_mutex_t mut2 = PTHREAD_MUTEX_INITIALIZER;
 
 vRef::vRef(const void *pMemorySection)
@@ -25,44 +24,9 @@ vRef::vRef(const vRef &pRef)
     vHeap::getInstance()->addRef(&pRef);
     this->_Id = pRef._Id;
     _destroyRef = pRef._destroyRef;
-    /**
-    std::cout << "copy is called" << std::endl;
-    std::cout << "copy amp" << std::endl;
-    if (pRef._destroyRef)vHeap::getInstance()->addRef(&pRef);
-    if(this->_Id == pRef._Id)this->_destroyRef = pRef._destroyRef;
-    else{
-        vRef a(this->_Id,false);
-        if (a._Id != -1){
-        }
-            std::cout << "alguien entra aqui" << std::endl;
-    }
-    */
-}
-void vRef::turnOnMutex()
-{
-    if (MutexFlag){
-        //pthread_mutex_lock(&vHeap::mut);
-        //pthread_cond_signal(&vHeap::cond);
-        MutexFlag = false;
-    }
 }
 
-vRef::vRef(const vRef *pRef)
-{
-    std::cout << "copy *" << std::endl;
-    this->_Id = pRef->_Id;
-    this->_destroyRef = true;
 
-    delete pRef;
-}
-
-void vRef::powerOffMutex()
-{
-    if (MutexFlag){
-        //pthread_mutex_unlock(&vHeap::mut);
-        MutexFlag=true;
-    }
-}
 vRef &vRef::operator =(const vObject *pVObject)
 {
 
@@ -84,7 +48,6 @@ vRef &vRef::operator =(vRef pRef)
     vHeap::getInstance()->addRef(&pRef);
     this->_Id = pRef._Id;
     _destroyRef = pRef._destroyRef;
-    //if (this->_Id == -1 && pRef._destroyRef)vHeap::getInstance()->addRef(&pRef);
     this->_Id = pRef._Id;
     return *this;
 }
@@ -96,15 +59,6 @@ vRef vRef::assing(size_t pSize,const vObject *pVObject)
     vHeap::getInstance()->set(&t,pVObject);
     return t;
 }
-
-/**
-vRef &vRef::operator =(int pAddress)
-{
-    vHeap::getInstance()->removeReference(this);
-    *this = vHeap::getInstance()->get(pAddress);
-    return *this;
-}
-*/
 
 vObject *vRef::operator *()
 {

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['_7eminimalismbitvector',['~MinimalismBitVector',['../class_minimalism_bit_vector.html#a3c8458d181a7dedc5fe95d4e4cc1667a',1,'MinimalismBitVector']]],
-  ['_7evheap',['~vHeap',['../classv_heap.html#a8bbcf6e79d6d28f16a1de164619e04ef',1,'vHeap']]]
+  ['what',['what',['../class_full_memory_heap_exception.html#a66ee760289cae528c31ffdedfc2ccc0a',1,'FullMemoryHeapException::what()'],['../class_no_match_classes_exception.html#a1dc1f5956c7e6c2a9211432471a60e6d',1,'NoMatchClassesException::what()'],['../class_null_pointer_exception.html#a0dcc55bb0f3a50e888d8d4a904508313',1,'NullPointerException::what()'],['../class_v_heap_exception.html#a58154e8dc02f9c28dfefad7897f8b2cf',1,'VHeapException::what()']]]
 ];

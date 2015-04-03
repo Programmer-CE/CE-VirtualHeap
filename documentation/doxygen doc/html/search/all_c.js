@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['vchar',['vChar',['../classv_char.html',1,'']]],
-  ['vfree',['vFree',['../classv_heap.html#abb964cfa76ddee4cd1cc22dae845eed4',1,'vHeap']]],
-  ['vheap',['vHeap',['../classv_heap.html',1,'']]],
-  ['vheapexception',['VHeapException',['../class_v_heap_exception.html',1,'']]],
-  ['vint',['vInt',['../classv_int.html',1,'vInt'],['../classv_int.html#a6b689f162fca003015d4f9545b6b846a',1,'vInt::vInt()']]],
-  ['vmalloc',['vMalloc',['../classv_heap.html#ae4aae8ea89bc24fffed43c509fdfdc8c',1,'vHeap']]],
-  ['vobject',['vObject',['../classv_object.html',1,'vObject'],['../classv_object.html#af5d1cd42c54c5e33da3dfe5ce747acad',1,'vObject::vObject()']]],
-  ['vref',['vRef',['../classv_ref.html',1,'vRef'],['../classv_ref.html#a665fe2849fbbabcb1930128b78c144ff',1,'vRef::vRef()']]]
+  ['set',['set',['../classv_heap.html#aba09b3334fc1a732308f278c9e292484',1,'vHeap']]],
+  ['setint',['setInt',['../classv_int.html#a9781020db0c2c20724e4055b0cd82667',1,'vInt']]],
+  ['setoffset',['setOffset',['../class_minimalism_bit_vector.html#ad9d6993d2a24b1f238f1896dd8ff04be',1,'MinimalismBitVector']]],
+  ['setonmemorylocation',['setOnMemoryLocation',['../class_minimalism_bit_vector.html#a747ed61c44f091dd3326644216a923dd',1,'MinimalismBitVector']]],
+  ['setonuse',['setOnUse',['../class_minimalism_bit_vector.html#a63b95b7f8446bfc105d42837be83b42b',1,'MinimalismBitVector']]],
+  ['setreferencecounter',['setReferenceCounter',['../class_minimalism_bit_vector.html#af65272b7663cfc96d2a8fd16668b8570',1,'MinimalismBitVector']]],
+  ['settype',['setType',['../class_minimalism_bit_vector.html#a15aad2b30f6e8c2e76bba5e617de351c',1,'MinimalismBitVector']]],
+  ['setweight',['setWeight',['../class_minimalism_bit_vector.html#ac4480ef294435f54049da5cad957e1a9',1,'MinimalismBitVector']]]
 ];

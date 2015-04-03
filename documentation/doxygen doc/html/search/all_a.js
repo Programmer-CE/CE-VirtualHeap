@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['removereference',['removeReference',['../class_minimalism_bit_vector.html#ace33d25bceb2a3c4c2e2820650c37e10',1,'MinimalismBitVector::removeReference()'],['../classv_heap.html#a156d31e57a36f093898e4b302e5f270a',1,'vHeap::removeReference()']]]
+  ['print',['print',['../classv_heap.html#aea047ac5e0f6cc9c8ac39a8984c8cedc',1,'vHeap']]],
+  ['protect',['protect',['../classv_heap.html#a56ee2409f56a8117fd3b04434803b3ba',1,'vHeap']]]
 ];

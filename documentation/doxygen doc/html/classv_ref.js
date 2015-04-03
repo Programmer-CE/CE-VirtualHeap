@@ -1,9 +1,7 @@
 var classv_ref =
 [
     [ "vRef", "classv_ref.html#ac2b5f44f695eef09cc28e3dd07fc1026", null ],
-    [ "vRef", "classv_ref.html#a42661b55fdd6d60c1b7d34fec5dc6ebb", null ],
     [ "vRef", "classv_ref.html#a665fe2849fbbabcb1930128b78c144ff", null ],
-    [ "vRef", "classv_ref.html#a6824b37064baf1055c0634d25af33302", null ],
     [ "~vRef", "classv_ref.html#a0c2e8271f53598dc7ba931db2b7a182d", null ],
     [ "getType", "classv_ref.html#a29f102a40b30f7662de769fd07f42f0c", null ],
     [ "getWeight", "classv_ref.html#a82bfa187c785c2044dde59aa8d993c6a", null ],

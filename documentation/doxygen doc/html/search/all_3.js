@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fullmemoryheapexception',['FullMemoryHeapException',['../class_full_memory_heap_exception.html',1,'']]]
+  ['explorationvheap',['ExplorationVHeap',['../class_exploration_v_heap.html',1,'']]]
 ];

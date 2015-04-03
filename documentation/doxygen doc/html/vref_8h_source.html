@@ -110,47 +110,51 @@ $(document).ready(function(){initNavTree('vref_8h_source.html','');});
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef VREF_H</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define VREF_H</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classv_ref.html">    6</a></span>&#160;<span class="keyword">class </span><a class="code" href="classv_ref.html">vRef</a></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classv_heap.html">vHeap</a>;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">int</span> _Id = -1;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classv_ref.html">vRef</a>(<span class="keywordtype">int</span> pId,<span class="keywordtype">bool</span> pDestroyRef);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> MutexFlag;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> powerOffMutex();</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> turnOnMutex();</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">bool</span> _fromVHeap;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">bool</span> _destroyRef;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classv_ref.html">vRef</a>(){}</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classv_ref.html">vRef</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> * pMemorySection);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classv_ref.html">vRef</a>(<span class="keyword">const</span> <a class="code" href="classv_ref.html">vRef</a> &amp; pRef);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classv_ref.html">vRef</a>(<span class="keyword">const</span> <a class="code" href="classv_ref.html">vRef</a> * pRef);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classv_ref.html">vRef</a> &amp;operator =(<span class="keyword">const</span> <a class="code" href="classv_object.html">vObject</a> *pVObject);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">static</span> <a class="code" href="classv_ref.html">vRef</a> assing(<span class="keywordtype">size_t</span> pSize, <span class="keyword">const</span> <a class="code" href="classv_object.html">vObject</a> *pVObject);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="classv_ref.html">vRef</a> &amp;operator =(<span class="keywordtype">int</span> pAddress);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classv_ref.html">vRef</a> &amp;operator =(<a class="code" href="classv_ref.html">vRef</a> pRef);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classv_object.html">vObject</a> *<a class="code" href="classv_ref.html#a8c6c503ee26c2e26bbf336166992f79c">operator * </a>();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">bool</span> operator ==(<span class="keyword">const</span> <a class="code" href="classv_ref.html">vRef</a> &amp; pVRef);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getWeight();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::string <a class="code" href="classv_heap.html#af6967e0e004d4ae78c88363878ae96a3">getType</a>();</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">virtual</span> ~<a class="code" href="classv_ref.html">vRef</a>();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif // VREF_H</span></div>
-<div class="ttc" id="classv_ref_html"><div class="ttname"><a href="classv_ref.html">vRef</a></div><div class="ttdef"><b>Definition:</b> vref.h:6</div></div>
-<div class="ttc" id="classv_heap_html_af6967e0e004d4ae78c88363878ae96a3"><div class="ttname"><a href="classv_heap.html#af6967e0e004d4ae78c88363878ae96a3">vHeap::getType</a></div><div class="ttdeci">std::string getType(vRef *pRef)</div><div class="ttdoc">Obtiene un string con el tipo de dato de la referencia. </div><div class="ttdef"><b>Definition:</b> vheap.cpp:294</div></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classv_ref.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classv_ref.html">vRef</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classv_heap.html">vHeap</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">int</span> _Id = -1; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classv_ref.html#ac2b5f44f695eef09cc28e3dd07fc1026">vRef</a>(<span class="keywordtype">int</span> pId,<span class="keywordtype">bool</span> pDestroyRef);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classv_ref.html#aaf5d33821d373d8b68daa73b00969c2c">   23</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classv_ref.html#aaf5d33821d373d8b68daa73b00969c2c">_fromVHeap</a>; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classv_ref.html#a3f8a845f0e4623d38404e67ff51d8c5c">   24</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classv_ref.html#a3f8a845f0e4623d38404e67ff51d8c5c">_destroyRef</a>; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classv_ref.html#ac2b5f44f695eef09cc28e3dd07fc1026">   29</a></span>&#160;    <a class="code" href="classv_ref.html#ac2b5f44f695eef09cc28e3dd07fc1026">vRef</a>(){}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="classv_ref.html#ac2b5f44f695eef09cc28e3dd07fc1026">vRef</a>(<span class="keyword">const</span> <a class="code" href="classv_ref.html">vRef</a> &amp; pRef);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="classv_ref.html">vRef</a> &amp;<a class="code" href="classv_ref.html#a6fdd2c2154bfe2a436684b0a4d8dc44c">operator =</a>(<span class="keyword">const</span> <a class="code" href="classv_object.html">vObject</a> *pVObject);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">static</span> <a class="code" href="classv_ref.html">vRef</a> <a class="code" href="classv_ref.html#aa3ac4bab0c6cea635768dbfe40dc1284">assing</a>(<span class="keywordtype">size_t</span> pSize, <span class="keyword">const</span> <a class="code" href="classv_object.html">vObject</a> *pVObject);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="classv_ref.html">vRef</a> &amp;<a class="code" href="classv_ref.html#a6fdd2c2154bfe2a436684b0a4d8dc44c">operator =</a>(<span class="keywordtype">int</span> pAddress);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="classv_ref.html">vRef</a> &amp;<a class="code" href="classv_ref.html#a6fdd2c2154bfe2a436684b0a4d8dc44c">operator =</a>(<a class="code" href="classv_ref.html">vRef</a> pRef);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="classv_object.html">vObject</a> *<a class="code" href="classv_ref.html#a8c6c503ee26c2e26bbf336166992f79c">operator * </a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classv_ref.html#a67f7a5cc022f60bfe5a6d1069d97a455">operator ==</a>(<span class="keyword">const</span> <a class="code" href="classv_ref.html">vRef</a> &amp; pVRef);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classv_ref.html#a82bfa187c785c2044dde59aa8d993c6a">getWeight</a>();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    std::string <a class="code" href="classv_ref.html#a29f102a40b30f7662de769fd07f42f0c">getType</a>();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classv_ref.html#a0c2e8271f53598dc7ba931db2b7a182d">~vRef</a>();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;};</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#endif // VREF_H</span></div>
+<div class="ttc" id="classv_ref_html"><div class="ttname"><a href="classv_ref.html">vRef</a></div><div class="ttdoc">La clase vRef. </div><div class="ttdef"><b>Definition:</b> vref.h:10</div></div>
+<div class="ttc" id="classv_ref_html_aa3ac4bab0c6cea635768dbfe40dc1284"><div class="ttname"><a href="classv_ref.html#aa3ac4bab0c6cea635768dbfe40dc1284">vRef::assing</a></div><div class="ttdeci">static vRef assing(size_t pSize, const vObject *pVObject)</div><div class="ttdoc">Es un metodo estatico que se encarga de reservar memoria y asignar un dato a esa memoria. </div><div class="ttdef"><b>Definition:</b> vref.cpp:56</div></div>
+<div class="ttc" id="classv_ref_html_a6fdd2c2154bfe2a436684b0a4d8dc44c"><div class="ttname"><a href="classv_ref.html#a6fdd2c2154bfe2a436684b0a4d8dc44c">vRef::operator=</a></div><div class="ttdeci">vRef &amp; operator=(const vObject *pVObject)</div><div class="ttdoc">Asignacion. Asigna una copia del dato a la referencia, si la referencia es nula entoncen se lanza un ...</div><div class="ttdef"><b>Definition:</b> vref.cpp:30</div></div>
+<div class="ttc" id="classv_ref_html_a0c2e8271f53598dc7ba931db2b7a182d"><div class="ttname"><a href="classv_ref.html#a0c2e8271f53598dc7ba931db2b7a182d">vRef::~vRef</a></div><div class="ttdeci">virtual ~vRef()</div><div class="ttdoc">Destruye el vRef y elimina una referencia si la bandera de destruccion lo permite. </div><div class="ttdef"><b>Definition:</b> vref.cpp:96</div></div>
 <div class="ttc" id="classv_object_html"><div class="ttname"><a href="classv_object.html">vObject</a></div><div class="ttdoc">Es la clase que representa al objeto contenido en el vHeap. </div><div class="ttdef"><b>Definition:</b> vobject.h:15</div></div>
+<div class="ttc" id="classv_ref_html_a82bfa187c785c2044dde59aa8d993c6a"><div class="ttname"><a href="classv_ref.html#a82bfa187c785c2044dde59aa8d993c6a">vRef::getWeight</a></div><div class="ttdeci">unsigned int getWeight()</div><div class="ttdoc">Obtiene el peso del objeto que apunta, arroja un error si este es un puntero invalido. </div><div class="ttdef"><b>Definition:</b> vref.cpp:82</div></div>
+<div class="ttc" id="classv_ref_html_ac2b5f44f695eef09cc28e3dd07fc1026"><div class="ttname"><a href="classv_ref.html#ac2b5f44f695eef09cc28e3dd07fc1026">vRef::vRef</a></div><div class="ttdeci">vRef()</div><div class="ttdoc">Inicializa el vRef como un puntero nulo. </div><div class="ttdef"><b>Definition:</b> vref.h:29</div></div>
+<div class="ttc" id="classv_ref_html_a67f7a5cc022f60bfe5a6d1069d97a455"><div class="ttname"><a href="classv_ref.html#a67f7a5cc022f60bfe5a6d1069d97a455">vRef::operator==</a></div><div class="ttdeci">bool operator==(const vRef &amp;pVRef)</div><div class="ttdoc">Verifica si dos referencias (vRef) son iguales. </div><div class="ttdef"><b>Definition:</b> vref.cpp:77</div></div>
+<div class="ttc" id="classv_ref_html_aaf5d33821d373d8b68daa73b00969c2c"><div class="ttname"><a href="classv_ref.html#aaf5d33821d373d8b68daa73b00969c2c">vRef::_fromVHeap</a></div><div class="ttdeci">bool _fromVHeap</div><div class="ttdef"><b>Definition:</b> vref.h:23</div></div>
+<div class="ttc" id="classv_ref_html_a3f8a845f0e4623d38404e67ff51d8c5c"><div class="ttname"><a href="classv_ref.html#a3f8a845f0e4623d38404e67ff51d8c5c">vRef::_destroyRef</a></div><div class="ttdeci">bool _destroyRef</div><div class="ttdef"><b>Definition:</b> vref.h:24</div></div>
 <div class="ttc" id="classv_heap_html"><div class="ttname"><a href="classv_heap.html">vHeap</a></div><div class="ttdoc">La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. </div><div class="ttdef"><b>Definition:</b> vheap.h:28</div></div>
-<div class="ttc" id="classv_ref_html_a8c6c503ee26c2e26bbf336166992f79c"><div class="ttname"><a href="classv_ref.html#a8c6c503ee26c2e26bbf336166992f79c">vRef::operator*</a></div><div class="ttdeci">vObject * operator*()</div><div class="ttdef"><b>Definition:</b> vref.cpp:109</div></div>
+<div class="ttc" id="classv_ref_html_a8c6c503ee26c2e26bbf336166992f79c"><div class="ttname"><a href="classv_ref.html#a8c6c503ee26c2e26bbf336166992f79c">vRef::operator*</a></div><div class="ttdeci">vObject * operator*()</div><div class="ttdoc">Operador de de-referencia, obtiene el dato que este apunta alojado en memoria del vHeap...</div><div class="ttdef"><b>Definition:</b> vref.cpp:63</div></div>
+<div class="ttc" id="classv_ref_html_a29f102a40b30f7662de769fd07f42f0c"><div class="ttname"><a href="classv_ref.html#a29f102a40b30f7662de769fd07f42f0c">vRef::getType</a></div><div class="ttdeci">std::string getType()</div><div class="ttdoc">Obtiene el tipo de dato al cual la referencia (vRef) apunta, arroja un error si este es un puntero in...</div><div class="ttdef"><b>Definition:</b> vref.cpp:89</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><b>vref.h</b></li>
-    <li class="footer">Generated on Thu Apr 2 2015 17:59:38 for Lightweight Dynamic Memory Manager by
+    <li class="footer">Generated on Thu Apr 2 2015 18:38:12 for Lightweight Dynamic Memory Manager by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
