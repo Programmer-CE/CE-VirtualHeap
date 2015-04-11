@@ -1,10 +1,15 @@
+#include "vobject.h"
+
 #ifndef VCHAR_H
 #define VCHAR_H
 
-class vChar
+class vChar:public vObject
 {
+    char _myChar;
 public:
-    vChar();
+    vChar(char pChar);
+    char getChar();
+    void setChar(char pChar);
 };
 
 #endif // VCHAR_H

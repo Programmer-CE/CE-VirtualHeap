@@ -66,6 +66,9 @@ public:
      * de la clase estan protegidos por el mutex
      */
     static pthread_mutex_t mut;
+
+    static char* UNDEFINED_TYPE;
+
     /**
      * @brief Obtiene la unica instancia, si no exite la crea
      * @return el puntero a la unica instancia

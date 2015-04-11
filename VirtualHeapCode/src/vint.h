@@ -10,6 +10,8 @@ class vInt :public vObject
 {
     int _Int; /**< TODO */
 public:
+    vInt();
+
     /**
      * @brief Es el contructor de vInt
      *

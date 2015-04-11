@@ -19,6 +19,8 @@ class vRef
      * disminuye una referencia o no en el vHeap
      */
     vRef(int pId,bool pDestroyRef);
+
+
 public:
     bool _fromVHeap; /**< TODO */
     bool _destroyRef; /**< TODO */
@@ -54,6 +56,12 @@ public:
      * @return vRef es la referencia al dato
      */
     static vRef assing(size_t pSize, const vObject *pVObject);
+
+
+
+    static vRef reserve(size_t pSize);
+
+
     /**
      * @brief se asigna a una direccion de memoria, si la direccion
      * no pertenece al vHeap, es un puntero nulo
@@ -108,6 +116,7 @@ public:
      * la bandera de destruccion lo permite
      *
      */
+
     virtual ~vRef();
 
 };

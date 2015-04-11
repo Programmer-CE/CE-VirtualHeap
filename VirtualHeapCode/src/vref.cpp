@@ -6,11 +6,13 @@
 #include <pthread.h>
 
 //pthread_mutex_t mut2 = PTHREAD_MUTEX_INITIALIZER;
-
+/**
 vRef::vRef(const void *pMemorySection)
 {
     //vHeap::getInstance()->get(this,pMemorySection);
 }
+
+*/
 
 vRef::vRef(int pId,bool pDestroyRef)
 {
@@ -30,14 +32,7 @@ vRef::vRef(const vRef &pRef)
 vRef &vRef::operator =(const vObject *pVObject)
 {
 
-    try{
     vHeap::getInstance()->set(this,pVObject);
-    }
-    catch(NullPointerException e){
-        std::cout << "ref error" << _Id << std::endl;
-        exit (0);
-    }
-
     return *this;
 }
 
@@ -60,17 +55,19 @@ vRef vRef::assing(size_t pSize,const vObject *pVObject)
     return t;
 }
 
+
+vRef vRef::reserve(size_t pSize)
+{
+    vRef t(vHeap::getInstance()->vMalloc(pSize,vHeap::UNDEFINED_TYPE)._Id,true);
+    return t;
+}
+
+
 vObject *vRef::operator *()
 {
     vObject * toReturn;
-    try{
     vHeap::getInstance()->protect(this);
     toReturn = vHeap::getInstance()->get(this);
-    }
-    catch(NullPointerException e){
-        std::cout << "ref error" << _Id << std::endl;
-        exit (0);
-    }
     return toReturn;
 }
 
@@ -96,7 +93,6 @@ std::string vRef::getType()
 vRef::~vRef()
 {
     if(_destroyRef){
-        std::cout << "destroy ref " << _Id<< std::endl;
         vHeap::getInstance()->removeReference(this);
     }
 }

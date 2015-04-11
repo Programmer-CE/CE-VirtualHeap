@@ -9,6 +9,10 @@
 vHeap* vHeap::_Instance = 0;
 
 pthread_mutex_t vHeap::mut = PTHREAD_MUTEX_INITIALIZER;
+
+char* vHeap::UNDEFINED_TYPE = "undefined-type";
+
+
 // clase vacia que pesa 1 Byte
 class ExplorationVHeap{
 
@@ -135,11 +139,15 @@ void vHeap::set(vRef *pRef, const vObject *pObject)
         throw NullPointerException();
     }
     else{
-        MinimalismBitVector  memorylocation= _BitVector->get(index);
-        if (string(typeid(*pObject).name()) == memorylocation.getType()){
+        MinimalismBitVector  *memorylocation= &_BitVector->getReference(index);
+        vObject * toReturn = (vObject*)((ExplorationVHeap*)_Chunk + memorylocation->getOffset());
+        if (memorylocation->getType() == string(UNDEFINED_TYPE)){
+            memorylocation->setType(string(typeid(*toReturn).name()));
+        }
+        if(pObject->getType() == toReturn->getType()){
             copy((ExplorationVHeap*)pObject,
-                 ((ExplorationVHeap*)pObject + memorylocation.getWeight()),
-                 ((ExplorationVHeap*)_Chunk + memorylocation.getOffset()));
+                 ((ExplorationVHeap*)pObject + memorylocation->getWeight()),
+                 ((ExplorationVHeap*)_Chunk + memorylocation->getOffset()));
         }
         else{
             pthread_mutex_unlock(&vHeap::mut);
@@ -209,7 +217,6 @@ void vHeap::removeReference(vRef *pVRef){
     pthread_mutex_lock(&vHeap::mut);
     int index = searchBitVector(pVRef->_Id);
     if (index == -1){
-        std::cout << "no se encontro la referencias " << pVRef->_Id <<  " largo de referencias: " << _BitVector->getLenght() << " cantidad de memoria usada: " << _CurrentMemoryUsed << std::endl;
     }
     else{
         MinimalismBitVector memorylocation = _BitVector->get(index);
