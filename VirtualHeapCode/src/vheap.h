@@ -8,6 +8,7 @@
 #include <iostream>
 #include "src/garbagecollectorthread.h"
 #include <pthread.h>
+#include "rwpages/fheap.h"
 
 #include "src/memorycompactor.h"
 
@@ -28,6 +29,7 @@ using namespace std;
 class vHeap
 {
     static vHeap *_Instance;
+    fHeap _HeapOfPage;
     static unsigned int _Weight;
     unsigned int _OverWeight;
     unsigned int _CurrentMemoryUsed;
@@ -37,14 +39,72 @@ class vHeap
     DoubleList<MinimalismBitVector> *_BitVector;
     GarbageCollectorThread *_GarbageCollector;
     memoryCompactor * _MemoryCompactor;
+
+    /**
+     * @brief searchBitVector
+     * @param pId
+     * @return
+     */
+
     int searchBitVector(int pId);
+
+    /**
+     * @brief reallocMemory
+     * @param pFrom
+     * @param pAddressToAlloc
+     * @return
+     */
     MinimalismBitVector reallocMemory(const MinimalismBitVector *pFrom, unsigned int pAddressToAlloc);
+
+    /**
+     * @brief spaceBetween
+     * @param pRefa
+     * @param pRefb
+     * @return
+     */
     unsigned int spaceBetween(MinimalismBitVector pRefa,MinimalismBitVector pRefb);
+
+    /**
+     * @brief moveInPlaceOffset, mueve los datos despues del indice
+     * indicado por el paramatro pIndex, mueve cada dato la cantidad
+     * indicada por pWeight el otro parametro de esa funcion,
+     * esta funcion es usada para la memoria alojada en el disco duro
+     * por lo que el movimiento sera a nivel logico, no se realizara
+     * ningun cambio en la memoria fisica
+     * @param pIndex el indice desde el cual se revisara en la lista
+     * de MinimalismBitVector
+     * @param pWeight es la cantidad que se desea mover cada dato, si se
+     * quiere mover hacia atras es negativo, si se quiere mover hacia
+     * adelante debe ser positivo
+     */
+    void moveInPlaceOffset(int pIndex, int pWeight);
+
+
+
+    /**
+     * @brief insertOnPhysicalMemory
+     * @param pSize
+     */
+    vRef insertOnPhysicalMemory(unsigned int pSize);
+
+    /**
+     * @brief insertOnDiskMemory
+     * @param pSize
+     */
+    vRef insertOnDiskMemory(unsigned int pSize);
+
+
+    int getIndexToPagine(unsigned int pSize);
+    int getIndexOfPaginateData();
+
+
     /**
      * @brief vHeap Inicializa la el objeto vHeap
      */
-    vHeap()
+    vHeap():_HeapOfPage(0,"")
     {
+        _OverWeight = 400;
+        _HeapOfPage = fHeap(_OverWeight, "pages.bin");
         _TimeToSleepThreads = 2000;
         _isRunning = true;
         _BitVector = new DoubleList<MinimalismBitVector>();
@@ -54,7 +114,6 @@ class vHeap
             exit(0);
         }
         _CurrentMemoryUsed = 0;
-        _OverWeight = 0;
         _GarbageCollector = new GarbageCollectorThread(_TimeToSleepThreads);
         _MemoryCompactor = new memoryCompactor(_TimeToSleepThreads);
         _MemoryCompactor->start();
@@ -66,8 +125,6 @@ public:
      * de la clase estan protegidos por el mutex
      */
     static pthread_mutex_t mut;
-
-    static char* UNDEFINED_TYPE;
 
     /**
      * @brief Obtiene la unica instancia, si no exite la crea
@@ -85,7 +142,7 @@ public:
      * @return un vRef que representa un puntero a la memoria reservada
      * por este puntero
      */
-    vRef vMalloc(unsigned int pSize, string pType);
+    vRef vMalloc(unsigned int pSize);
 
     /**
      * @brief Libera la memoria que un vRef apunta, si la referencia

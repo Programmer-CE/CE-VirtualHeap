@@ -14,7 +14,6 @@ class MinimalismBitVector
 {
     int _Id; /**< TODO */
     unsigned int _Weight; /**< TODO */
-    string _Type; /**< TODO */
     int _ReferenceCounter; /**< TODO */
     bool _InUseFlag, _OnMemoryFlag; /**< TODO */
     unsigned int _Offset;
@@ -37,7 +36,7 @@ public:
      * @param pWeight es el tamanio del objeto al cual representa el objeto instanciado
      * @param pType es el tipo del objeto al cual esta clase representa.
      */
-    MinimalismBitVector(unsigned int pOffset, unsigned int pWeight, string pType);
+    MinimalismBitVector(unsigned int pOffset, unsigned int pWeight);
     /**
      * @brief suma en uno al contador de referencia
      *
@@ -88,16 +87,6 @@ public:
      * @param pWeight el peso nuevo a setear
      */
     void setWeight(unsigned int pWeight);
-    /**
-     * @brief Obtiene un string que represe tipo de dato al cual representa
-     * @return un string que contiene el tipo de dato al cual este representa
-     */
-    string getType() const;
-    /**
-     * @brief setea el tipo de dato al cual este representa
-     * @param pType el tipo de dato al cual este va a representar
-     */
-    void setType(const string &pType);
     /**
      * @brief obtiene el el id del objeto
      * @return el id del objeto
@@ -156,6 +145,7 @@ public:
      */
     friend ostream &operator <<(ostream& os, const MinimalismBitVector & e){
         os << e.getId() << ":" << e.getReferenceCounter();
+        return os;
     }
 
     /**

@@ -6,6 +6,7 @@
 #define VOBJECT_H
 
 class vRef;
+class vHeap;
 
 /**
  * @brief Es la clase que representa al objeto contenido en el vHeap
@@ -14,9 +15,22 @@ class vRef;
  */
 class vObject
 {
-    virtual bool isArray(){
+    friend class vHeap;
+
+    virtual bool isArray()const{
         return false;
     }
+
+    /**
+     * @brief getNumOfObjects en el caso de ser un vObject retorna 1
+     * en el caso de ser un array, retorna el numero de objetos que
+     * contiene
+     * @return 1
+     */
+    virtual int getNumOfObjects() const{
+        return 1;
+    }
+
 
 public:
     /**
@@ -48,6 +62,7 @@ public:
      * @return el tipo de dato
      */
     virtual const char *getType()const;
+
 };
 
 #endif // VOBJECT_H

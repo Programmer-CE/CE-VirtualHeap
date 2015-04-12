@@ -9,11 +9,26 @@
 template <class E, int plenght>
 class vArray:public vObject
 {
-    bool isArray(){
-        return false;
+
+
+
+    bool isArray() const {
+        return true;
+    }
+
+
+    /**
+     * @brief getNumOfObjects en el caso de ser un vObject retorna 1
+     * en el caso de ser un array, retorna el numero de objetos que
+     * contiene
+     * @return 1
+     */
+    int getNumOfObjects() const{
+        return plenght;
     }
 public:
     vArray();
+
     /**
      * @brief operator new, es el encargado de agregar los objeto a memoria del
      * vheap.
@@ -24,6 +39,7 @@ public:
      */
     void *operator new(size_t pSize, vRef * pRef);
     E &operator [](int pIndex);
+
 
 };
 

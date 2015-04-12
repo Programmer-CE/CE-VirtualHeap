@@ -28,7 +28,7 @@ public:
      * @brief Inicializa el vRef como un puntero nulo
      *
      */
-    vRef(){}
+    vRef(){_Id = -1;}
 
     /**
      * @brief Es el constructor de copia, se encarga de agregar

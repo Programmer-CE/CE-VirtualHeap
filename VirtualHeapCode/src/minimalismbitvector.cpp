@@ -18,19 +18,17 @@ MinimalismBitVector::MinimalismBitVector(const MinimalismBitVector &othervariabl
 {
     _Id = othervariable.getId();
     _Weight = othervariable.getWeight();
-    _Type = othervariable.getType();
     _ReferenceCounter = othervariable.getReferenceCounter();
     _InUseFlag = othervariable.isOnUse();
     _OnMemoryFlag = othervariable.isChargedOnMemory();
     _Offset = othervariable.getOffset();
 }
 
-MinimalismBitVector::MinimalismBitVector(unsigned int pOffset, unsigned int pWeight, string pType)
+MinimalismBitVector::MinimalismBitVector(unsigned int pOffset, unsigned int pWeight)
 {
     _Offset = pOffset;
     _Id = ++Serial;
     _Weight = pWeight;
-    _Type = pType;
 }
 
 
@@ -56,11 +54,6 @@ MinimalismBitVector::~MinimalismBitVector()
 unsigned int MinimalismBitVector::getWeight() const
 {
     return _Weight;
-}
-
-string MinimalismBitVector::getType() const
-{
-    return _Type;
 }
 
 int MinimalismBitVector::getId() const
@@ -92,11 +85,6 @@ void MinimalismBitVector::setWeight(unsigned int pWeight)
 {
     _Weight = pWeight;
 }
-void MinimalismBitVector::setType(const string &pType)
-{
-    _Type = pType;
-}
-
 
 void MinimalismBitVector::setReferenceCounter(int ReferenceCounter)
 {

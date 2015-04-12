@@ -17,6 +17,7 @@ fHeap::fHeap(int overWeight, char* pPath){
 }
 
 void fHeap::paginate(char * pToWrite,int pNumberOfCharacters){
+    std::cout << "fHeap Called, to Write: " << pNumberOfCharacters << std::endl;
     if (!_isPage){
       this->deletePage();
       _isPage=true;
@@ -31,6 +32,40 @@ void fHeap::paginate(char * pToWrite,int pNumberOfCharacters){
         _totalDataMemory+=pNumberOfCharacters;
         _weightList.add(pNumberOfCharacters);
     }
+}
+
+const char *fHeap::interchangePage(char *pToWrite, int pOffset, char *toCopy)
+{
+
+    std::ofstream fileTmp("tmp.bin",std::ios::out | std::ios::binary |std::ios::app);
+
+    std::ifstream fileIn(_path,std::ios::in | std::ios::binary);
+
+    int currentOffset = 0;
+    int currentWeight;
+    for (int currentWeightIndex = 0; currentWeightIndex < _weightList.getLenght();currentWeightIndex++){
+        currentWeight = _weightList.get(currentWeightIndex);
+        char chain[currentWeight];//setea el tamanio de la cadena por el peso del objeto guardado en el archivo
+        fileIn.read(reinterpret_cast<char *>(&chain),currentWeight);//cambiar size!!
+        if(currentOffset==pOffset){//modificar condicion de comparacion!!!
+            strcpy(toCopy,chain);
+                        fileTmp.write(reinterpret_cast<char *>(pToWrite),currentWeight);//cambiar size segun lista!
+        }
+        else{
+            fileTmp.write(reinterpret_cast<char *>(&chain),currentWeight);//cambiar size segun lista!
+            //decreaseMemory=0;
+        }
+        currentOffset += currentWeight;
+
+
+
+    }
+
+    fileIn.close();
+    fileTmp.close();
+    remove(_path);
+    rename("tmp.bin",_path);
+    return toCopy;
 }
 
 const char* fHeap::getPage(int pOffset, char * toCopy){
@@ -73,6 +108,11 @@ const char* fHeap::getPage(int pOffset, char * toCopy){
     _totalData+=decreaseMemory;
     return toCopy;
 
+}
+
+int fHeap::getMemoryUsed()
+{
+    return _totalDataMemory;
 }
 
 void fHeap::deletePage(){

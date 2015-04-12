@@ -50,7 +50,7 @@ vRef &vRef::operator =(vRef pRef)
 
 vRef vRef::assing(size_t pSize,const vObject *pVObject)
 {
-    vRef t(vHeap::getInstance()->vMalloc(pSize,pVObject->getType())._Id,true);
+    vRef t(vHeap::getInstance()->vMalloc(pSize)._Id,true);
     vHeap::getInstance()->set(&t,pVObject);
     return t;
 }
@@ -58,7 +58,7 @@ vRef vRef::assing(size_t pSize,const vObject *pVObject)
 
 vRef vRef::reserve(size_t pSize)
 {
-    vRef t(vHeap::getInstance()->vMalloc(pSize,vHeap::UNDEFINED_TYPE)._Id,true);
+    vRef t(vHeap::getInstance()->vMalloc(pSize)._Id,true);
     return t;
 }
 
