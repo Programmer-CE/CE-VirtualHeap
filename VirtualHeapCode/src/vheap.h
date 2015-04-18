@@ -39,6 +39,7 @@ class vHeap
     unsigned int _TimeToSleepThreads;
     void *_Chunk;
     bool _isRunning;
+    bool _vDebug;
     int _vMallocCalled,_vFreeCalled, _GarbageCollectorCalled, _MemoryCompactorCalled;
     int _PagedObject, _NotPagedObject;
     int _MemoryBlocks;
@@ -48,6 +49,7 @@ class vHeap
     memoryCompactor * _MemoryCompactor;
     ViewerMemoryThread *_ViewerUpdater;
     ClientSocket *clientSocket;
+    time_t comienzo, final;
     /**
      * @brief searchBitVector
      * @param pId
@@ -119,6 +121,9 @@ class vHeap
     vRef vMalloc(unsigned int pSize);
 
 
+    void calculateTime();
+
+
 
     /**
      * @brief vHeap Inicializa la el objeto vHeap
@@ -127,7 +132,7 @@ class vHeap
         _GarbageCollectorCalled(0), _MemoryCompactorCalled(0),
         _PagedObject(0),_NotPagedObject(0)
     {
-        _OverWeight = 400;
+        _OverWeight = 512;
         _HeapOfPage = fHeap(_OverWeight, "pages.bin");
         _TimeToSleepThreads = 2000;
         _isRunning = true;
@@ -247,24 +252,6 @@ public:
      * @brief Imprime lo que se encuetra en el vHeap
      */
     void print();
-
-    /**
-     * @brief Obtiene un string con el tipo de dato de la referencia
-     * @param pRef es la referencia de la cual se quiere solicitar el
-     * tipo de dato
-     * @return el tipo de dato que la referencia apunta
-     */
-    std::string getType(vRef * pRef);
-
-    /**
-     * @brief Obtiene un unsigned int que representa el peso de la referencia
-     * @param pRef es la referencia de la cual se quiere solicitar el
-     * peso del objeto
-     * @return el peso del objeto que la referencia apunta
-     */
-    unsigned int getWight(vRef * pRef);
-
-
 
     /**
      * @brief updateOnMemoryViewer Manda las actualizaciones al memory viewer

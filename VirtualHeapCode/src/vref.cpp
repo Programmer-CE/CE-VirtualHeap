@@ -61,20 +61,6 @@ bool vRef::operator ==(const vRef &pVRef)
     return _Id == pVRef._Id;
 }
 
-unsigned int vRef::getWeight()
-{
-    unsigned int weight;
-    weight = vHeap::getInstance()->getWight(this);
-    return weight;
-}
-
-std::string vRef::getType()
-{
-    std::string type;
-    type = vHeap::getInstance()->getType(this);
-    return type;
-}
-
 bool vRef::isNull()
 {
     try{

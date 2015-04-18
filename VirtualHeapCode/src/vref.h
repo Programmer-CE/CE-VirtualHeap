@@ -89,24 +89,6 @@ public:
      * @return true si son iguales
      */
     bool operator ==(const vRef & pVRef);
-    /**
-     * @brief Obtiene el peso del objeto que apunta, arroja un error
-     * si este es un puntero invalido
-     * @throw NullPointerException si el puntero es invalido
-     *
-     * @return el peso del objeto que apunta
-     */
-    unsigned int getWeight();
-    /**
-     * @brief Obtiene el tipo de dato al cual la referencia (vRef) apunta, arroja un error
-     * si este es un puntero invalido
-     *
-     * @throw NullPointerException si el puntero es invalido
-     *
-     * @return el tipo de dato del objeto al cual este apunta
-     */
-    std::string getType();
-
 
     /**
      * @brief isNull, verifica si la referencia es nula

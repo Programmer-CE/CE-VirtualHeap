@@ -8,6 +8,8 @@
 #include "arraysizenocompatible.h"
 #include "indexoutbounds.h"
 #include <sstream>
+#include <time.h>
+#include <sys/time.h>
 
 
 
@@ -36,8 +38,8 @@ vHeap* vHeap::_Instance = 0;
 pthread_mutex_t vHeap::mut = PTHREAD_MUTEX_INITIALIZER;
 
 
-unsigned int vHeap::_Weight = 1024*1024*50;
-//unsigned int vHeap::_Weight = 128;
+//unsigned int vHeap::_Weight = 1024*1024*50;
+unsigned int vHeap::_Weight = 512;
 
 /*
  *Fin Instancias Estasticas
@@ -74,23 +76,29 @@ vHeap *vHeap::getInstance()
 vRef vHeap::vMalloc(unsigned int pSize)
 {
     pthread_mutex_lock(&vHeap::mut);
+    if(_vDebug)comienzo = time(NULL);
     _vMallocCalled++;
     if (_CurrentMemoryUsed + pSize <= _Weight){
         // inserta en memoria fisica
         _NotPagedObject++;
         return insertOnPhysicalMemory(pSize);
     }
-    /**
     else if (_CurrentMemoryUsed + pSize < _Weight + _OverWeight){
         // inserta en memoria fisica y baja un objeto a memoria de paginacion
+        _PagedObject++;
         return insertOnDiskMemory(pSize);
     }
-    */
     else{
         //arroja error si la memoria esta llena del todo
+        if(_vDebug)final = time(NULL);
         pthread_mutex_unlock(&vHeap::mut);
         throw FullMemoryHeapException();
     }
+}
+
+void vHeap::calculateTime()
+{
+    if(_vDebug)final = time(NULL);
 }
 
 
@@ -100,6 +108,7 @@ vRef vHeap::vMalloc(unsigned int pSize)
 void vHeap::vFree(vRef *pRef)
 {
     pthread_mutex_lock(&vHeap::mut);
+    if(_vDebug)comienzo=time(NULL);
     _vFreeCalled++;
     int index = searchBitVector(pRef->_Id);
     if (index == -1);//no hace nada si existe
@@ -110,17 +119,17 @@ void vHeap::vFree(vRef *pRef)
             memset((int*)((ExplorationVHeap*)_Chunk + memorylocation.getOffset()),0,memorylocation.getWeight());
         }
         else {
-            /*
             char tmp[memorylocation.getWeight()];
             _HeapOfPage.getPage(memorylocation.getOffset()-_Weight,tmp);
             moveInPlaceOffset(index,memorylocation.getWeight());
-            */
+            calculateTime();
             pthread_mutex_unlock(&vHeap::mut);
             throw FullMemoryHeapException();
         }
         _CurrentMemoryUsed -=memorylocation.getWeight();
         _BitVector->remove(index);
     }
+    calculateTime();
     pthread_mutex_unlock(&vHeap::mut);
 }
 
@@ -134,9 +143,11 @@ void vHeap::vFree(vRef *pRef)
 void vHeap::set(vRef *pRef, const vObject *pObject)
 {
     pthread_mutex_lock(&vHeap::mut);
+    if(_vDebug)comienzo=time(NULL);
     int index = searchBitVector(pRef->_Id);
     if (index == -1){
         //arroja un error en el caso de que la referencia no exista
+        calculateTime();
         pthread_mutex_unlock(&vHeap::mut);
         throw NullPointerException();
     }
@@ -145,9 +156,9 @@ void vHeap::set(vRef *pRef, const vObject *pObject)
         MinimalismBitVector  *memorylocation= &_BitVector->getReference(index);
         vObject * toReturn;
         if (!memorylocation->isChargedOnMemory()){
-            /*
             int index2 = getIndexToPagine(memorylocation->getWeight());
             if (index2 == -1){
+                calculateTime();
                 pthread_mutex_unlock(&vHeap::mut);
                 throw FullMemoryHeapException();
             }
@@ -171,12 +182,12 @@ void vHeap::set(vRef *pRef, const vObject *pObject)
 
             moveInPlaceOffset(index2,weight);
             _HeapOfPage.paginate(chainInterprate,tmp.getWeight());
-            */
+            calculateTime();
             pthread_mutex_unlock(&vHeap::mut);
             throw FullMemoryHeapException();
 
         }
-        toReturn= (vObject*)((ExplorationVHeap*)_Chunk + memorylocation->getOffset());
+        else toReturn= (vObject*)((ExplorationVHeap*)_Chunk + memorylocation->getOffset());
 
         //comparar los tipos si son iguales entonces:
         if(pObject->getType() == toReturn->getType()){
@@ -201,6 +212,7 @@ void vHeap::set(vRef *pRef, const vObject *pObject)
             throw NoMatchClassesException();
         }
     }
+    calculateTime();
     pthread_mutex_unlock(&vHeap::mut);
 }
 
@@ -213,10 +225,12 @@ void vHeap::set(vRef *pRef, const vObject *pObject)
 vObject* vHeap::get(vRef *pRef)
 {
     pthread_mutex_lock(&vHeap::mut);
+    if(_vDebug)comienzo=time(NULL);
     int index = searchBitVector(pRef->_Id);
     vObject * toReturn;
     if (index == -1){
         //se arroja un nullpointer exception si el objeto no existe
+        calculateTime();
         pthread_mutex_unlock(&vHeap::mut);
         throw NullPointerException();
     }
@@ -225,9 +239,9 @@ vObject* vHeap::get(vRef *pRef)
         //en la que se encuentra el objeto
         MinimalismBitVector  memorylocation= _BitVector->get(index);
         if (!memorylocation.isChargedOnMemory()){
-            /*
             int index2 = getIndexToPagine(memorylocation.getWeight());
             if (index2 == -1){
+                calculateTime();
                 pthread_mutex_unlock(&vHeap::mut);
                 throw FullMemoryHeapException();
             }
@@ -251,12 +265,13 @@ vObject* vHeap::get(vRef *pRef)
 
             moveInPlaceOffset(index2,weight);
             _HeapOfPage.paginate(chainInterprate,tmp.getWeight());
-            */
+            calculateTime();
             pthread_mutex_unlock(&vHeap::mut);
             throw FullMemoryHeapException();
         }
         toReturn = (vObject*)((ExplorationVHeap*)_Chunk + memorylocation.getOffset());
     }
+    calculateTime();
     pthread_mutex_unlock(&vHeap::mut);
     return toReturn;
 }
@@ -270,6 +285,7 @@ vObject* vHeap::get(vRef *pRef)
 void vHeap::addRef(const vRef *pRef)
 {
     pthread_mutex_lock(&vHeap::mut);
+    if(_vDebug)comienzo=time(NULL);
     int index = searchBitVector(pRef->_Id);
     if (index != -1){
         // si la referencia existe entonces, buscar el objeto
@@ -284,6 +300,7 @@ void vHeap::addRef(const vRef *pRef)
             _BitVector->add(memorylocation);
         }
     }
+    calculateTime();
     pthread_mutex_unlock(&vHeap::mut);
 }
 
@@ -295,11 +312,13 @@ void vHeap::addRef(const vRef *pRef)
 bool vHeap::protect(vRef *pVRef)
 {
     pthread_mutex_lock(&vHeap::mut);
+    if(_vDebug)comienzo=time(NULL);
     int index = searchBitVector(pVRef->_Id);
     if (index == -1){
         /*
          * Si la referencia es invalida entonces se arroja un error
          */
+        calculateTime();
         pthread_mutex_unlock(&vHeap::mut);
         throw NullPointerException();
     }
@@ -310,6 +329,7 @@ bool vHeap::protect(vRef *pVRef)
          */
         MinimalismBitVector memorylocation = _BitVector->get(index);
         if (memorylocation.isOnUse()){
+            calculateTime();
             pthread_mutex_unlock(&vHeap::mut);
             return false;
         }
@@ -319,6 +339,7 @@ bool vHeap::protect(vRef *pVRef)
             _BitVector->add(memorylocation);
         }
     }
+    calculateTime();
     pthread_mutex_unlock(&vHeap::mut);
     return true;
 }
@@ -326,11 +347,13 @@ bool vHeap::protect(vRef *pVRef)
 bool vHeap::unprotect(vRef *pVRef)
 {
     pthread_mutex_lock(&vHeap::mut);
+    if(_vDebug)comienzo=time(NULL);
     int index = searchBitVector(pVRef->_Id);
     if (index == -1){
         /*
          * Si la referencia es invalida entonces se arroja un error
          */
+        calculateTime();
         pthread_mutex_unlock(&vHeap::mut);
         throw NullPointerException();
     }
@@ -341,6 +364,7 @@ bool vHeap::unprotect(vRef *pVRef)
          */
         MinimalismBitVector memorylocation = _BitVector->get(index);
         if (!memorylocation.isOnUse()){
+            calculateTime();
             pthread_mutex_unlock(&vHeap::mut);
             return false;
         }
@@ -350,6 +374,7 @@ bool vHeap::unprotect(vRef *pVRef)
             _BitVector->add(memorylocation);
         }
     }
+    calculateTime();
     pthread_mutex_unlock(&vHeap::mut);
     return true;
 }
@@ -360,6 +385,7 @@ bool vHeap::unprotect(vRef *pVRef)
 
 void vHeap::removeReference(vRef *pVRef){
     pthread_mutex_lock(&vHeap::mut);
+    if(_vDebug)comienzo=time(NULL);
     int index = searchBitVector(pVRef->_Id);
     if (index == -1){
     }
@@ -371,6 +397,7 @@ void vHeap::removeReference(vRef *pVRef){
             _BitVector->add(memorylocation);
         }
     }
+    calculateTime();
     pthread_mutex_unlock(&vHeap::mut);
 
 }
@@ -384,6 +411,7 @@ void vHeap::removeReference(vRef *pVRef){
 void vHeap::collectGarbage()
 {
     pthread_mutex_lock(&vHeap::mut);
+    if(_vDebug)comienzo = time(NULL);
     _GarbageCollectorCalled++;
     MinimalismBitVector *memorylocation;
     for (int x = _BitVector->getLenght()-1; x > -1;x--){
@@ -394,18 +422,16 @@ void vHeap::collectGarbage()
                 _CurrentMemoryUsed -=memorylocation->getWeight();
             }
             else{
-                pthread_mutex_unlock(&vHeap::mut);
-                throw FullMemoryHeapException();
-                /*
                 char tmp[memorylocation->getWeight()];
                 _HeapOfPage.getPage(memorylocation->getOffset() - _Weight,tmp);
-                */
+                moveInPlaceOffset(x,memorylocation->getWeight());
             }
             _BitVector->remove(x);
             break;
 
         }
     }
+    calculateTime();
     pthread_mutex_unlock(&vHeap::mut);
 }
 
@@ -417,6 +443,7 @@ void vHeap::collectGarbage()
 void vHeap::compact()
 {
     pthread_mutex_lock(&vHeap::mut);
+    if(_vDebug)comienzo=time(NULL);
     _MemoryCompactorCalled++;
     _MemoryBlocks = 0;
     if (_BitVector->getLenght() > 0){
@@ -454,6 +481,7 @@ void vHeap::compact()
             }
         }
     }
+    calculateTime();
     pthread_mutex_unlock(&vHeap::mut);
 }
 
@@ -470,7 +498,14 @@ void vHeap::print()
               <<  std::endl <<  "==========================" << std::endl;
     for (int x = 0; x < _BitVector->getLenght(); x++){
         m = _BitVector->get(x);
-        std::cout << "id: "<< m.getId() << " refcount: "<< m.getReferenceCounter() << " offset: " << m.getOffset() << " size: " << m.getWeight()<< std::endl;
+        std::cout << "id: "<< m.getId() << " refcount: "<< m.getReferenceCounter() << " offset: " << m.getOffset() << " size: " << m.getWeight();
+        if(m.isChargedOnMemory()){
+        	std::cout << " on phisical memory" << std::endl;
+        }
+        else{
+        	std::cout << " on disk memory" << std::endl;
+        }
+
     }
     std::cout << "==========================" << std::endl;
     pthread_mutex_unlock(&vHeap::mut);
@@ -478,46 +513,6 @@ void vHeap::print()
 
 
 
-
-
-
-std::string vHeap::getType(vRef *pRef)
-{
-    pthread_mutex_lock(&vHeap::mut);
-    MinimalismBitVector  memorylocation;
-    int index = searchBitVector(pRef->_Id);
-    if (index == -1){
-        pthread_mutex_unlock(&vHeap::mut);
-        throw NullPointerException();
-    }
-    else{
-        memorylocation= _BitVector->get(index);
-    }
-    pthread_mutex_unlock(&vHeap::mut);
-    vObject * toReturn = (vObject*)((ExplorationVHeap*)_Chunk + memorylocation.getOffset());
-    return toReturn->getType();
-}
-
-
-
-
-
-
-unsigned int vHeap::getWight(vRef *pRef)
-{
-    pthread_mutex_lock(&vHeap::mut);
-    MinimalismBitVector memorylocation;
-    int index = searchBitVector(pRef->_Id);
-    if (index == -1){
-        pthread_mutex_unlock(&vHeap::mut);
-        throw NullPointerException();
-    }
-    else{
-        memorylocation= _BitVector->get(index);
-    }
-    pthread_mutex_unlock(&vHeap::mut);
-    return memorylocation.getWeight();
-}
 
 void vHeap::updateOnMemoryViewer()
 {
@@ -528,7 +523,7 @@ void vHeap::updateOnMemoryViewer()
     message.append(", \"memory-used\": ");
     message.append(intToString(_CurrentMemoryUsed));
     message.append(", \"memory-free\": ");
-    message.append(intToString(int(int(_Weight) -int(_CurrentMemoryUsed))/1000000));
+    message.append(intToString(int(int(_Weight + _OverWeight) -int(_CurrentMemoryUsed))));
     message.append(", \"paginate-object\": ");
     message.append(intToString(_PagedObject));
     message.append(", \"not-paginate-object\": ");
@@ -658,6 +653,8 @@ vRef vHeap::insertOnPhysicalMemory(unsigned int pSize)
                 else break;
             }
             if(x == lenght && pSize > _Weight - tmp1.getOffset() -tmp1.getWeight()){
+                _NotPagedObject--;
+                calculateTime();
                 pthread_mutex_unlock(&vHeap::mut);
                 throw FullMemoryHeapException();
             }
@@ -672,6 +669,7 @@ vRef vHeap::insertOnPhysicalMemory(unsigned int pSize)
     memset(((ExplorationVHeap*)_Chunk + toInsert.getOffset()),0,toInsert.getWeight());
     _CurrentMemoryUsed += pSize;
     _BitVector->add(toInsert);
+    calculateTime();
     pthread_mutex_unlock(&vHeap::mut);
     return vRef(toInsert.getId(),true);
 }
@@ -688,18 +686,21 @@ vRef vHeap::insertOnDiskMemory(unsigned int pSize)
         toEvaluate = _BitVector->get(pIndex);
         // se esta tratando mal el tamanio del dato
         vObject * toReturn = (vObject*)((ExplorationVHeap*)_Chunk + toEvaluate.getOffset());
-        int weight = toEvaluate.getWeight();
+        unsigned int weight = toEvaluate.getWeight();
+        int sizeOfDiskMemory = _HeapOfPage.getMemoryUsed();
         //if wight > fheap weight
         if (weight + _HeapOfPage.getMemoryUsed() > _OverWeight){
+            _PagedObject--;
+            calculateTime();
             pthread_mutex_unlock(&vHeap::mut);
             throw FullMemoryHeapException();
         }
-        char  s [weight];
-        for (int x = 0; x < weight;x++){
-            s[x] = *((char*) (&toReturn) + x);
+        char  toWrite [weight];
+        for (unsigned int x = 0; x < weight;x++){
+            toWrite[x] = *((char*) (&toReturn) + x);
         }
         memset(((ExplorationVHeap*)_Chunk + toEvaluate.getOffset()),0,toEvaluate.getWeight());
-        _HeapOfPage.paginate(s,weight);
+        _HeapOfPage.paginate(toWrite,weight);
 
         _CurrentMemoryUsed += pSize;
         _BitVector->remove(pIndex);
@@ -708,17 +709,20 @@ vRef vHeap::insertOnDiskMemory(unsigned int pSize)
         toAdd.setOnUse(false);
         toAdd.setOnMemoryLocation(true);
         _BitVector->add(toAdd);
-        toEvaluate.setOffset(_Weight + _HeapOfPage.getMemoryUsed() - pSize);
+        toEvaluate.setOffset(_Weight + sizeOfDiskMemory);// - pSize);
         toEvaluate.setOnMemoryLocation(false);
         _BitVector->add(toEvaluate);
         toEvaluate = _BitVector->get(pIndex);
     }
     else{
+        _NotPagedObject--;
+        _PagedObject--;
+        calculateTime();
         pthread_mutex_unlock(&vHeap::mut);
         throw FullMemoryHeapException();
     }
 
-
+    calculateTime();
     pthread_mutex_unlock(&vHeap::mut);
     return vRef(toEvaluate.getId(),true);
 }
