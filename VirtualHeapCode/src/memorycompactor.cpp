@@ -12,7 +12,7 @@ void memoryCompactor::internalRun()
 {
     while(vHeap::getInstance()->isRunning()){
         vHeap::getInstance()->compact();
-        //usleep(42*1000);
+        usleep(_TimeToSleep*1000);
     }
 
 }

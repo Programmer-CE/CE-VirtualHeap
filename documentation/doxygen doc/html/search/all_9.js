@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['operator_20new',['operator new',['../classv_array.html#ae85c2de441117adf6649f93781b81ac1',1,'vArray::operator new()'],['../classv_object.html#a5924dc86294ba44958b52131d5de24d8',1,'vObject::operator new()']]],
+  ['operator_20new_5b_5d',['operator new[]',['../classv_object.html#ae5691dee0f1e8f6ba80f44551cc41cc8',1,'vObject']]],
   ['operator_21_3d',['operator!=',['../class_minimalism_bit_vector.html#afa354ed29c29fcea2bfc453aa2edb9e7',1,'MinimalismBitVector']]],
   ['operator_2a',['operator*',['../classv_ref.html#a8c6c503ee26c2e26bbf336166992f79c',1,'vRef']]],
   ['operator_3c',['operator&lt;',['../class_minimalism_bit_vector.html#ab6073c581675be3a1a8837aea19babb0',1,'MinimalismBitVector']]],

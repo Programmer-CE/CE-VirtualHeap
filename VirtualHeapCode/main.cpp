@@ -1,9 +1,10 @@
-#include "ordinateList/doublelist.h"
+#include "list/DoubleList.h"
 #include "src/vint.h"
 #include "src/vchar.h"
 #include "src/vlong.h"
 #include "src/vfloat.h"
 #include "src/nullpointerexception.h"
+#include "src/fullmemoryexception.h"
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
@@ -17,66 +18,53 @@
 #include "rwpages/fheap.h"
 #include <stdio.h>
 #include <string.h>
+#include <cmath>
 using namespace std;
 
-void perderRef(int pdata){
-    vInt data = vInt(pdata);
-    vRef myref = vRef::assing(sizeof(data),&data);
-    cout << ((vInt*)*myref)->getInt()<< endl;
-}
 
 
 int main()
 {
-
+    DoubleList<vRef> lista;
+    bool notExit = true;
+    int opcion = 0;
+    int indexToSelect =0;
     vRef a;
-    vRef b;
-    vRef c;
-    vRef d;
-    vRef e;
-    vRef f;
-
-    new (&a) vInt(3);
-    vArray<vFloat,19> * y = new (&b) vArray<vFloat,19>();
-    (*y)[1] = vFloat(54);
-    new (&c) vArray<vFloat,23>();
-
-    new (&d) vArray<vFloat,19>();
-
-    new (&e) vArray<vLong,6>();
-
-
-    new (&f) vArray<vFloat,19>();
-
-
-
-
-    //vArray<vLong,6> *y = new (&d) vArray<vLong,6>();
-    //(*y)[5] = vLong(84);
-
-    //vArray<vLong,6> *m = (vArray<vLong,6>*)*d;
-
-    //cout << "el dato es: " << (*m)[5].getLong() << endl;
-
-    vHeap::getInstance()->print();
-
-    /**
-    fHeap *fh = new fHeap(800,"/home/cristianfernando/archa.bin");
-    vInt a(512);
-    char  s[sizeof(a)];
-    for (int x = 0; x < sizeof(a);x++){
-        s[x] = *((char*) (&a) + x);
+    while(notExit){
+        cout << "elija su opcion:" << endl;
+        cout << "1)insertar un dato" << endl;
+        cout << "2)eliminar un dato por vFree" << endl;
+        cout << "3)perder una referencia" << endl;
+        cout << "4)cerrar" << endl << ">>";
+        cin >> opcion;
+        switch (opcion) {
+        case 1:
+            new (&a) vInt(rand()%500+1);
+            lista.add(a);
+            continue;
+        case 2:
+            cout << "elija el indice a borrar indice: " << endl;
+            cin >> indexToSelect;
+            if (indexToSelect < 0 || indexToSelect > lista.getLenght());
+            else{
+                a = lista.get(indexToSelect);
+                vHeap::getInstance()->vFree(&a);
+                lista.remove(indexToSelect);
+            }
+            continue;
+        case 3:
+            cout << "elija el indice a borrar indice: " << endl;
+            cin >> indexToSelect;
+            if (indexToSelect < 0 || indexToSelect > lista.getLenght());
+            else lista.remove(indexToSelect);
+            continue;
+        case 4:
+            notExit = false;
+            continue;
+        default:
+            continue;
+        }
     }
-    fh->paginate(s, sizeof(a));
-    char  d[37];
-    strcpy(d, "esto es otra cosa que quiero paginar");
-    fh->paginate(d,37);
-
-    fh->getPage(0,s);
-    cout << "despaginando la primera:" << endl << ((vInt*)s)->getInt() << endl;
-    cout << "despaginando la segunda:" << endl << fh->getPage(0,d) << endl;
-    //fh->deletePage();
-    */
     return 0;
 }
 

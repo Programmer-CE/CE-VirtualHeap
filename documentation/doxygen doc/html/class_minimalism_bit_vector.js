@@ -2,13 +2,12 @@ var class_minimalism_bit_vector =
 [
     [ "MinimalismBitVector", "class_minimalism_bit_vector.html#a633ff85572b60ac83274823ec07ee325", null ],
     [ "MinimalismBitVector", "class_minimalism_bit_vector.html#a86a42058658485f11691aa7d73f89197", null ],
-    [ "MinimalismBitVector", "class_minimalism_bit_vector.html#a62437d85d4a5bdf7bd519bfe1dd25847", null ],
+    [ "MinimalismBitVector", "class_minimalism_bit_vector.html#a34fbf98499cea153210a7281fd093d88", null ],
     [ "~MinimalismBitVector", "class_minimalism_bit_vector.html#a3c8458d181a7dedc5fe95d4e4cc1667a", null ],
     [ "addReference", "class_minimalism_bit_vector.html#a77e8a538b975ae40aa2205e4bedb6d09", null ],
     [ "getId", "class_minimalism_bit_vector.html#a166c2b2c6e84945e329310584ca89128", null ],
     [ "getOffset", "class_minimalism_bit_vector.html#ae17a440748037ed78b67bf9a2f4aad1d", null ],
     [ "getReferenceCounter", "class_minimalism_bit_vector.html#ab0c91d2ff39599b96ba7f0c52ed796d2", null ],
-    [ "getType", "class_minimalism_bit_vector.html#ae2ade8544c4c57e92e5f5dd16add849b", null ],
     [ "getWeight", "class_minimalism_bit_vector.html#af33224c672b353285b59463c2e958061", null ],
     [ "isChargedOnMemory", "class_minimalism_bit_vector.html#aa8bba4e5bcfae52caf3c99beb7aae0cf", null ],
     [ "isOnUse", "class_minimalism_bit_vector.html#a7ebf4e232220001d18be6275d9868587", null ],
@@ -20,7 +19,6 @@ var class_minimalism_bit_vector =
     [ "setOnMemoryLocation", "class_minimalism_bit_vector.html#a747ed61c44f091dd3326644216a923dd", null ],
     [ "setOnUse", "class_minimalism_bit_vector.html#a63b95b7f8446bfc105d42837be83b42b", null ],
     [ "setReferenceCounter", "class_minimalism_bit_vector.html#af65272b7663cfc96d2a8fd16668b8570", null ],
-    [ "setType", "class_minimalism_bit_vector.html#a15aad2b30f6e8c2e76bba5e617de351c", null ],
     [ "setWeight", "class_minimalism_bit_vector.html#ac4480ef294435f54049da5cad957e1a9", null ],
     [ "operator<<", "class_minimalism_bit_vector.html#ab3123b16267666cc75c71b1cfb9a8a52", null ]
 ];

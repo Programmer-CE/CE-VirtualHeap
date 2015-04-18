@@ -13,7 +13,7 @@ Es la clase que representa al objeto contenido en el \hyperlink{classv_heap}{v\-
 Inheritance diagram for v\-Object\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{classv_object}
+\includegraphics[height=1.314554cm]{classv_object}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -22,8 +22,18 @@ Inheritance diagram for v\-Object\-:\begin{figure}[H]
 \hypertarget{classv_object_af5d1cd42c54c5e33da3dfe5ce747acad}{\hyperlink{classv_object_af5d1cd42c54c5e33da3dfe5ce747acad}{v\-Object} ()}\label{classv_object_af5d1cd42c54c5e33da3dfe5ce747acad}
 
 \begin{DoxyCompactList}\small\item\em es el constructor por defecto \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{classv_object_a5924dc86294ba44958b52131d5de24d8}{operator new} (size\-\_\-t p\-Size, \hyperlink{classv_ref}{v\-Ref} $\ast$p\-Ref)
+\begin{DoxyCompactList}\small\item\em operator new, es el encargado de agregar el objeto a memoria del vheap. \end{DoxyCompactList}\item 
+void $\ast$ \hyperlink{classv_object_ae5691dee0f1e8f6ba80f44551cc41cc8}{operator new\mbox{[}$\,$\mbox{]}} (size\-\_\-t p\-Size, \hyperlink{classv_ref}{v\-Ref} $\ast$p\-Ref)
+\begin{DoxyCompactList}\small\item\em operator new\mbox{[}\mbox{]} Arroja un error, la declaracion de array en el manejador de memoria \hyperlink{classv_heap}{v\-Heap} no se realizara de esta manera \end{DoxyCompactList}\item 
 virtual const char $\ast$ \hyperlink{classv_object_a839d2dd4f326f6ae698d832744bf59ce}{get\-Type} () const 
 \begin{DoxyCompactList}\small\item\em Retorna una cadena con el tipo de dato. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classv_object_ad615cc5888405061e930d41dba53d277}{class {\bfseries v\-Heap}}\label{classv_object_ad615cc5888405061e930d41dba53d277}
+
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -49,6 +59,55 @@ Retorna una cadena con el tipo de dato.
 \begin{DoxyReturn}{Returns}
 el tipo de dato 
 \end{DoxyReturn}
+\hypertarget{classv_object_a5924dc86294ba44958b52131d5de24d8}{\index{v\-Object@{v\-Object}!operator new@{operator new}}
+\index{operator new@{operator new}!vObject@{v\-Object}}
+\subsubsection[{operator new}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ v\-Object\-::operator new (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{p\-Size, }
+\item[{{\bf v\-Ref} $\ast$}]{p\-Ref}
+\end{DoxyParamCaption}
+)}}\label{classv_object_a5924dc86294ba44958b52131d5de24d8}
+
+
+operator new, es el encargado de agregar el objeto a memoria del vheap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Size} & es el tamanio del objeto \\
+\hline
+{\em p\-Ref} & es la referencia que apuntara al nuevo espacio de memoria reservado \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+el puntero a memoria donde se colocara el objeto 
+\end{DoxyReturn}
+\hypertarget{classv_object_ae5691dee0f1e8f6ba80f44551cc41cc8}{\index{v\-Object@{v\-Object}!operator new\mbox{[}$\,$\mbox{]}@{operator new[]}}
+\index{operator new\mbox{[}$\,$\mbox{]}@{operator new[]}!vObject@{v\-Object}}
+\subsubsection[{operator new[]}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ v\-Object\-::operator new\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{p\-Size, }
+\item[{{\bf v\-Ref} $\ast$}]{p\-Ref}
+\end{DoxyParamCaption}
+)}}\label{classv_object_ae5691dee0f1e8f6ba80f44551cc41cc8}
+
+
+operator new\mbox{[}\mbox{]} Arroja un error, la declaracion de array en el manejador de memoria \hyperlink{classv_heap}{v\-Heap} no se realizara de esta manera 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Size} & el tamanio del objeto \\
+\hline
+{\em p\-Ref} & la referencia que apuntara al nuevo espacio de memoria \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nada 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \hyperlink{class_array_declaration_is_invalid}{Array\-Declaration\-Is\-Invalid}} & \\
+\hline
+\end{DoxyExceptions}
 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}

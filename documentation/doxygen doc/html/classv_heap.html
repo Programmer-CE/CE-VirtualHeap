@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Lightweight Dynamic Memory Manager
-   &#160;<span id="projectnumber">stable-version-v-1.3</span>
+   &#160;<span id="projectnumber">stable-version-v-1.4</span>
    </div>
    <div id="projectbrief">El proyecto Lightweight Dynamic Memory Manager, pretende ser un manejador de memoria capaz de realiza tareas como la compactacion de memoria, liberacion de memoria a travez de un garbage collector, paginacion, entre otras</div>
   </td>
@@ -108,6 +108,7 @@ $(document).ready(function(){initNavTree('classv_heap.html','');});
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classv_heap-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">vHeap Class Reference</div>  </div>
@@ -121,9 +122,6 @@ $(document).ready(function(){initNavTree('classv_heap.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae4aae8ea89bc24fffed43c509fdfdc8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classv_ref.html">vRef</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_heap.html#ae4aae8ea89bc24fffed43c509fdfdc8c">vMalloc</a> (unsigned int pSize, string pType)</td></tr>
-<tr class="memdesc:ae4aae8ea89bc24fffed43c509fdfdc8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserva memoria en el <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a>, ademas crea un objeto que pertenece a la clase <a class="el" href="class_minimalism_bit_vector.html">que representa al objeto en memoria, contando con un id, contador de referencias, offset en memoria etc. </a> <a href="#ae4aae8ea89bc24fffed43c509fdfdc8c">More...</a><br/></td></tr>
-<tr class="separator:ae4aae8ea89bc24fffed43c509fdfdc8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb964cfa76ddee4cd1cc22dae845eed4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_heap.html#abb964cfa76ddee4cd1cc22dae845eed4">vFree</a> (<a class="el" href="classv_ref.html">vRef</a> *pRef)</td></tr>
 <tr class="memdesc:abb964cfa76ddee4cd1cc22dae845eed4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libera la memoria que un <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> apunta, si la referencia no existe no hace nada.  <a href="#abb964cfa76ddee4cd1cc22dae845eed4">More...</a><br/></td></tr>
 <tr class="separator:abb964cfa76ddee4cd1cc22dae845eed4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,6 +178,12 @@ Static Public Attributes</h2></td></tr>
 static pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_heap.html#a2ab6fdef3b9adac6392f2c7a0bf43c1c">mut</a> = PTHREAD_MUTEX_INITIALIZER</td></tr>
 <tr class="memdesc:a2ab6fdef3b9adac6392f2c7a0bf43c1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">mut, Es el mutex de la clase, todos los metodos de la clase estan protegidos por el mutex <br/></td></tr>
 <tr class="separator:a2ab6fdef3b9adac6392f2c7a0bf43c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a5fe362d26a494d740e32a5fde77fee53"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5fe362d26a494d740e32a5fde77fee53"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>vRef</b></td></tr>
+<tr class="separator:a5fe362d26a494d740e32a5fde77fee53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>La clase <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a>, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. </p>
@@ -457,43 +461,6 @@ static pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a cla
 
 </div>
 </div>
-<a class="anchor" id="ae4aae8ea89bc24fffed43c509fdfdc8c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classv_ref.html">vRef</a> vHeap::vMalloc </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>pSize</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>pType</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Reserva memoria en el <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a>, ademas crea un objeto que pertenece a la clase <a class="el" href="class_minimalism_bit_vector.html">que representa al objeto en memoria, contando con un id, contador de referencias, offset en memoria etc. </a></p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pSize</td><td>es el tamanio de memoria a reservar </td></tr>
-    <tr><td class="paramname">pType</td><td>es el tipo de objeto a reservar </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>un <a class="el" href="classv_ref.html" title="La clase vRef. ">vRef</a> que representa un puntero a la memoria reservada por este puntero </dd></dl>
-<p>if (!iterator-&gt;hasNext() &amp;&amp; (iterator-&gt;getCurrent().Offset() - (tmp1.Offset()+tmp1.getWeight()) &lt;= pSize)){ tmp1 = iterator-&gt;getCurrent(); }</p>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="vheap_8h_source.html">vheap.h</a></li>
 <li>src/vheap.cpp</li>
@@ -504,7 +471,7 @@ static pthread_mutex_t&#160;</td><td class="memItemRight" valign="bottom"><a cla
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classv_heap.html">vHeap</a></li>
-    <li class="footer">Generated on Thu Apr 2 2015 18:38:16 for Lightweight Dynamic Memory Manager by
+    <li class="footer">Generated on Tue Apr 14 2015 23:47:26 for Lightweight Dynamic Memory Manager by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

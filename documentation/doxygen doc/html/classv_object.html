@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Lightweight Dynamic Memory Manager
-   &#160;<span id="projectnumber">stable-version-v-1.3</span>
+   &#160;<span id="projectnumber">stable-version-v-1.4</span>
    </div>
    <div id="projectbrief">El proyecto Lightweight Dynamic Memory Manager, pretende ser un manejador de memoria capaz de realiza tareas como la compactacion de memoria, liberacion de memoria a travez de un garbage collector, paginacion, entre otras</div>
   </td>
@@ -106,6 +106,7 @@ $(document).ready(function(){initNavTree('classv_object.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classv_object-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">vObject Class Reference</div>  </div>
@@ -122,7 +123,12 @@ Inheritance diagram for vObject:</div>
  <div class="center">
   <img src="classv_object.png" usemap="#vObject_map" alt=""/>
   <map id="vObject_map" name="vObject_map">
-<area href="classv_int.html" title="es la clase que representa al int comun " alt="vInt" shape="rect" coords="0,56,56,80"/>
+<area href="classv_array.html" alt="vArray&lt; E, plenght &gt;" shape="rect" coords="0,56,134,80"/>
+<area href="classv_char.html" alt="vChar" shape="rect" coords="144,56,278,80"/>
+<area href="classv_float.html" alt="vFloat" shape="rect" coords="288,56,422,80"/>
+<area href="classv_int.html" title="es la clase que representa al int comun " alt="vInt" shape="rect" coords="432,56,566,80"/>
+<area href="classv_long.html" alt="vLong" shape="rect" coords="576,56,710,80"/>
+<area href="classv_string.html" alt="vString" shape="rect" coords="720,56,854,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -132,9 +138,21 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_object.html#af5d1cd42c54c5e33da3dfe5ce747acad">vObject</a> ()</td></tr>
 <tr class="memdesc:af5d1cd42c54c5e33da3dfe5ce747acad"><td class="mdescLeft">&#160;</td><td class="mdescRight">es el constructor por defecto <br/></td></tr>
 <tr class="separator:af5d1cd42c54c5e33da3dfe5ce747acad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5924dc86294ba44958b52131d5de24d8"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_object.html#a5924dc86294ba44958b52131d5de24d8">operator new</a> (size_t pSize, <a class="el" href="classv_ref.html">vRef</a> *pRef)</td></tr>
+<tr class="memdesc:a5924dc86294ba44958b52131d5de24d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">operator new, es el encargado de agregar el objeto a memoria del vheap.  <a href="#a5924dc86294ba44958b52131d5de24d8">More...</a><br/></td></tr>
+<tr class="separator:a5924dc86294ba44958b52131d5de24d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5691dee0f1e8f6ba80f44551cc41cc8"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_object.html#ae5691dee0f1e8f6ba80f44551cc41cc8">operator new[]</a> (size_t pSize, <a class="el" href="classv_ref.html">vRef</a> *pRef)</td></tr>
+<tr class="memdesc:ae5691dee0f1e8f6ba80f44551cc41cc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">operator new[] Arroja un error, la declaracion de array en el manejador de memoria <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a> no se realizara de esta manera  <a href="#ae5691dee0f1e8f6ba80f44551cc41cc8">More...</a><br/></td></tr>
+<tr class="separator:ae5691dee0f1e8f6ba80f44551cc41cc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a839d2dd4f326f6ae698d832744bf59ce"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classv_object.html#a839d2dd4f326f6ae698d832744bf59ce">getType</a> () const </td></tr>
 <tr class="memdesc:a839d2dd4f326f6ae698d832744bf59ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retorna una cadena con el tipo de dato.  <a href="#a839d2dd4f326f6ae698d832744bf59ce">More...</a><br/></td></tr>
 <tr class="separator:a839d2dd4f326f6ae698d832744bf59ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:ad615cc5888405061e930d41dba53d277"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad615cc5888405061e930d41dba53d277"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>vHeap</b></td></tr>
+<tr class="separator:ad615cc5888405061e930d41dba53d277"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Es la clase que representa al objeto contenido en el <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a>. </p>
@@ -166,6 +184,84 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a5924dc86294ba44958b52131d5de24d8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * vObject::operator new </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>pSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classv_ref.html">vRef</a> *&#160;</td>
+          <td class="paramname"><em>pRef</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>operator new, es el encargado de agregar el objeto a memoria del vheap. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pSize</td><td>es el tamanio del objeto </td></tr>
+    <tr><td class="paramname">pRef</td><td>es la referencia que apuntara al nuevo espacio de memoria reservado </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>el puntero a memoria donde se colocara el objeto </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae5691dee0f1e8f6ba80f44551cc41cc8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * vObject::operator new[] </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>pSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classv_ref.html">vRef</a> *&#160;</td>
+          <td class="paramname"><em>pRef</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>operator new[] Arroja un error, la declaracion de array en el manejador de memoria <a class="el" href="classv_heap.html" title="La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. ">vHeap</a> no se realizara de esta manera </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pSize</td><td>el tamanio del objeto </td></tr>
+    <tr><td class="paramname">pRef</td><td>la referencia que apuntara al nuevo espacio de memoria </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>nada </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="class_array_declaration_is_invalid.html">ArrayDeclarationIsInvalid</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="vobject_8h_source.html">vobject.h</a></li>
 <li>src/vobject.cpp</li>
@@ -176,7 +272,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classv_object.html">vObject</a></li>
-    <li class="footer">Generated on Thu Apr 2 2015 18:38:17 for Lightweight Dynamic Memory Manager by
+    <li class="footer">Generated on Tue Apr 14 2015 23:47:27 for Lightweight Dynamic Memory Manager by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

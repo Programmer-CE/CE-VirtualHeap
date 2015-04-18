@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['garbagecollectorthread',['GarbageCollectorThread',['../class_garbage_collector_thread.html',1,'']]]
+  ['fullmemoryheapexception',['FullMemoryHeapException',['../class_full_memory_heap_exception.html',1,'']]]
 ];

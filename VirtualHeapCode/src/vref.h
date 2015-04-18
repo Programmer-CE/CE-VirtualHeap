@@ -49,16 +49,11 @@ public:
     vRef &operator =(const vObject *pVObject);
     /**
      * @brief Es un metodo estatico que se encarga de reservar
-     * memoria y asignar un dato a esa memoria
+     * memoria
      *
      * @param pSize es el peso que se quiere reservar
-     * @param pVObject es el dato que se quiere copia en el vHeap
      * @return vRef es la referencia al dato
      */
-    static vRef assing(size_t pSize, const vObject *pVObject);
-
-
-
     static vRef reserve(size_t pSize);
 
 

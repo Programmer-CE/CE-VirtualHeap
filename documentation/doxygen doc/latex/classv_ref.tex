@@ -38,8 +38,8 @@ std\-::string \hyperlink{classv_ref_a29f102a40b30f7662de769fd07f42f0c}{get\-Type
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classv_ref}{v\-Ref} \hyperlink{classv_ref_aa3ac4bab0c6cea635768dbfe40dc1284}{assing} (size\-\_\-t p\-Size, const \hyperlink{classv_object}{v\-Object} $\ast$p\-V\-Object)
-\begin{DoxyCompactList}\small\item\em Es un metodo estatico que se encarga de reservar memoria y asignar un dato a esa memoria. \end{DoxyCompactList}\end{DoxyCompactItemize}
+static \hyperlink{classv_ref}{v\-Ref} \hyperlink{classv_ref_a3d6e6cea5b9e5ec7ea4875f77f0c23d7}{reserve} (size\-\_\-t p\-Size)
+\begin{DoxyCompactList}\small\item\em Es un metodo estatico que se encarga de reservar memoria. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -78,28 +78,6 @@ Es el constructor de copia, se encarga de agregar una referencia si el \hyperlin
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classv_ref_aa3ac4bab0c6cea635768dbfe40dc1284}{\index{v\-Ref@{v\-Ref}!assing@{assing}}
-\index{assing@{assing}!vRef@{v\-Ref}}
-\subsubsection[{assing}]{\setlength{\rightskip}{0pt plus 5cm}{\bf v\-Ref} v\-Ref\-::assing (
-\begin{DoxyParamCaption}
-\item[{size\-\_\-t}]{p\-Size, }
-\item[{const {\bf v\-Object} $\ast$}]{p\-V\-Object}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{classv_ref_aa3ac4bab0c6cea635768dbfe40dc1284}
-
-
-Es un metodo estatico que se encarga de reservar memoria y asignar un dato a esa memoria. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em p\-Size} & es el peso que se quiere reservar \\
-\hline
-{\em p\-V\-Object} & es el dato que se quiere copia en el \hyperlink{classv_heap}{v\-Heap} \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\hyperlink{classv_ref}{v\-Ref} es la referencia al dato 
-\end{DoxyReturn}
 \hypertarget{classv_ref_a29f102a40b30f7662de769fd07f42f0c}{\index{v\-Ref@{v\-Ref}!get\-Type@{get\-Type}}
 \index{get\-Type@{get\-Type}!vRef@{v\-Ref}}
 \subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string v\-Ref\-::get\-Type (
@@ -237,6 +215,25 @@ Verifica si dos referencias (\hyperlink{classv_ref}{v\-Ref}) son iguales.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 true si son iguales 
+\end{DoxyReturn}
+\hypertarget{classv_ref_a3d6e6cea5b9e5ec7ea4875f77f0c23d7}{\index{v\-Ref@{v\-Ref}!reserve@{reserve}}
+\index{reserve@{reserve}!vRef@{v\-Ref}}
+\subsubsection[{reserve}]{\setlength{\rightskip}{0pt plus 5cm}{\bf v\-Ref} v\-Ref\-::reserve (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{p\-Size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classv_ref_a3d6e6cea5b9e5ec7ea4875f77f0c23d7}
+
+
+Es un metodo estatico que se encarga de reservar memoria. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\-Size} & es el peso que se quiere reservar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classv_ref}{v\-Ref} es la referencia al dato 
 \end{DoxyReturn}
 
 

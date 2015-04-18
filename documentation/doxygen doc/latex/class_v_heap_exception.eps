@@ -5,7 +5,7 @@
 %%For: 
 %Magnification: 1.00
 %%Orientation: Portrait
-%%BoundingBox: 0 0 500 77.519380
+%%BoundingBox: 0 0 500 38.759690
 %%Pages: 0
 %%BeginSetup
 %%EndSetup
@@ -19,13 +19,13 @@
 /marginwidth 10 def
 /distx 20 def
 /disty 40 def
-/boundaspect 6.450000 def  % aspect ratio of the BoundingBox (width/height)
+/boundaspect 12.900000 def  % aspect ratio of the BoundingBox (width/height)
 /boundx 500 def
 /boundy boundx boundaspect div def
 /xspacing 0 def
 /yspacing 0 def
 /rows 2 def
-/cols 3 def
+/cols 6 def
 /scalefactor 0 def
 /boxfont /Times-Roman findfont fontheight scalefont def
 
@@ -174,7 +174,10 @@
 boxfont setfont
 1 boundaspect scale
 (VHeapException) cw
+(ArrayDeclarationIsInvalid) cw
+(ArraySizeNoCompatible) cw
 (FullMemoryHeapException) cw
+(IndexOutBounds) cw
 (NoMatchClassesException) cw
 (NullPointerException) cw
 /boxwidth boxwidth marginwidth 2 mul add def
@@ -188,20 +191,29 @@ boundx scalefactor div boundy scalefactor div scale
 
 % ----- classes -----
 
- (VHeapException) 1.000000 1.000000 box
- (FullMemoryHeapException) 0.000000 0.000000 box
- (NoMatchClassesException) 1.000000 0.000000 box
- (NullPointerException) 2.000000 0.000000 box
+ (VHeapException) 2.500000 1.000000 box
+ (ArrayDeclarationIsInvalid) 0.000000 0.000000 box
+ (ArraySizeNoCompatible) 1.000000 0.000000 box
+ (FullMemoryHeapException) 2.000000 0.000000 box
+ (IndexOutBounds) 3.000000 0.000000 box
+ (NoMatchClassesException) 4.000000 0.000000 box
+ (NullPointerException) 5.000000 0.000000 box
 
 % ----- relations -----
 
 solid
-1 1.000000 0.250000 out
+1 2.500000 0.250000 out
 solid
-0.000000 2.000000 1.000000 conn
+0.000000 5.000000 1.000000 conn
 solid
 0 0.000000 0.750000 in
 solid
 0 1.000000 0.750000 in
 solid
 0 2.000000 0.750000 in
+dotted
+0 3.000000 0.750000 in
+solid
+0 4.000000 0.750000 in
+solid
+0 5.000000 0.750000 in

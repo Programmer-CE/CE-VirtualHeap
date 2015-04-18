@@ -48,13 +48,6 @@ vRef &vRef::operator =(vRef pRef)
 }
 
 
-vRef vRef::assing(size_t pSize,const vObject *pVObject)
-{
-    vRef t(vHeap::getInstance()->vMalloc(pSize)._Id,true);
-    vHeap::getInstance()->set(&t,pVObject);
-    return t;
-}
-
 
 vRef vRef::reserve(size_t pSize)
 {

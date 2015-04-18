@@ -13,8 +13,6 @@ La clase \hyperlink{classv_heap}{v\-Heap}, Representa a un manejador de memoria.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classv_ref}{v\-Ref} \hyperlink{classv_heap_ae4aae8ea89bc24fffed43c509fdfdc8c}{v\-Malloc} (unsigned int p\-Size, string p\-Type)
-\begin{DoxyCompactList}\small\item\em Reserva memoria en el \hyperlink{classv_heap}{v\-Heap}, ademas crea un objeto que pertenece a la clase \hyperlink{class_minimalism_bit_vector}{que representa al objeto en memoria, contando con un id, contador de referencias, offset en memoria etc. }\end{DoxyCompactList}\item 
 void \hyperlink{classv_heap_abb964cfa76ddee4cd1cc22dae845eed4}{v\-Free} (\hyperlink{classv_ref}{v\-Ref} $\ast$p\-Ref)
 \begin{DoxyCompactList}\small\item\em Libera la memoria que un \hyperlink{classv_ref}{v\-Ref} apunta, si la referencia no existe no hace nada. \end{DoxyCompactList}\item 
 void \hyperlink{classv_heap_aba09b3334fc1a732308f278c9e292484}{set} (\hyperlink{classv_ref}{v\-Ref} $\ast$p\-Ref, const \hyperlink{classv_object}{v\-Object} $\ast$p\-Object)
@@ -56,6 +54,12 @@ static \hyperlink{classv_heap}{v\-Heap} $\ast$ \hyperlink{classv_heap_a1b50fb6f3
 \hypertarget{classv_heap_a2ab6fdef3b9adac6392f2c7a0bf43c1c}{static pthread\-\_\-mutex\-\_\-t \hyperlink{classv_heap_a2ab6fdef3b9adac6392f2c7a0bf43c1c}{mut} = P\-T\-H\-R\-E\-A\-D\-\_\-\-M\-U\-T\-E\-X\-\_\-\-I\-N\-I\-T\-I\-A\-L\-I\-Z\-E\-R}\label{classv_heap_a2ab6fdef3b9adac6392f2c7a0bf43c1c}
 
 \begin{DoxyCompactList}\small\item\em mut, Es el mutex de la clase, todos los metodos de la clase estan protegidos por el mutex \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classv_heap_a5fe362d26a494d740e32a5fde77fee53}{class {\bfseries v\-Ref}}\label{classv_heap_a5fe362d26a494d740e32a5fde77fee53}
+
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -248,29 +252,7 @@ Libera la memoria que un \hyperlink{classv_ref}{v\-Ref} apunta, si la referencia
 \begin{DoxySeeAlso}{See Also}
 \hyperlink{classv_ref}{v\-Ref} 
 \end{DoxySeeAlso}
-\hypertarget{classv_heap_ae4aae8ea89bc24fffed43c509fdfdc8c}{\index{v\-Heap@{v\-Heap}!v\-Malloc@{v\-Malloc}}
-\index{v\-Malloc@{v\-Malloc}!vHeap@{v\-Heap}}
-\subsubsection[{v\-Malloc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf v\-Ref} v\-Heap\-::v\-Malloc (
-\begin{DoxyParamCaption}
-\item[{unsigned int}]{p\-Size, }
-\item[{string}]{p\-Type}
-\end{DoxyParamCaption}
-)}}\label{classv_heap_ae4aae8ea89bc24fffed43c509fdfdc8c}
 
-
-Reserva memoria en el \hyperlink{classv_heap}{v\-Heap}, ademas crea un objeto que pertenece a la clase \hyperlink{class_minimalism_bit_vector}{que representa al objeto en memoria, contando con un id, contador de referencias, offset en memoria etc. }
-
-
-\begin{DoxyParams}{Parameters}
-{\em p\-Size} & es el tamanio de memoria a reservar \\
-\hline
-{\em p\-Type} & es el tipo de objeto a reservar \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-un \hyperlink{classv_ref}{v\-Ref} que representa un puntero a la memoria reservada por este puntero 
-\end{DoxyReturn}
-if (!iterator-\/$>$has\-Next() \&\& (iterator-\/$>$get\-Current().Offset() -\/ (tmp1.\-Offset()+tmp1.get\-Weight()) $<$= p\-Size))\{ tmp1 = iterator-\/$>$get\-Current(); \}
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 

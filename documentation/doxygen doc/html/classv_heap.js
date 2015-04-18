@@ -13,5 +13,5 @@ var classv_heap =
     [ "removeReference", "classv_heap.html#a156d31e57a36f093898e4b302e5f270a", null ],
     [ "set", "classv_heap.html#aba09b3334fc1a732308f278c9e292484", null ],
     [ "vFree", "classv_heap.html#abb964cfa76ddee4cd1cc22dae845eed4", null ],
-    [ "vMalloc", "classv_heap.html#ae4aae8ea89bc24fffed43c509fdfdc8c", null ]
+    [ "vRef", "classv_heap.html#a5fe362d26a494d740e32a5fde77fee53", null ]
 ];

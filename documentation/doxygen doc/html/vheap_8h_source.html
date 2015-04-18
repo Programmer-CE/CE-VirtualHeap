@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Lightweight Dynamic Memory Manager
-   &#160;<span id="projectnumber">stable-version-v-1.3</span>
+   &#160;<span id="projectnumber">stable-version-v-1.4</span>
    </div>
    <div id="projectbrief">El proyecto Lightweight Dynamic Memory Manager, pretende ser un manejador de memoria capaz de realiza tareas como la compactacion de memoria, liberacion de memoria a travez de un garbage collector, paginacion, entre otras</div>
   </td>
@@ -115,114 +115,138 @@ $(document).ready(function(){initNavTree('vheap_8h_source.html','');});
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;src/garbagecollectorthread.h&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;pthread.h&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;src/memorycompactor.h&quot;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;rwpages/fheap.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;src/memorycompactor.h&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef VHEAP_H</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define VHEAP_H</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classv_heap.html">   28</a></span>&#160;<span class="keyword">class </span><a class="code" href="classv_heap.html">vHeap</a></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">static</span> <a class="code" href="classv_heap.html">vHeap</a> *_Instance;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _Weight;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _OverWeight;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _CurrentMemoryUsed;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _TimeToSleepThreads;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> *_Chunk;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">bool</span> _isRunning;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    DoubleList&lt;MinimalismBitVector&gt; *_BitVector;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="class_garbage_collector_thread.html">GarbageCollectorThread</a> *_GarbageCollector;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classmemory_compactor.html">memoryCompactor</a> * _MemoryCompactor;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">int</span> searchBitVector(<span class="keywordtype">int</span> pId);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="class_minimalism_bit_vector.html">MinimalismBitVector</a> reallocMemory(<span class="keyword">const</span> <a class="code" href="class_minimalism_bit_vector.html">MinimalismBitVector</a> *pFrom, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> pAddressToAlloc);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> spaceBetween(<a class="code" href="class_minimalism_bit_vector.html">MinimalismBitVector</a> pRefa,<a class="code" href="class_minimalism_bit_vector.html">MinimalismBitVector</a> pRefb);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="classv_heap.html">vHeap</a>()</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        _TimeToSleepThreads = 2000;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        _isRunning = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        _BitVector = <span class="keyword">new</span> DoubleList&lt;MinimalismBitVector&gt;();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        _Chunk = malloc(_Weight);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">if</span> (!_Chunk){</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;error no hay suficient memoria&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            exit(0);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        _CurrentMemoryUsed = 0;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        _OverWeight = 0;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        _GarbageCollector = <span class="keyword">new</span> <a class="code" href="class_garbage_collector_thread.html">GarbageCollectorThread</a>(_TimeToSleepThreads);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        _MemoryCompactor = <span class="keyword">new</span> <a class="code" href="classmemory_compactor.html">memoryCompactor</a>(_TimeToSleepThreads);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        _MemoryCompactor-&gt;start();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        _GarbageCollector-&gt;start();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classv_heap.html#a2ab6fdef3b9adac6392f2c7a0bf43c1c">   68</a></span>&#160;    <span class="keyword">static</span> pthread_mutex_t <a class="code" href="classv_heap.html#a2ab6fdef3b9adac6392f2c7a0bf43c1c">mut</a>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">static</span> <a class="code" href="classv_heap.html">vHeap</a>* getInstance();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="classv_ref.html">vRef</a> vMalloc(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> pSize, <span class="keywordtype">string</span> pType);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">void</span> vFree(<a class="code" href="classv_ref.html">vRef</a>* pRef);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">void</span> set(<a class="code" href="classv_ref.html">vRef</a>* pRef, <span class="keyword">const</span> <a class="code" href="classv_object.html">vObject</a> *pObject);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="classv_object.html">vObject</a>* <span class="keyword">get</span>(<a class="code" href="classv_ref.html">vRef</a> * pRef);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">void</span> addRef(<span class="keyword">const</span> <a class="code" href="classv_ref.html">vRef</a>* pRef);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordtype">bool</span> protect(<a class="code" href="classv_ref.html">vRef</a> * pVRef);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordtype">void</span> removeReference(<a class="code" href="classv_ref.html">vRef</a> * pVRef);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordtype">void</span> collectGarbage();</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordtype">void</span> compact();</div>
-<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="classv_heap.html#a4e451a077578bc4e286de41a0b3ebe33">  155</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classv_heap.html#a4e451a077578bc4e286de41a0b3ebe33">isRunning</a>(){</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordflow">return</span> _isRunning;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    }</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordtype">void</span> print();</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    std::string getType(<a class="code" href="classv_ref.html">vRef</a> * pRef);</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getWight(<a class="code" href="classv_ref.html">vRef</a> * pRef);</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifndef VHEAP_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define VHEAP_H</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classv_heap.html">   29</a></span>&#160;<span class="keyword">class </span><a class="code" href="classv_heap.html">vHeap</a></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classv_ref.html">vRef</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">static</span> <a class="code" href="classv_heap.html">vHeap</a> *_Instance;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    fHeap _HeapOfPage;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _Weight;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _OverWeight;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _CurrentMemoryUsed;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _TimeToSleepThreads;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> *_Chunk;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">bool</span> _isRunning;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    DoubleList&lt;MinimalismBitVector&gt; *_BitVector;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="class_garbage_collector_thread.html">GarbageCollectorThread</a> *_GarbageCollector;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="classmemory_compactor.html">memoryCompactor</a> * _MemoryCompactor;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">int</span> searchBitVector(<span class="keywordtype">int</span> pId);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="class_minimalism_bit_vector.html">MinimalismBitVector</a> reallocMemory(<span class="keyword">const</span> <a class="code" href="class_minimalism_bit_vector.html">MinimalismBitVector</a> *pFrom, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> pAddressToAlloc);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> spaceBetween(<a class="code" href="class_minimalism_bit_vector.html">MinimalismBitVector</a> pRefa,<a class="code" href="class_minimalism_bit_vector.html">MinimalismBitVector</a> pRefb);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> moveInPlaceOffset(<span class="keywordtype">int</span> pIndex, <span class="keywordtype">int</span> pWeight);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="classv_ref.html">vRef</a> insertOnPhysicalMemory(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> pSize);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="classv_ref.html">vRef</a> insertOnDiskMemory(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> pSize);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordtype">int</span> getIndexToPagine(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> pSize);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">int</span> getIndexOfPaginateData();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="classv_ref.html">vRef</a> vMalloc(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> pSize);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="classv_heap.html">vHeap</a>():_HeapOfPage(0,<span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        _OverWeight = 400;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        _HeapOfPage = fHeap(_OverWeight, <span class="stringliteral">&quot;pages.bin&quot;</span>);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        _TimeToSleepThreads = 2000;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        _isRunning = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        _BitVector = <span class="keyword">new</span> DoubleList&lt;MinimalismBitVector&gt;();</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        _Chunk = malloc(_Weight);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">if</span> (!_Chunk){</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            std::cout &lt;&lt; <span class="stringliteral">&quot;error no hay suficient memoria&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            exit(0);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        _CurrentMemoryUsed = 0;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        _GarbageCollector = <span class="keyword">new</span> <a class="code" href="class_garbage_collector_thread.html">GarbageCollectorThread</a>(_TimeToSleepThreads);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        _MemoryCompactor = <span class="keyword">new</span> <a class="code" href="classmemory_compactor.html">memoryCompactor</a>(_TimeToSleepThreads);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        _MemoryCompactor-&gt;start();</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        _GarbageCollector-&gt;start();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="classv_heap.html#a2ab6fdef3b9adac6392f2c7a0bf43c1c">  142</a></span>&#160;    <span class="keyword">static</span> pthread_mutex_t <a class="code" href="classv_heap.html#a2ab6fdef3b9adac6392f2c7a0bf43c1c">mut</a>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keyword">static</span> <a class="code" href="classv_heap.html">vHeap</a>* getInstance();</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordtype">void</span> vFree(<a class="code" href="classv_ref.html">vRef</a>* pRef);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordtype">void</span> set(<a class="code" href="classv_ref.html">vRef</a>* pRef, <span class="keyword">const</span> <a class="code" href="classv_object.html">vObject</a> *pObject);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <a class="code" href="classv_object.html">vObject</a>* <span class="keyword">get</span>(<a class="code" href="classv_ref.html">vRef</a> * pRef);</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
-<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="classv_heap.html#a8bbcf6e79d6d28f16a1de164619e04ef">  187</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classv_heap.html#a8bbcf6e79d6d28f16a1de164619e04ef">~vHeap</a>()</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    {</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        pthread_mutex_lock(&amp;<a class="code" href="classv_heap.html#a2ab6fdef3b9adac6392f2c7a0bf43c1c">vHeap::mut</a>);</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        std::cout&lt;&lt; <span class="stringliteral">&quot;destroy vHeap called&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        _isRunning = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        pthread_mutex_unlock(&amp;<a class="code" href="classv_heap.html#a2ab6fdef3b9adac6392f2c7a0bf43c1c">vHeap::mut</a>);</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        _GarbageCollector-&gt;stop();</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        _MemoryCompactor-&gt;stop();</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        pthread_mutex_lock(&amp;<a class="code" href="classv_heap.html#a2ab6fdef3b9adac6392f2c7a0bf43c1c">vHeap::mut</a>);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;error&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keyword">delete</span> _GarbageCollector;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keyword">delete</span> _MemoryCompactor;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keyword">delete</span> _Instance;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keyword">delete</span> _BitVector;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        free(_Chunk);</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        pthread_mutex_unlock(&amp;<a class="code" href="classv_heap.html#a2ab6fdef3b9adac6392f2c7a0bf43c1c">vHeap::mut</a>);</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    }</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;};</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">#endif // VHEAP_H</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordtype">void</span> addRef(<span class="keyword">const</span> <a class="code" href="classv_ref.html">vRef</a>* pRef);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordtype">bool</span> protect(<a class="code" href="classv_ref.html">vRef</a> * pVRef);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordtype">void</span> removeReference(<a class="code" href="classv_ref.html">vRef</a> * pVRef);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordtype">void</span> collectGarbage();</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordtype">void</span> compact();</div>
+<div class="line"><a name="l00217"></a><span class="lineno"><a class="line" href="classv_heap.html#a4e451a077578bc4e286de41a0b3ebe33">  217</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classv_heap.html#a4e451a077578bc4e286de41a0b3ebe33">isRunning</a>(){</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keywordflow">return</span> _isRunning;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    }</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keywordtype">void</span> print();</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    std::string <a class="code" href="classv_ref.html#a29f102a40b30f7662de769fd07f42f0c">getType</a>(<a class="code" href="classv_ref.html">vRef</a> * pRef);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getWight(<a class="code" href="classv_ref.html">vRef</a> * pRef);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
+<div class="line"><a name="l00249"></a><span class="lineno"><a class="line" href="classv_heap.html#a8bbcf6e79d6d28f16a1de164619e04ef">  249</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classv_heap.html#a8bbcf6e79d6d28f16a1de164619e04ef">~vHeap</a>()</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    {</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        pthread_mutex_lock(&amp;<a class="code" href="classv_heap.html#a2ab6fdef3b9adac6392f2c7a0bf43c1c">vHeap::mut</a>);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        std::cout&lt;&lt; <span class="stringliteral">&quot;destroy vHeap called&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        _isRunning = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        pthread_mutex_unlock(&amp;<a class="code" href="classv_heap.html#a2ab6fdef3b9adac6392f2c7a0bf43c1c">vHeap::mut</a>);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        _GarbageCollector-&gt;stop();</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        _MemoryCompactor-&gt;stop();</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        pthread_mutex_lock(&amp;<a class="code" href="classv_heap.html#a2ab6fdef3b9adac6392f2c7a0bf43c1c">vHeap::mut</a>);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;error&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <span class="keyword">delete</span> _GarbageCollector;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <span class="keyword">delete</span> _MemoryCompactor;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        <span class="keyword">delete</span> _Instance;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        <span class="keyword">delete</span> _BitVector;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        free(_Chunk);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        pthread_mutex_unlock(&amp;<a class="code" href="classv_heap.html#a2ab6fdef3b9adac6392f2c7a0bf43c1c">vHeap::mut</a>);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;};</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="preprocessor">#endif // VHEAP_H</span></div>
 <div class="ttc" id="classmemory_compactor_html"><div class="ttname"><a href="classmemory_compactor.html">memoryCompactor</a></div><div class="ttdoc">Es la clase que se encarga de realizar la compactacion de los datos en el vHeap. </div><div class="ttdef"><b>Definition:</b> memorycompactor.h:10</div></div>
 <div class="ttc" id="classv_ref_html"><div class="ttname"><a href="classv_ref.html">vRef</a></div><div class="ttdoc">La clase vRef. </div><div class="ttdef"><b>Definition:</b> vref.h:10</div></div>
-<div class="ttc" id="classv_heap_html_a2ab6fdef3b9adac6392f2c7a0bf43c1c"><div class="ttname"><a href="classv_heap.html#a2ab6fdef3b9adac6392f2c7a0bf43c1c">vHeap::mut</a></div><div class="ttdeci">static pthread_mutex_t mut</div><div class="ttdoc">mut, Es el mutex de la clase, todos los metodos de la clase estan protegidos por el mutex ...</div><div class="ttdef"><b>Definition:</b> vheap.h:68</div></div>
+<div class="ttc" id="classv_heap_html_a2ab6fdef3b9adac6392f2c7a0bf43c1c"><div class="ttname"><a href="classv_heap.html#a2ab6fdef3b9adac6392f2c7a0bf43c1c">vHeap::mut</a></div><div class="ttdeci">static pthread_mutex_t mut</div><div class="ttdoc">mut, Es el mutex de la clase, todos los metodos de la clase estan protegidos por el mutex ...</div><div class="ttdef"><b>Definition:</b> vheap.h:142</div></div>
 <div class="ttc" id="class_garbage_collector_thread_html"><div class="ttname"><a href="class_garbage_collector_thread.html">GarbageCollectorThread</a></div><div class="ttdoc">Es la clase que se encarga de borrar los elementos no referenciados. </div><div class="ttdef"><b>Definition:</b> garbagecollectorthread.h:10</div></div>
 <div class="ttc" id="class_minimalism_bit_vector_html"><div class="ttname"><a href="class_minimalism_bit_vector.html">MinimalismBitVector</a></div><div class="ttdef"><b>Definition:</b> minimalismbitvector.h:13</div></div>
-<div class="ttc" id="classv_object_html"><div class="ttname"><a href="classv_object.html">vObject</a></div><div class="ttdoc">Es la clase que representa al objeto contenido en el vHeap. </div><div class="ttdef"><b>Definition:</b> vobject.h:15</div></div>
-<div class="ttc" id="classv_heap_html_a8bbcf6e79d6d28f16a1de164619e04ef"><div class="ttname"><a href="classv_heap.html#a8bbcf6e79d6d28f16a1de164619e04ef">vHeap::~vHeap</a></div><div class="ttdeci">virtual ~vHeap()</div><div class="ttdoc">~vHeap, detiene los threads, setea en false la bandera del vHeap la cual dice si el vHeap esta corrie...</div><div class="ttdef"><b>Definition:</b> vheap.h:187</div></div>
-<div class="ttc" id="classv_heap_html_a4e451a077578bc4e286de41a0b3ebe33"><div class="ttname"><a href="classv_heap.html#a4e451a077578bc4e286de41a0b3ebe33">vHeap::isRunning</a></div><div class="ttdeci">bool isRunning()</div><div class="ttdoc">verifica si el vHeap sigue corriendo </div><div class="ttdef"><b>Definition:</b> vheap.h:155</div></div>
-<div class="ttc" id="classv_heap_html"><div class="ttname"><a href="classv_heap.html">vHeap</a></div><div class="ttdoc">La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. </div><div class="ttdef"><b>Definition:</b> vheap.h:28</div></div>
+<div class="ttc" id="classv_object_html"><div class="ttname"><a href="classv_object.html">vObject</a></div><div class="ttdoc">Es la clase que representa al objeto contenido en el vHeap. </div><div class="ttdef"><b>Definition:</b> vobject.h:16</div></div>
+<div class="ttc" id="classv_heap_html_a8bbcf6e79d6d28f16a1de164619e04ef"><div class="ttname"><a href="classv_heap.html#a8bbcf6e79d6d28f16a1de164619e04ef">vHeap::~vHeap</a></div><div class="ttdeci">virtual ~vHeap()</div><div class="ttdoc">~vHeap, detiene los threads, setea en false la bandera del vHeap la cual dice si el vHeap esta corrie...</div><div class="ttdef"><b>Definition:</b> vheap.h:249</div></div>
+<div class="ttc" id="classv_heap_html_a4e451a077578bc4e286de41a0b3ebe33"><div class="ttname"><a href="classv_heap.html#a4e451a077578bc4e286de41a0b3ebe33">vHeap::isRunning</a></div><div class="ttdeci">bool isRunning()</div><div class="ttdoc">verifica si el vHeap sigue corriendo </div><div class="ttdef"><b>Definition:</b> vheap.h:217</div></div>
+<div class="ttc" id="classv_heap_html"><div class="ttname"><a href="classv_heap.html">vHeap</a></div><div class="ttdoc">La clase vHeap, Representa a un manejador de memoria. Cuenta con un compresor de memoria, garbage collector y los metodos escenciales. </div><div class="ttdef"><b>Definition:</b> vheap.h:29</div></div>
+<div class="ttc" id="classv_ref_html_a29f102a40b30f7662de769fd07f42f0c"><div class="ttname"><a href="classv_ref.html#a29f102a40b30f7662de769fd07f42f0c">vRef::getType</a></div><div class="ttdeci">std::string getType()</div><div class="ttdoc">Obtiene el tipo de dato al cual la referencia (vRef) apunta, arroja un error si este es un puntero in...</div><div class="ttdef"><b>Definition:</b> vref.cpp:79</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><b>vheap.h</b></li>
-    <li class="footer">Generated on Thu Apr 2 2015 18:38:12 for Lightweight Dynamic Memory Manager by
+    <li class="footer">Generated on Tue Apr 14 2015 23:47:19 for Lightweight Dynamic Memory Manager by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -7,7 +7,7 @@
 \hypertarget{class_minimalism_bit_vector_a86a42058658485f11691aa7d73f89197}{{\bfseries Minimalism\-Bit\-Vector} (const \hyperlink{class_minimalism_bit_vector}{Minimalism\-Bit\-Vector} \&othervariable)}\label{class_minimalism_bit_vector_a86a42058658485f11691aa7d73f89197}
 
 \item 
-\hyperlink{class_minimalism_bit_vector_a62437d85d4a5bdf7bd519bfe1dd25847}{Minimalism\-Bit\-Vector} (unsigned int p\-Offset, unsigned int p\-Weight, string p\-Type)
+\hyperlink{class_minimalism_bit_vector_a34fbf98499cea153210a7281fd093d88}{Minimalism\-Bit\-Vector} (unsigned int p\-Offset, unsigned int p\-Weight)
 \begin{DoxyCompactList}\small\item\em Constructor de los objetos de la clase, inicializa las variables principales tales variables son aquellas que describen las principales caracteristicas de los objetos en memoria, tales caracteristicas son\-: el offset o direccion relativa, esta se mide en bytes y el corriemiento de bytes se da de 1 en 1, el peso del objeto y finalmente el tipo del objeto. \end{DoxyCompactList}\item 
 \hypertarget{class_minimalism_bit_vector_a77e8a538b975ae40aa2205e4bedb6d09}{void \hyperlink{class_minimalism_bit_vector_a77e8a538b975ae40aa2205e4bedb6d09}{add\-Reference} ()}\label{class_minimalism_bit_vector_a77e8a538b975ae40aa2205e4bedb6d09}
 
@@ -27,10 +27,6 @@ unsigned int \hyperlink{class_minimalism_bit_vector_af33224c672b353285b59463c2e9
 \begin{DoxyCompactList}\small\item\em obtiene el peso del objeto que representa \end{DoxyCompactList}\item 
 void \hyperlink{class_minimalism_bit_vector_ac4480ef294435f54049da5cad957e1a9}{set\-Weight} (unsigned int p\-Weight)
 \begin{DoxyCompactList}\small\item\em setea el peso del objeto al cual repesenta \end{DoxyCompactList}\item 
-string \hyperlink{class_minimalism_bit_vector_ae2ade8544c4c57e92e5f5dd16add849b}{get\-Type} () const 
-\begin{DoxyCompactList}\small\item\em Obtiene un string que represe tipo de dato al cual representa. \end{DoxyCompactList}\item 
-void \hyperlink{class_minimalism_bit_vector_a15aad2b30f6e8c2e76bba5e617de351c}{set\-Type} (const string \&p\-Type)
-\begin{DoxyCompactList}\small\item\em setea el tipo de dato al cual este representa \end{DoxyCompactList}\item 
 int \hyperlink{class_minimalism_bit_vector_a166c2b2c6e84945e329310584ca89128}{get\-Id} () const 
 \begin{DoxyCompactList}\small\item\em obtiene el el id del objeto \end{DoxyCompactList}\item 
 unsigned int \hyperlink{class_minimalism_bit_vector_ae17a440748037ed78b67bf9a2f4aad1d}{get\-Offset} () const 
@@ -58,15 +54,14 @@ ostream \& \hyperlink{class_minimalism_bit_vector_ab3123b16267666cc75c71b1cfb9a8
 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{class_minimalism_bit_vector_a62437d85d4a5bdf7bd519bfe1dd25847}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}}
+\hypertarget{class_minimalism_bit_vector_a34fbf98499cea153210a7281fd093d88}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}}
 \index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
 \subsubsection[{Minimalism\-Bit\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}Minimalism\-Bit\-Vector\-::\-Minimalism\-Bit\-Vector (
 \begin{DoxyParamCaption}
 \item[{unsigned int}]{p\-Offset, }
-\item[{unsigned int}]{p\-Weight, }
-\item[{string}]{p\-Type}
+\item[{unsigned int}]{p\-Weight}
 \end{DoxyParamCaption}
-)}}\label{class_minimalism_bit_vector_a62437d85d4a5bdf7bd519bfe1dd25847}
+)}}\label{class_minimalism_bit_vector_a34fbf98499cea153210a7281fd093d88}
 
 
 Constructor de los objetos de la clase, inicializa las variables principales tales variables son aquellas que describen las principales caracteristicas de los objetos en memoria, tales caracteristicas son\-: el offset o direccion relativa, esta se mide en bytes y el corriemiento de bytes se da de 1 en 1, el peso del objeto y finalmente el tipo del objeto. 
@@ -124,20 +119,6 @@ Obtiene la cantidad de referencias al cual este objeto, representa.
 
 \begin{DoxyReturn}{Returns}
 la cantidad de referencias al objeto que representa 
-\end{DoxyReturn}
-\hypertarget{class_minimalism_bit_vector_ae2ade8544c4c57e92e5f5dd16add849b}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!get\-Type@{get\-Type}}
-\index{get\-Type@{get\-Type}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
-\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}string Minimalism\-Bit\-Vector\-::get\-Type (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const}}\label{class_minimalism_bit_vector_ae2ade8544c4c57e92e5f5dd16add849b}
-
-
-Obtiene un string que represe tipo de dato al cual representa. 
-
-\begin{DoxyReturn}{Returns}
-un string que contiene el tipo de dato al cual este representa 
 \end{DoxyReturn}
 \hypertarget{class_minimalism_bit_vector_af33224c672b353285b59463c2e958061}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!get\-Weight@{get\-Weight}}
 \index{get\-Weight@{get\-Weight}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
@@ -300,22 +281,6 @@ Setea la cantidad de referencias al objeto.
 
 \begin{DoxyParams}{Parameters}
 {\em p\-Reference\-Counter} & la cantidad de referencias \\
-\hline
-\end{DoxyParams}
-\hypertarget{class_minimalism_bit_vector_a15aad2b30f6e8c2e76bba5e617de351c}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!set\-Type@{set\-Type}}
-\index{set\-Type@{set\-Type}!MinimalismBitVector@{Minimalism\-Bit\-Vector}}
-\subsubsection[{set\-Type}]{\setlength{\rightskip}{0pt plus 5cm}void Minimalism\-Bit\-Vector\-::set\-Type (
-\begin{DoxyParamCaption}
-\item[{const string \&}]{p\-Type}
-\end{DoxyParamCaption}
-)}}\label{class_minimalism_bit_vector_a15aad2b30f6e8c2e76bba5e617de351c}
-
-
-setea el tipo de dato al cual este representa 
-
-
-\begin{DoxyParams}{Parameters}
-{\em p\-Type} & el tipo de dato al cual este va a representar \\
 \hline
 \end{DoxyParams}
 \hypertarget{class_minimalism_bit_vector_ac4480ef294435f54049da5cad957e1a9}{\index{Minimalism\-Bit\-Vector@{Minimalism\-Bit\-Vector}!set\-Weight@{set\-Weight}}

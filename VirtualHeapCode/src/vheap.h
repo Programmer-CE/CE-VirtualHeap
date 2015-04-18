@@ -9,8 +9,10 @@
 #include "src/garbagecollectorthread.h"
 #include <pthread.h>
 #include "rwpages/fheap.h"
-
+#include "lanconection/clientsocket.h"
+#include "viewermemorythread.h"
 #include "src/memorycompactor.h"
+#include "lanconection/socketexception.h"
 
 
 
@@ -28,6 +30,7 @@ using namespace std;
  */
 class vHeap
 {
+    friend class vRef;
     static vHeap *_Instance;
     fHeap _HeapOfPage;
     static unsigned int _Weight;
@@ -36,10 +39,14 @@ class vHeap
     unsigned int _TimeToSleepThreads;
     void *_Chunk;
     bool _isRunning;
+    int _vMallocCalled,_vFreeCalled, _GarbageCollectorCalled, _MemoryCompactorCalled;
+    int _PagedObject, _NotPagedObject;
+
     DoubleList<MinimalismBitVector> *_BitVector;
     GarbageCollectorThread *_GarbageCollector;
     memoryCompactor * _MemoryCompactor;
-
+    ViewerMemoryThread *_ViewerUpdater;
+    ClientSocket *clientSocket;
     /**
      * @brief searchBitVector
      * @param pId
@@ -99,9 +106,25 @@ class vHeap
 
 
     /**
+     * @brief Reserva memoria en el vHeap, ademas crea un objeto que
+     * pertenece a la clase @link MinimalismBitVector
+     * que representa al objeto en memoria, contando con un id, contador
+     * de referencias, offset en memoria etc
+     * @param pSize es el tamanio de memoria a reservar
+     * @param pType es el tipo de objeto a reservar
+     * @return un vRef que representa un puntero a la memoria reservada
+     * por este puntero
+     */
+    vRef vMalloc(unsigned int pSize);
+
+
+
+    /**
      * @brief vHeap Inicializa la el objeto vHeap
      */
-    vHeap():_HeapOfPage(0,"")
+    vHeap():_HeapOfPage(0,""), _vFreeCalled(0), _vMallocCalled(0),
+        _GarbageCollectorCalled(0), _MemoryCompactorCalled(0),
+        _PagedObject(0),_NotPagedObject(0)
     {
         _OverWeight = 400;
         _HeapOfPage = fHeap(_OverWeight, "pages.bin");
@@ -116,8 +139,21 @@ class vHeap
         _CurrentMemoryUsed = 0;
         _GarbageCollector = new GarbageCollectorThread(_TimeToSleepThreads);
         _MemoryCompactor = new memoryCompactor(_TimeToSleepThreads);
+        bool isConnected = true;
+        try{
+            clientSocket = new ClientSocket("localhost",30000);
+        }
+        catch(SocketException&){
+            std::cout << "no se pudo conectar" << std::endl;
+            isConnected=false;
+        }
+        if (isConnected){
+            _ViewerUpdater = new ViewerMemoryThread();
+            _ViewerUpdater->start();
+        }
         _MemoryCompactor->start();
         _GarbageCollector->start();
+
     }
 public:
     /**
@@ -131,19 +167,6 @@ public:
      * @return el puntero a la unica instancia
      */
     static vHeap* getInstance();
-
-    /**
-     * @brief Reserva memoria en el vHeap, ademas crea un objeto que
-     * pertenece a la clase @link MinimalismBitVector
-     * que representa al objeto en memoria, contando con un id, contador
-     * de referencias, offset en memoria etc
-     * @param pSize es el tamanio de memoria a reservar
-     * @param pType es el tipo de objeto a reservar
-     * @return un vRef que representa un puntero a la memoria reservada
-     * por este puntero
-     */
-    vRef vMalloc(unsigned int pSize);
-
     /**
      * @brief Libera la memoria que un vRef apunta, si la referencia
      * no existe no hace nada
@@ -235,6 +258,13 @@ public:
      * @return el peso del objeto que la referencia apunta
      */
     unsigned int getWight(vRef * pRef);
+
+
+
+    /**
+     * @brief updateOnMemoryViewer Manda las actualizaciones al memory viewer
+     */
+    void updateOnMemoryViewer();
 
 
     /**
