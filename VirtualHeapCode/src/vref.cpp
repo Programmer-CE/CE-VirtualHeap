@@ -5,14 +5,6 @@
 #include <iostream>
 #include <pthread.h>
 
-//pthread_mutex_t mut2 = PTHREAD_MUTEX_INITIALIZER;
-/**
-vRef::vRef(const void *pMemorySection)
-{
-    //vHeap::getInstance()->get(this,pMemorySection);
-}
-
-*/
 
 vRef::vRef(int pId,bool pDestroyRef)
 {
@@ -81,6 +73,22 @@ std::string vRef::getType()
     std::string type;
     type = vHeap::getInstance()->getType(this);
     return type;
+}
+
+bool vRef::isNull()
+{
+    try{
+        vHeap::getInstance()->get(this);
+        return true;
+    }
+    catch(NullPointerException e){
+        return true;
+    }
+}
+
+void vRef::leave()
+{
+    vHeap::getInstance()->unprotect(this);
 }
 
 vRef::~vRef()

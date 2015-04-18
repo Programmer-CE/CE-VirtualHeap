@@ -41,6 +41,7 @@ class vHeap
     bool _isRunning;
     int _vMallocCalled,_vFreeCalled, _GarbageCollectorCalled, _MemoryCompactorCalled;
     int _PagedObject, _NotPagedObject;
+    int _MemoryBlocks;
 
     DoubleList<MinimalismBitVector> *_BitVector;
     GarbageCollectorThread *_GarbageCollector;
@@ -213,6 +214,10 @@ public:
      * ya estaba protegida
      */
     bool protect(vRef * pVRef);
+
+    bool unprotect(vRef * pVRef);
+
+
     /**
      * @brief removeReference Elimina la refencia hace que el conteo de referencias
      * hacia lo que apunta el vRef sea disminuido en 1

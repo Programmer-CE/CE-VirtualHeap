@@ -10,6 +10,6 @@ void ViewerMemoryThread::internalRun()
 {
     while(vHeap::getInstance()->isRunning()){
         vHeap::getInstance()->updateOnMemoryViewer();
-        usleep(42*1000);
+        usleep(200*1000);
     }
 }

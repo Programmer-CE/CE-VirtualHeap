@@ -323,6 +323,37 @@ bool vHeap::protect(vRef *pVRef)
     return true;
 }
 
+bool vHeap::unprotect(vRef *pVRef)
+{
+    pthread_mutex_lock(&vHeap::mut);
+    int index = searchBitVector(pVRef->_Id);
+    if (index == -1){
+        /*
+         * Si la referencia es invalida entonces se arroja un error
+         */
+        pthread_mutex_unlock(&vHeap::mut);
+        throw NullPointerException();
+    }
+    else{
+        /*
+         * So la referencia es valida entonces debe bloquear el objeto
+         * de ser posible
+         */
+        MinimalismBitVector memorylocation = _BitVector->get(index);
+        if (!memorylocation.isOnUse()){
+            pthread_mutex_unlock(&vHeap::mut);
+            return false;
+        }
+        else{
+            memorylocation.setOnUse(false);
+            _BitVector->remove(index);
+            _BitVector->add(memorylocation);
+        }
+    }
+    pthread_mutex_unlock(&vHeap::mut);
+    return true;
+}
+
 
 
 
@@ -387,7 +418,9 @@ void vHeap::compact()
 {
     pthread_mutex_lock(&vHeap::mut);
     _MemoryCompactorCalled++;
+    _MemoryBlocks = 0;
     if (_BitVector->getLenght() > 0){
+        _MemoryBlocks = 1;
         MinimalismBitVector tmp1 = _BitVector->get(0);
         unsigned int space;
         MinimalismBitVector tmp2;
@@ -396,6 +429,7 @@ void vHeap::compact()
             tmp2=_BitVector->get(bitvectoractual);
             space= spaceBetween(tmp2,tmp1);
             if (space > 0){
+                _MemoryBlocks++;
                 for(int otherbitvector = bitvectoractual;otherbitvector <_BitVector->getLenght();otherbitvector++){
                     tmp3 = _BitVector->get(otherbitvector);
                     // && tmp3.getReferenceCounter() > 0  se quito esto en la verificacion
@@ -507,6 +541,8 @@ void vHeap::updateOnMemoryViewer()
     message.append(intToString(_GarbageCollectorCalled));
     message.append(", \"compact-memory-called\": ");
     message.append(intToString(_MemoryCompactorCalled));
+    message.append(", \"memory-blocks\": ");
+    message.append(intToString(_MemoryBlocks));
     message.append("}");
     try{
         (*clientSocket) << message;

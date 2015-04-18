@@ -106,6 +106,23 @@ public:
      * @return el tipo de dato del objeto al cual este apunta
      */
     std::string getType();
+
+
+    /**
+     * @brief isNull, verifica si la referencia es nula
+     * @return
+     */
+    bool isNull();
+
+
+
+    /**
+     * @brief leave, desocupa la referencia, SOLAMENTE DEMOSTRATIVO, no usar
+     */
+    void leave();
+
+
+
     /**
      * @brief Destruye el vRef y elimina una referencia si
      * la bandera de destruccion lo permite

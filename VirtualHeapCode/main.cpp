@@ -41,6 +41,7 @@ int main()
         case 1:
             new (&a) vInt(rand()%500+1);
             lista.add(a);
+            a.leave();
             continue;
         case 2:
             cout << "elija el indice a borrar indice: " << endl;
